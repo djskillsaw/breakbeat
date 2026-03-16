@@ -31,15 +31,14 @@ function TrackCard({ track, saved, onToggleSave }) {
     <div style={styles.card}>
       <div style={styles.cardHeader}>
         <div>
-          <div style={styles.trackTitle}>{track.title}</div>
-          <div style={styles.trackArtist}>{track.artist}</div>
+          <div style={styles.trackTitle}>{track.artist}</div>
+          <div style={styles.trackArtist}>{track.genre}</div>
         </div>
         <button onClick={() => onToggleSave(track.id)} style={styles.starBtn} aria-label="Save track">
           <StarIcon filled={saved} />
         </button>
       </div>
       <div style={styles.tags}>
-        <span style={styles.tag}>{track.genre}</span>
         <span style={{ ...styles.tag, background: "#1e3a5f" }}>{track.bpm} BPM</span>
         <span style={{ ...styles.tag, background: "#1a2e1a" }}>{track.released}</span>
       </div>
