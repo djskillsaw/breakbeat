@@ -7,8 +7,8 @@ export const houseTracks = [
     genre: "Deep House",
     vibe: "Soulful, late night, spiritual",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/kerri-chandler/1930",
-    appleMusicUrl: "https://music.apple.com/us/artist/kerri-chandler/3520811",
+    beatportUrl: "https://www.beatport.com/artist/kerri-chandler/1984",
+    appleMusicUrl: "https://music.apple.com/us/artist/kerri-chandler/7232907",
   },
   {
     id: "h2",
@@ -18,8 +18,8 @@ export const houseTracks = [
     genre: "Tech House",
     vibe: "Hypnotic, looping, dancefloor",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/peggy-gou/382047",
-    appleMusicUrl: "https://music.apple.com/us/artist/peggy-gou/1107875003",
+    beatportUrl: "https://www.beatport.com/artist/peggy-gou/528008",
+    appleMusicUrl: "https://music.apple.com/us/artist/peggy-gou/1068912248",
   },
   {
     id: "h3",
@@ -29,8 +29,8 @@ export const houseTracks = [
     genre: "Chicago House",
     vibe: "Classic, warm, deep",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/larry-heard/2078",
-    appleMusicUrl: "https://music.apple.com/us/artist/larry-heard/9484757",
+    beatportUrl: "https://www.beatport.com/artist/larry-heard/963",
+    appleMusicUrl: "https://music.apple.com/us/artist/larry-heard/2899960",
   },
   {
     id: "h4",
@@ -40,8 +40,8 @@ export const houseTracks = [
     genre: "Melodic House",
     vibe: "Euphoric, emotional, anthemic",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/bicep/259397",
-    appleMusicUrl: "https://music.apple.com/us/artist/bicep/642052824",
+    beatportUrl: "https://www.beatport.com/artist/bicep/167525",
+    appleMusicUrl: "https://music.apple.com/us/artist/bicep/406148755",
   },
   {
     id: "h5",
@@ -51,8 +51,8 @@ export const houseTracks = [
     genre: "Organic House",
     vibe: "Jazz-influenced, evolving, intelligent",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/floating-points/193428",
-    appleMusicUrl: "https://music.apple.com/us/artist/floating-points/435604937",
+    beatportUrl: "https://www.beatport.com/artist/floating-points/104114",
+    appleMusicUrl: "https://music.apple.com/us/artist/floating-points/311514259",
   },
   {
     id: "h6",
@@ -62,8 +62,8 @@ export const houseTracks = [
     genre: "Detroit House",
     vibe: "Funky, raw, Detroit soul",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/moodymann/2320",
-    appleMusicUrl: "https://music.apple.com/us/artist/moodymann/1943002",
+    beatportUrl: "https://www.beatport.com/artist/moodymann/16037",
+    appleMusicUrl: "https://music.apple.com/us/artist/moodymann/80310309",
   },
 ];
 
@@ -76,8 +76,8 @@ export const chilloutTracks = [
     genre: "Downtempo",
     vibe: "Cinematic, warm, evening vibes",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/bonobo/10561",
-    appleMusicUrl: "https://music.apple.com/us/artist/bonobo/196932500",
+    beatportUrl: "https://www.beatport.com/artist/bonobo/9978",
+    appleMusicUrl: "https://music.apple.com/us/artist/bonobo/416281071",
   },
   {
     id: "c2",
@@ -87,8 +87,8 @@ export const chilloutTracks = [
     genre: "Ambient Chillout",
     vibe: "Meditative, spacious, calming",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/marconi-union/53966",
-    appleMusicUrl: "https://music.apple.com/us/artist/marconi-union/62347789",
+    beatportUrl: "https://www.beatport.com/artist/marconi-union/51882",
+    appleMusicUrl: "https://music.apple.com/us/artist/marconi-union/81425137",
   },
   {
     id: "c3",
@@ -98,8 +98,8 @@ export const chilloutTracks = [
     genre: "Chillwave",
     vibe: "Nostalgic, textured, coastal",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/tycho/165441",
-    appleMusicUrl: "https://music.apple.com/us/artist/tycho/29522499",
+    beatportUrl: "https://www.beatport.com/artist/tycho/10519",
+    appleMusicUrl: "https://music.apple.com/us/artist/tycho/119111355",
   },
   {
     id: "c4",
@@ -109,8 +109,8 @@ export const chilloutTracks = [
     genre: "Trip-Hop / Chillout",
     vibe: "Jazzy, laid back, Sunday morning",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/search?q=Zero+7",
-    appleMusicUrl: "https://music.apple.com/us/artist/zero-7/2874066",
+    beatportUrl: "https://www.beatport.com/artist/zero-7/35666",
+    appleMusicUrl: "https://music.apple.com/us/artist/zero-7/2509752",
   },
   {
     id: "c5",
@@ -120,8 +120,8 @@ export const chilloutTracks = [
     genre: "Neoclassical / Ambient",
     vibe: "Emotional, piano-driven, ethereal",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/olafur-arnalds/126491",
-    appleMusicUrl: "https://music.apple.com/us/artist/%C3%B3lafur-arnalds/290491004",
+    beatportUrl: "https://www.beatport.com/artist/olafur-arnalds/114239",
+    appleMusicUrl: "https://music.apple.com/us/artist/%C3%B3lafur-arnalds/265425550",
   },
   {
     id: "c6",
@@ -131,8 +131,8 @@ export const chilloutTracks = [
     genre: "Psybient",
     vibe: "Deep space, hypnotic, journey",
     released: "2024–2025",
-    beatportUrl: "https://www.beatport.com/artist/carbon-based-lifeforms/7556",
-    appleMusicUrl: "https://music.apple.com/us/artist/carbon-based-lifeforms/5476403",
+    beatportUrl: "https://www.beatport.com/artist/carbon-based-lifeforms/13695",
+    appleMusicUrl: "https://music.apple.com/us/artist/carbon-based-lifeforms/26115139",
   },
 ];
 
