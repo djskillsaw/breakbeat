@@ -3,6 +3,7 @@ import { tracks } from "./data/tracks";
 import { mixes } from "./data/mixes";
 import { shows, eventLinks } from "./data/shows";
 import { localDJs } from "./data/localDJs";
+import { houseTracks, chilloutTracks, houseMixes } from "./data/houseChillout";
 
 const STORAGE_KEY = "breakbeat_saved";
 
@@ -164,7 +165,7 @@ function LocalDJCard({ dj }) {
   );
 }
 
-const TABS = ["Hottest Tracks", "DJ Mixes", "Austin Shows", "Local DJs", "Saved"];
+const TABS = ["Hottest Tracks", "DJ Mixes", "House & Chillout", "Austin Shows", "Local DJs", "Saved"];
 
 export default function BreakbeatDigest() {
   const [activeTab, setActiveTab] = useState(0);
@@ -201,7 +202,7 @@ export default function BreakbeatDigest() {
             style={{ ...styles.tab, ...(activeTab === i ? styles.tabActive : {}) }}
           >
             {tab}
-            {i === 4 && saved.length > 0 && (
+            {i === 5 && saved.length > 0 && (
               <span style={styles.badge}>{saved.length}</span>
             )}
           </button>
@@ -234,6 +235,23 @@ export default function BreakbeatDigest() {
 
         {activeTab === 2 && (
           <>
+            <div style={styles.sectionLabel}>🏠 House — March 2026 Top Picks</div>
+            {houseTracks.map((track) => (
+              <TrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
+            ))}
+            <div style={styles.sectionLabel}>😌 Chillout — March 2026 Top Picks</div>
+            {chilloutTracks.map((track) => (
+              <TrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
+            ))}
+            <div style={styles.sectionLabel}>🎧 Top House & Chillout Mixes</div>
+            {houseMixes.map((mix) => (
+              <MixCard key={mix.id} mix={mix} />
+            ))}
+          </>
+        )}
+
+        {activeTab === 3 && (
+          <>
             <div style={styles.sectionLabel}>🎤 Austin Promoters & Upcoming Shows</div>
             {shows.map((show) => (
               <ShowCard key={show.id} show={show} />
@@ -249,7 +267,7 @@ export default function BreakbeatDigest() {
           </>
         )}
 
-        {activeTab === 3 && (
+        {activeTab === 4 && (
           <>
             <div style={styles.sectionLabel}>🎧 Austin Local DJs — Sets & Upcoming Shows</div>
             {localDJs.map((dj) => (
@@ -258,7 +276,7 @@ export default function BreakbeatDigest() {
           </>
         )}
 
-        {activeTab === 4 && (
+        {activeTab === 5 && (
           <>
             <div style={styles.sectionLabel}>⭐ Your Saved Tracks</div>
             {savedTracks.length === 0 ? (
