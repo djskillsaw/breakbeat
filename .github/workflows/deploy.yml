@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - claude/clarify-task-dDHNy
   workflow_dispatch:
 
 permissions:
