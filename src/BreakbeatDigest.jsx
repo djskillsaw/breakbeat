@@ -6,6 +6,7 @@ import { localDJs } from "./data/localDJs";
 import { houseTracks, chilloutTracks, houseMixes } from "./data/houseChillout";
 
 const STORAGE_KEY = "breakbeat_saved";
+const STORAGE_KEY_MIXES = "breakbeat_saved_mixes";
 
 function StarIcon({ filled }) {
   return (
@@ -55,7 +56,7 @@ function TrackCard({ track, saved, onToggleSave }) {
   );
 }
 
-function MixCard({ mix }) {
+function MixCard({ mix, saved, onToggleSave }) {
   return (
     <div style={styles.card}>
       <div style={styles.cardHeader}>
@@ -63,7 +64,14 @@ function MixCard({ mix }) {
           <div style={styles.trackTitle}>{mix.title}</div>
           <div style={styles.trackArtist}>{mix.artist}</div>
         </div>
-        <span style={styles.duration}>{mix.duration}</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={styles.duration}>{mix.duration}</span>
+          {onToggleSave && (
+            <button onClick={() => onToggleSave(mix.id)} style={styles.starBtn} aria-label="Save mix">
+              <StarIcon filled={saved} />
+            </button>
+          )}
+        </div>
       </div>
       <div style={styles.tags}>
         <span style={{ ...styles.tag, background: "#2d1b4e" }}>{mix.source}</span>
@@ -78,9 +86,16 @@ function MixCard({ mix }) {
         <a href={mix.youtubeUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#dc2626" }}>
           YouTube <ExternalLinkIcon />
         </a>
-        <a href={mix.raUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#374151" }}>
-          Source <ExternalLinkIcon />
-        </a>
+        {mix.raUrl && (
+          <a href={mix.raUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#374151" }}>
+            Source <ExternalLinkIcon />
+          </a>
+        )}
+        {mix.mixcloudUrl && (
+          <a href={mix.mixcloudUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#5000ff" }}>
+            Mixcloud <ExternalLinkIcon />
+          </a>
+        )}
       </div>
     </div>
   );
@@ -170,22 +185,25 @@ const TABS = ["Hottest Tracks", "DJ Mixes", "House & Chillout", "Austin Shows", 
 export default function BreakbeatDigest() {
   const [activeTab, setActiveTab] = useState(0);
   const [saved, setSaved] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    } catch {
-      return [];
-    }
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; }
+  });
+  const [savedMixIds, setSavedMixIds] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY_MIXES)) || []; } catch { return []; }
   });
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
-  }, [saved]);
+  useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(saved)); }, [saved]);
+  useEffect(() => { localStorage.setItem(STORAGE_KEY_MIXES, JSON.stringify(savedMixIds)); }, [savedMixIds]);
 
   function toggleSave(id) {
     setSaved((prev) => prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]);
   }
+  function toggleSaveMix(id) {
+    setSavedMixIds((prev) => prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]);
+  }
 
-  const savedTracks = tracks.filter((t) => saved.includes(t.id));
+  const savedTracks = [...tracks, ...houseTracks, ...chilloutTracks].filter((t) => saved.includes(t.id));
+  const allMixes = [...mixes, ...houseMixes];
+  const savedMixes = allMixes.filter((m) => savedMixIds.includes(m.id));
 
   return (
     <div style={styles.container}>
@@ -202,8 +220,8 @@ export default function BreakbeatDigest() {
             style={{ ...styles.tab, ...(activeTab === i ? styles.tabActive : {}) }}
           >
             {tab}
-            {i === 5 && saved.length > 0 && (
-              <span style={styles.badge}>{saved.length}</span>
+            {i === 5 && (saved.length + savedMixIds.length) > 0 && (
+              <span style={styles.badge}>{saved.length + savedMixIds.length}</span>
             )}
           </button>
         ))}
@@ -214,12 +232,7 @@ export default function BreakbeatDigest() {
           <>
             <div style={styles.sectionLabel}>🔥 March 2026 — Highest Rated Releases</div>
             {tracks.map((track) => (
-              <TrackCard
-                key={track.id}
-                track={track}
-                saved={saved.includes(track.id)}
-                onToggleSave={toggleSave}
-              />
+              <TrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
             ))}
           </>
         )}
@@ -228,7 +241,7 @@ export default function BreakbeatDigest() {
           <>
             <div style={styles.sectionLabel}>🎧 Top-Rated Mixes — Sourced from RA, Bandcamp & Rate Your Music</div>
             {mixes.map((mix) => (
-              <MixCard key={mix.id} mix={mix} />
+              <MixCard key={mix.id} mix={mix} saved={savedMixIds.includes(mix.id)} onToggleSave={toggleSaveMix} />
             ))}
           </>
         )}
@@ -245,7 +258,7 @@ export default function BreakbeatDigest() {
             ))}
             <div style={styles.sectionLabel}>🎧 Top House & Chillout Mixes</div>
             {houseMixes.map((mix) => (
-              <MixCard key={mix.id} mix={mix} />
+              <MixCard key={mix.id} mix={mix} saved={savedMixIds.includes(mix.id)} onToggleSave={toggleSaveMix} />
             ))}
           </>
         )}
@@ -278,18 +291,27 @@ export default function BreakbeatDigest() {
 
         {activeTab === 5 && (
           <>
-            <div style={styles.sectionLabel}>⭐ Your Saved Tracks</div>
-            {savedTracks.length === 0 ? (
-              <div style={styles.empty}>No saved tracks yet. Star tracks from the Hottest Tracks tab.</div>
+            {savedTracks.length === 0 && savedMixes.length === 0 ? (
+              <div style={styles.empty}>Nothing saved yet. Star any track or mix to save it here.</div>
             ) : (
-              savedTracks.map((track) => (
-                <TrackCard
-                  key={track.id}
-                  track={track}
-                  saved
-                  onToggleSave={toggleSave}
-                />
-              ))
+              <>
+                {savedTracks.length > 0 && (
+                  <>
+                    <div style={styles.sectionLabel}>⭐ Saved Tracks</div>
+                    {savedTracks.map((track) => (
+                      <TrackCard key={track.id} track={track} saved onToggleSave={toggleSave} />
+                    ))}
+                  </>
+                )}
+                {savedMixes.length > 0 && (
+                  <>
+                    <div style={styles.sectionLabel}>⭐ Saved Mixes</div>
+                    {savedMixes.map((mix) => (
+                      <MixCard key={mix.id} mix={mix} saved onToggleSave={toggleSaveMix} />
+                    ))}
+                  </>
+                )}
+              </>
             )}
           </>
         )}
