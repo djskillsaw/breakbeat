@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { tracks } from "./data/tracks";
 import { mixes } from "./data/mixes";
 import { shows, eventLinks } from "./data/shows";
+import { localDJs } from "./data/localDJs";
 
 const STORAGE_KEY = "breakbeat_saved";
 
@@ -105,7 +106,56 @@ function ShowCard({ show }) {
   );
 }
 
-const TABS = ["Hottest Tracks", "DJ Mixes", "Austin Shows", "Saved"];
+function LocalDJCard({ dj }) {
+  return (
+    <div style={styles.card}>
+      <div style={styles.cardHeader}>
+        <div>
+          <div style={styles.trackTitle}>{dj.name}</div>
+          <div style={styles.trackArtist}>{dj.genres}</div>
+        </div>
+        <a href={dj.instagram} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#7c3aed", padding: "4px 10px" }}>
+          IG <ExternalLinkIcon />
+        </a>
+      </div>
+      <div style={styles.vibe}>{dj.bio}</div>
+
+      <div style={{ fontSize: 11, fontWeight: 700, color: "#6b7280", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>
+        Sets
+      </div>
+      {dj.sets.map((set, i) => (
+        <div key={i} style={{ marginBottom: 10 }}>
+          <div style={{ fontSize: 13, color: "#d1d5db", marginBottom: 6 }}>{set.title}</div>
+          <div style={styles.btnRow}>
+            <a href={set.soundcloudUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#f97316" }}>
+              SoundCloud <ExternalLinkIcon />
+            </a>
+            <a href={set.youtubeUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#dc2626" }}>
+              YouTube <ExternalLinkIcon />
+            </a>
+          </div>
+        </div>
+      ))}
+
+      <div style={{ fontSize: 11, fontWeight: 700, color: "#6b7280", letterSpacing: "0.08em", textTransform: "uppercase", margin: "12px 0 8px" }}>
+        Upcoming Shows
+      </div>
+      {dj.upcomingShows.map((show, i) => (
+        <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+          <div>
+            <span style={{ fontSize: 13, color: "#d1d5db" }}>{show.venue}</span>
+            <span style={{ fontSize: 12, color: "#6b7280", marginLeft: 8 }}>{show.date}</span>
+          </div>
+          <a href={show.tickets} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#0ea5e9", padding: "4px 10px" }}>
+            Tickets <ExternalLinkIcon />
+          </a>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const TABS = ["Hottest Tracks", "DJ Mixes", "Austin Shows", "Local DJs", "Saved"];
 
 export default function BreakbeatDigest() {
   const [activeTab, setActiveTab] = useState(0);
@@ -142,7 +192,7 @@ export default function BreakbeatDigest() {
             style={{ ...styles.tab, ...(activeTab === i ? styles.tabActive : {}) }}
           >
             {tab}
-            {i === 3 && saved.length > 0 && (
+            {i === 4 && saved.length > 0 && (
               <span style={styles.badge}>{saved.length}</span>
             )}
           </button>
@@ -191,6 +241,15 @@ export default function BreakbeatDigest() {
         )}
 
         {activeTab === 3 && (
+          <>
+            <div style={styles.sectionLabel}>🎧 Austin Local DJs — Sets & Upcoming Shows</div>
+            {localDJs.map((dj) => (
+              <LocalDJCard key={dj.id} dj={dj} />
+            ))}
+          </>
+        )}
+
+        {activeTab === 4 && (
           <>
             <div style={styles.sectionLabel}>⭐ Your Saved Tracks</div>
             {savedTracks.length === 0 ? (
