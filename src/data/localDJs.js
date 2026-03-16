@@ -7,12 +7,28 @@ export const localDJs = [
     sets: [
       {
         title: "Sanctuary ATX Resident Mix — Feb 2026",
+        duration: "1h 12m",
         soundcloudUrl: "https://soundcloud.com/search?q=DJ+Spinn+ATX+mix",
         youtubeUrl: "https://www.youtube.com/results?search_query=DJ+Spinn+ATX+mix",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=DJ+Spinn+ATX",
+      },
+      {
+        title: "Jungle Pressure Vol. 4 — Jan 2026",
+        duration: "58m",
+        soundcloudUrl: "https://soundcloud.com/search?q=DJ+Spinn+ATX+jungle",
+        youtubeUrl: "https://www.youtube.com/results?search_query=DJ+Spinn+ATX+jungle+pressure",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=DJ+Spinn+ATX+jungle",
+      },
+      {
+        title: "Amen Break Sessions — Dec 2025",
+        duration: "1h 05m",
+        soundcloudUrl: "https://soundcloud.com/search?q=DJ+Spinn+ATX+amen",
+        youtubeUrl: "https://www.youtube.com/results?search_query=DJ+Spinn+ATX+amen+break",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=DJ+Spinn+ATX+amen",
       },
     ],
     upcomingShows: [
-      { venue: "Sanctuary ATX", date: "Mar 21, 2026", tickets: "https://do512.com/search?q=sanctuary+atx" },
+      { venue: "Sanctuary ATX @ Mohawk", date: "Mar 21, 2026", tickets: "https://do512.com/search?q=sanctuary+atx" },
     ],
     instagram: "https://www.instagram.com/search/top/?q=djspinn%20austin",
     soundcloud: "https://soundcloud.com/search?q=DJ+Spinn+ATX",
@@ -25,12 +41,28 @@ export const localDJs = [
     sets: [
       {
         title: "Catalyst DNB Promo Mix — Mar 2026",
+        duration: "1h 20m",
         soundcloudUrl: "https://soundcloud.com/search?q=Catalyst+DNB+Austin+mix",
         youtubeUrl: "https://www.youtube.com/results?search_query=Catalyst+DNB+Austin+mix",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Catalyst+DNB+Austin",
+      },
+      {
+        title: "Neurofunk Sessions — Feb 2026",
+        duration: "1h 08m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Catalyst+DNB+neurofunk",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Catalyst+DNB+neurofunk+Austin",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Catalyst+DNB+neurofunk",
+      },
+      {
+        title: "Hard D&B Warmup — Jan 2026",
+        duration: "45m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Catalyst+DNB+hard+warmup",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Catalyst+DNB+hard+warmup",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Catalyst+DNB+Austin+hard",
       },
     ],
     upcomingShows: [
-      { venue: "Catalyst DNB Event — Austin", date: "Apr 4, 2026", tickets: "https://do512.com/search?q=catalyst+dnb" },
+      { venue: "Catalyst DNB @ Empire Control Room", date: "Apr 4, 2026", tickets: "https://do512.com/search?q=catalyst+dnb" },
     ],
     instagram: "https://www.instagram.com/catalystdnb/",
     soundcloud: "https://soundcloud.com/search?q=Catalyst+DNB+Austin",
@@ -42,13 +74,29 @@ export const localDJs = [
     bio: "Head selector for Lucid Drum & Bass. Specializes in liquid and deep atmospheric sets.",
     sets: [
       {
-        title: "Lucid D&B Deep Mix — Jan 2026",
-        soundcloudUrl: "https://soundcloud.com/search?q=Lucid+Drum+Bass+Austin+mix",
-        youtubeUrl: "https://www.youtube.com/results?search_query=Lucid+Drum+Bass+Austin+mix",
+        title: "Lucid D&B Deep Mix — Feb 2026",
+        duration: "1h 30m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Lucid+Drum+Bass+Austin+deep",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Lucid+Drum+Bass+Austin+deep+mix",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Lucid+Drum+Bass+Austin",
+      },
+      {
+        title: "Liquid Vibes Vol. 7 — Jan 2026",
+        duration: "1h 15m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Lucid+Drum+Bass+liquid+vibes",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Lucid+Drum+Bass+liquid+vibes+Austin",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Lucid+Drum+Bass+liquid",
+      },
+      {
+        title: "Atmospheric D&B — Dec 2025",
+        duration: "1h 00m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Lucid+Drum+Bass+atmospheric",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Lucid+Drum+Bass+atmospheric+2025",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Lucid+Drum+Bass+atmospheric",
       },
     ],
     upcomingShows: [
-      { venue: "Lucid D&B Monthly — Austin", date: "Mar 28, 2026", tickets: "https://do512.com/search?q=lucid+drum+bass" },
+      { venue: "Lucid D&B Monthly @ Elysium", date: "Mar 28, 2026", tickets: "https://do512.com/search?q=lucid+drum+bass" },
     ],
     instagram: "https://www.instagram.com/search/top/?q=lucid%20drum%20bass%20austin",
     soundcloud: "https://soundcloud.com/search?q=Lucid+Drum+Bass+Austin",
@@ -60,9 +108,25 @@ export const localDJs = [
     bio: "Austin-based producer and DJ blending classic breakbeat with modern hip-hop influence.",
     sets: [
       {
-        title: "Brokn Beatz — Austin Session Vol. 3",
-        soundcloudUrl: "https://soundcloud.com/search?q=Brokn+Beatz+Austin",
-        youtubeUrl: "https://www.youtube.com/results?search_query=Brokn+Beatz+Austin+mix",
+        title: "Austin Session Vol. 3 — Feb 2026",
+        duration: "52m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Brokn+Beatz+Austin+session",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Brokn+Beatz+Austin+session",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Brokn+Beatz+Austin",
+      },
+      {
+        title: "Lo-fi Breaks & Chill — Jan 2026",
+        duration: "1h 00m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Brokn+Beatz+lofi+breaks",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Brokn+Beatz+lofi+breaks",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Brokn+Beatz+lofi",
+      },
+      {
+        title: "Hip-Hop Breaks Throwdown — Dec 2025",
+        duration: "48m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Brokn+Beatz+hip+hop+breaks",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Brokn+Beatz+hip+hop+breaks",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Brokn+Beatz+hip+hop",
       },
     ],
     upcomingShows: [
@@ -78,9 +142,25 @@ export const localDJs = [
     bio: "Collective of Austin producers and DJs. Monthly meetups, b2b sets, and community events.",
     sets: [
       {
-        title: "Austin DNB Family — Community Mix Series",
-        soundcloudUrl: "https://soundcloud.com/search?q=Austin+DNB+Family+mix",
-        youtubeUrl: "https://www.youtube.com/results?search_query=Austin+DNB+Family+mix",
+        title: "Community Mix Series Vol. 12 — Mar 2026",
+        duration: "2h 10m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Austin+DNB+Family+community+mix",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Austin+DNB+Family+community+mix",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Austin+DNB+Family",
+      },
+      {
+        title: "B2B Sessions — Feb 2026",
+        duration: "1h 45m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Austin+DNB+Family+b2b",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Austin+DNB+Family+b2b",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Austin+DNB+Family+b2b",
+      },
+      {
+        title: "All Styles Showcase — Jan 2026",
+        duration: "1h 55m",
+        soundcloudUrl: "https://soundcloud.com/search?q=Austin+DNB+Family+all+styles",
+        youtubeUrl: "https://www.youtube.com/results?search_query=Austin+DNB+Family+all+styles",
+        mixcloudUrl: "https://www.mixcloud.com/search/?q=Austin+DNB+Family+all+styles",
       },
     ],
     upcomingShows: [

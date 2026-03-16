@@ -124,17 +124,23 @@ function LocalDJCard({ dj }) {
       <div style={styles.vibe}>{dj.bio}</div>
 
       <div style={{ fontSize: 11, fontWeight: 700, color: "#6b7280", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>
-        Sets
+        Streaming Mixes
       </div>
       {dj.sets.map((set, i) => (
-        <div key={i} style={{ marginBottom: 10 }}>
-          <div style={{ fontSize: 13, color: "#d1d5db", marginBottom: 6 }}>{set.title}</div>
+        <div key={i} style={{ background: "#0d1117", borderRadius: 8, padding: "10px 12px", marginBottom: 8 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+            <div style={{ fontSize: 13, color: "#d1d5db", fontWeight: 600 }}>{set.title}</div>
+            <span style={{ fontSize: 11, color: "#6b7280", whiteSpace: "nowrap", marginLeft: 8 }}>{set.duration}</span>
+          </div>
           <div style={styles.btnRow}>
             <a href={set.soundcloudUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#f97316" }}>
               SoundCloud <ExternalLinkIcon />
             </a>
             <a href={set.youtubeUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#dc2626" }}>
               YouTube <ExternalLinkIcon />
+            </a>
+            <a href={set.mixcloudUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#5000ff" }}>
+              Mixcloud <ExternalLinkIcon />
             </a>
           </div>
         </div>
