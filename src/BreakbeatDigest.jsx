@@ -89,7 +89,10 @@ function ShowCard({ show }) {
   return (
     <div style={styles.card}>
       <div style={styles.trackTitle}>{show.promoter}</div>
-      <div style={styles.trackArtist}>{show.venue}</div>
+      <a href={show.venueUrl} target="_blank" rel="noreferrer" style={{ color: "#f97316", fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+        {show.venue} <ExternalLinkIcon />
+      </a>
+      <div style={{ fontSize: 12, color: "#6b7280", marginTop: 3 }}>{show.address}</div>
       <div style={{ ...styles.tags, marginTop: 8 }}>
         <span style={{ ...styles.tag, background: "#1e3a5f" }}>{show.date}</span>
       </div>
