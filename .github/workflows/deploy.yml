@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - BASELINE
       - claude/clarify-task-dDHNy
   workflow_dispatch:
 
