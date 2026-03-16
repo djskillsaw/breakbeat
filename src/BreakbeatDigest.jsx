@@ -180,7 +180,7 @@ function LocalDJCard({ dj }) {
   );
 }
 
-const TABS = ["Hottest Tracks", "DJ Mixes", "House & Chillout", "Austin Shows", "Local DJs", "Saved"];
+const TABS = ["Hottest Tracks", "Breakbeat, Jungle & DnB Mixes", "House & Chillout", "Austin Shows", "Local DJs", "Saved"];
 
 export default function BreakbeatDigest() {
   const [activeTab, setActiveTab] = useState(0);
