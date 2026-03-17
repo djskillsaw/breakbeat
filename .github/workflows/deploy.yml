@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - claude/**
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6am UTC
 
 jobs:
   deploy:
@@ -20,6 +22,11 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Fetch latest charts from Last.fm
+        run: node scripts/fetchCharts.js
+        env:
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
 
       - run: npm run build
 
