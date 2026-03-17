@@ -69,14 +69,23 @@ function ChartTrackCard({ track, saved, onToggleSave }) {
         </button>
       </div>
       <div style={styles.tags}>
-        <span style={{ ...styles.tag, background: "#1e3a5f" }}>{track.bpm} BPM</span>
-        <span style={{ ...styles.tag, background: "#1a2e1a" }}>{track.released}</span>
+        {track.bpm && (
+          <span style={{ ...styles.tag, background: "#1e3a5f" }}>{track.bpm} BPM</span>
+        )}
+        {track.released && track.released !== "—" && (
+          <span style={{ ...styles.tag, background: "#1a2e1a" }}>{track.released}</span>
+        )}
       </div>
-      <div style={styles.vibe}>{track.vibe}</div>
+      {track.vibe && <div style={styles.vibe}>{track.vibe}</div>}
       <div style={styles.btnRow}>
         <a href={track.beatportUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#f97316" }}>
           Beatport <ExternalLinkIcon />
         </a>
+        {track.spotifyUrl && (
+          <a href={track.spotifyUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#1db954" }}>
+            Spotify <ExternalLinkIcon />
+          </a>
+        )}
         <a href={track.appleMusicUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#fb2d55" }}>
           Apple Music <ExternalLinkIcon />
         </a>
