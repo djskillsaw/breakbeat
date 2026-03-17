@@ -4,6 +4,7 @@ import { mixes } from "./data/mixes";
 import { shows, eventLinks } from "./data/shows";
 import { localDJs } from "./data/localDJs";
 import { houseTracks, chilloutTracks, houseMixes } from "./data/houseChillout";
+import { chartGenres } from "./data/chartTracks";
 
 const STORAGE_KEY = "breakbeat_saved";
 const STORAGE_KEY_MIXES = "breakbeat_saved_mixes";
@@ -33,6 +34,35 @@ function TrackCard({ track, saved, onToggleSave }) {
         <div>
           <div style={styles.trackTitle}>{track.artist}</div>
           <div style={styles.trackArtist}>{track.genre}</div>
+        </div>
+        <button onClick={() => onToggleSave(track.id)} style={styles.starBtn} aria-label="Save track">
+          <StarIcon filled={saved} />
+        </button>
+      </div>
+      <div style={styles.tags}>
+        <span style={{ ...styles.tag, background: "#1e3a5f" }}>{track.bpm} BPM</span>
+        <span style={{ ...styles.tag, background: "#1a2e1a" }}>{track.released}</span>
+      </div>
+      <div style={styles.vibe}>{track.vibe}</div>
+      <div style={styles.btnRow}>
+        <a href={track.beatportUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#f97316" }}>
+          Beatport <ExternalLinkIcon />
+        </a>
+        <a href={track.appleMusicUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#fb2d55" }}>
+          Apple Music <ExternalLinkIcon />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function ChartTrackCard({ track, saved, onToggleSave }) {
+  return (
+    <div style={styles.card}>
+      <div style={styles.cardHeader}>
+        <div>
+          <div style={styles.trackTitle}>{track.title}</div>
+          <div style={styles.trackArtist}>{track.artist}</div>
         </div>
         <button onClick={() => onToggleSave(track.id)} style={styles.starBtn} aria-label="Save track">
           <StarIcon filled={saved} />
@@ -200,7 +230,8 @@ export default function BreakbeatDigest() {
     setSavedMixIds((prev) => prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]);
   }
 
-  const savedTracks = [...tracks, ...houseTracks, ...chilloutTracks].filter((t) => saved.includes(t.id));
+  const allChartTracks = chartGenres.flatMap((g) => g.tracks);
+  const savedTracks = [...tracks, ...houseTracks, ...chilloutTracks, ...allChartTracks].filter((t) => saved.includes(t.id));
   const allMixes = [...mixes, ...houseMixes];
   const savedMixes = allMixes.filter((m) => savedMixIds.includes(m.id));
 
@@ -229,9 +260,20 @@ export default function BreakbeatDigest() {
       <div style={styles.content}>
         {activeTab === 0 && (
           <>
-            <div style={styles.sectionLabel}>🔥 March 2026 — Highest Rated Releases</div>
+            <div style={styles.sectionLabel}>🎤 March 2026 — Hottest Artists</div>
             {tracks.map((track) => (
               <TrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
+            ))}
+
+            {chartGenres.map((genre) => (
+              <div key={genre.id}>
+                <div style={{ ...styles.sectionLabel, marginTop: 28 }}>
+                  {genre.emoji} Top Charts — {genre.label}
+                </div>
+                {genre.tracks.map((track) => (
+                  <ChartTrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
+                ))}
+              </div>
             ))}
           </>
         )}
