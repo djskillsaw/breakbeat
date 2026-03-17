@@ -1,14 +1,12 @@
 /**
  * fetchCharts.js
- * Pulls top tracks per genre from Last.fm, enriches with BPM from
- * GetSongBPM.com, then writes src/data/chartTracks.js.
+ * Pulls top tracks per genre from Last.fm, then writes src/data/chartTracks.js.
  *
  * Usage:
  *   npm run fetch-charts
  *
  * Required .env keys:
- *   LASTFM_API_KEY       — https://www.last.fm/api/account/create
- *   GETSONGBPM_API_KEY   — https://getsongbpm.com/api (free, 500 req/month)
+ *   LASTFM_API_KEY  — https://www.last.fm/api/account/create
  */
 
 import { writeFileSync } from "fs";
@@ -18,8 +16,7 @@ import "dotenv/config";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const LASTFM_KEY   = process.env.LASTFM_API_KEY;
-const SONGBPM_KEY  = process.env.GETSONGBPM_API_KEY;
+const LASTFM_KEY = process.env.LASTFM_API_KEY;
 
 const GENRE_TAGS = [
   { id: "dnb",        label: "Drum & Bass", emoji: "🥁", tag: "drum-and-bass",  accentColor: "#1e3a5f" },
@@ -31,19 +28,6 @@ const GENRE_TAGS = [
 
 const TRACKS_PER_GENRE = 5;
 
-// ── GetSongBPM ────────────────────────────────────────────────────────────────
-
-async function getBpm(artist, title) {
-  const lookup = encodeURIComponent(`${title} ${artist}`);
-  const url = `https://api.getsongbpm.com/search/?api_key=${SONGBPM_KEY}&type=both&lookup=${lookup}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  const song = data.search?.[0];
-  return song?.tempo ? Math.round(Number(song.tempo)) : null;
-}
-
-// ── Last.fm ───────────────────────────────────────────────────────────────────
-
 async function getLastFmTopTracks(tag, limit) {
   const url =
     `https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks` +
@@ -54,56 +38,38 @@ async function getLastFmTopTracks(tag, limit) {
   return data.tracks?.track ?? [];
 }
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
 function searchUrl(service, artist, title) {
   const q = encodeURIComponent(`${artist} ${title}`);
-  if (service === "spotify")    return `https://open.spotify.com/search/${q}`;
-  if (service === "apple")      return `https://music.apple.com/us/search?term=${q}`;
-  if (service === "beatport")   return `https://www.beatport.com/search?q=${q}`;
+  if (service === "spotify")  return `https://open.spotify.com/search/${q}`;
+  if (service === "apple")    return `https://music.apple.com/us/search?term=${q}`;
+  if (service === "beatport") return `https://www.beatport.com/search?q=${q}`;
 }
 
-// ── Main ──────────────────────────────────────────────────────────────────────
-
 async function main() {
-  if (!LASTFM_KEY || !SONGBPM_KEY) {
-    console.error(
-      "❌  Missing env vars. Copy .env.example → .env and fill in your keys.\n" +
-      "    Required: LASTFM_API_KEY, GETSONGBPM_API_KEY"
-    );
+  if (!LASTFM_KEY) {
+    console.error("❌  Missing LASTFM_API_KEY in .env");
     process.exit(1);
   }
 
   const genres = [];
 
   for (const genre of GENRE_TAGS) {
-    console.log(`\n🎵  Last.fm top tracks — ${genre.tag}`);
+    console.log(`🎵  Fetching Last.fm top tracks — ${genre.tag}`);
     const lastfmTracks = await getLastFmTopTracks(genre.tag, TRACKS_PER_GENRE);
 
-    const tracks = [];
-    for (const t of lastfmTracks) {
+    const tracks = lastfmTracks.map((t, i) => {
       const artist = t.artist.name;
       const title  = t.name;
-      process.stdout.write(`   ↳ ${artist} — ${title} … `);
-
-      const bpm = await getBpm(artist, title);
-      console.log(bpm ? `${bpm} BPM` : "BPM not found");
-
-      tracks.push({
-        id:           `ct-${genre.id}-${tracks.length + 1}`,
+      console.log(`   ↳ ${artist} — ${title}`);
+      return {
+        id:           `ct-${genre.id}-${i + 1}`,
         title,
         artist,
-        bpm:          bpm ?? null,
-        released:     new Date().getFullYear().toString(),
-        vibe:         "",
         beatportUrl:  searchUrl("beatport", artist, title),
         appleMusicUrl: searchUrl("apple",   artist, title),
         spotifyUrl:   searchUrl("spotify",  artist, title),
-      });
-
-      // Stay within GetSongBPM rate limits
-      await new Promise((r) => setTimeout(r, 300));
-    }
+      };
+    });
 
     genres.push({ ...genre, tracks });
   }
@@ -115,10 +81,8 @@ async function main() {
     `// Re-run with: npm run fetch-charts\n\n` +
     `export const chartGenres = ${JSON.stringify(genres, null, 2)};\n`;
 
-  const outPath = resolve(__dirname, "../src/data/chartTracks.js");
-  writeFileSync(outPath, output);
+  writeFileSync(resolve(__dirname, "../src/data/chartTracks.js"), output);
   console.log(`\n✅  Written to src/data/chartTracks.js`);
-  console.log(`    Run 'npm run build' to publish the updated charts.`);
 }
 
 main().catch((err) => {

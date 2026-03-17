@@ -68,24 +68,13 @@ function ChartTrackCard({ track, saved, onToggleSave }) {
           <StarIcon filled={saved} />
         </button>
       </div>
-      <div style={styles.tags}>
-        {track.bpm && (
-          <span style={{ ...styles.tag, background: "#1e3a5f" }}>{track.bpm} BPM</span>
-        )}
-        {track.released && track.released !== "—" && (
-          <span style={{ ...styles.tag, background: "#1a2e1a" }}>{track.released}</span>
-        )}
-      </div>
-      {track.vibe && <div style={styles.vibe}>{track.vibe}</div>}
       <div style={styles.btnRow}>
         <a href={track.beatportUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#f97316" }}>
           Beatport <ExternalLinkIcon />
         </a>
-        {track.spotifyUrl && (
-          <a href={track.spotifyUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#1db954" }}>
-            Spotify <ExternalLinkIcon />
-          </a>
-        )}
+        <a href={track.spotifyUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#1db954" }}>
+          Spotify <ExternalLinkIcon />
+        </a>
         <a href={track.appleMusicUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#fb2d55" }}>
           Apple Music <ExternalLinkIcon />
         </a>
@@ -369,10 +358,6 @@ export default function BreakbeatDigest() {
 
       <div style={styles.footer}>
         Updated weekly every Monday · Curated from Beatport, Resident Advisor, Bandcamp & Rate Your Music
-        <br />
-        <span style={{ opacity: 0.5, fontSize: "0.75rem" }}>
-          BPM data by <a href="https://getsongbpm.com" style={{ color: "inherit" }}>GetSongBPM</a>
-        </span>
       </div>
     </div>
   );
