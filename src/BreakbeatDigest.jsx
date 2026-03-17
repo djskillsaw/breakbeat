@@ -369,6 +369,10 @@ export default function BreakbeatDigest() {
 
       <div style={styles.footer}>
         Updated weekly every Monday · Curated from Beatport, Resident Advisor, Bandcamp & Rate Your Music
+        <br />
+        <span style={{ opacity: 0.5, fontSize: "0.75rem" }}>
+          BPM data by <a href="https://getsongbpm.com" style={{ color: "inherit" }}>GetSongBPM</a>
+        </span>
       </div>
     </div>
   );
