@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { tracks, tracksMonth } from "./data/tracks";
+// tracks.js no longer used directly; data comes from chartGenres
 import { mixes } from "./data/mixes";
 import { shows, eventLinks } from "./data/shows";
 import { localDJs } from "./data/localDJs";
-import { houseTracks, chilloutTracks, houseMixes } from "./data/houseChillout";
+import { houseMixes } from "./data/houseChillout";
 import { chartGenres } from "./data/chartTracks";
 
 const STORAGE_KEY = "breakbeat_saved";
@@ -237,7 +237,7 @@ export default function BreakbeatDigest() {
   }
 
   const allChartTracks = chartGenres.flatMap((g) => g.tracks);
-  const savedTracks = [...tracks, ...houseTracks, ...chilloutTracks, ...allChartTracks].filter((t) => saved.includes(t.id));
+  const savedTracks = allChartTracks.filter((t) => saved.includes(t.id));
   const allMixes = [...mixes, ...houseMixes];
   const savedMixes = allMixes.filter((m) => savedMixIds.includes(m.id));
 
@@ -266,21 +266,18 @@ export default function BreakbeatDigest() {
       <div style={styles.content}>
         {activeTab === 0 && (
           <>
-            <div style={styles.sectionLabel}>🎤 {tracksMonth} — Hottest Tracks</div>
-            {tracks.map((track) => (
-              <TrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
-            ))}
-
-            {chartGenres.map((genre) => (
-              <div key={genre.id}>
-                <div style={{ ...styles.sectionLabel, marginTop: 28 }}>
-                  {genre.emoji} Top Charts — {genre.label}
+            {chartGenres
+              .filter((g) => g.id === "dnb" || g.id === "breakbeat")
+              .map((genre) => (
+                <div key={genre.id}>
+                  <div style={styles.sectionLabel}>
+                    {genre.emoji} Top Charts — {genre.label}
+                  </div>
+                  {genre.tracks.map((track) => (
+                    <ChartTrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
+                  ))}
                 </div>
-                {genre.tracks.map((track) => (
-                  <ChartTrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
-                ))}
-              </div>
-            ))}
+              ))}
           </>
         )}
 
@@ -295,15 +292,19 @@ export default function BreakbeatDigest() {
 
         {activeTab === 2 && (
           <>
-            <div style={styles.sectionLabel}>🏠 House — March 2026 Top Picks</div>
-            {houseTracks.map((track) => (
-              <TrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
-            ))}
-            <div style={styles.sectionLabel}>😌 Chillout — March 2026 Top Picks</div>
-            {chilloutTracks.map((track) => (
-              <TrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
-            ))}
-            <div style={styles.sectionLabel}>🎧 Top House & Chillout Mixes</div>
+            {chartGenres
+              .filter((g) => g.id === "house" || g.id === "chill" || g.id === "electronic")
+              .map((genre) => (
+                <div key={genre.id}>
+                  <div style={styles.sectionLabel}>
+                    {genre.emoji} Top Charts — {genre.label}
+                  </div>
+                  {genre.tracks.map((track) => (
+                    <ChartTrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
+                  ))}
+                </div>
+              ))}
+            <div style={{ ...styles.sectionLabel, marginTop: 28 }}>🎧 Top House & Chillout Mixes</div>
             {houseMixes.map((mix) => (
               <MixCard key={mix.id} mix={mix} saved={savedMixIds.includes(mix.id)} onToggleSave={toggleSaveMix} />
             ))}
