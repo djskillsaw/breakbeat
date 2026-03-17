@@ -1,15 +1,14 @@
 /**
  * fetchCharts.js
- * Pulls top tracks per genre from Last.fm, enriches with BPM + Spotify URL
- * via the Spotify audio features API, then writes src/data/chartTracks.js.
+ * Pulls top tracks per genre from Last.fm, enriches with BPM from
+ * GetSongBPM.com, then writes src/data/chartTracks.js.
  *
  * Usage:
  *   npm run fetch-charts
  *
  * Required .env keys:
- *   LASTFM_API_KEY
- *   SPOTIFY_CLIENT_ID
- *   SPOTIFY_CLIENT_SECRET
+ *   LASTFM_API_KEY       — https://www.last.fm/api/account/create
+ *   GETSONGBPM_API_KEY   — https://getsongbpm.com/api (free, 500 req/month)
  */
 
 import { writeFileSync } from "fs";
@@ -19,9 +18,8 @@ import "dotenv/config";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const LASTFM_KEY = process.env.LASTFM_API_KEY;
-const SPOTIFY_ID = process.env.SPOTIFY_CLIENT_ID;
-const SPOTIFY_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+const LASTFM_KEY   = process.env.LASTFM_API_KEY;
+const SONGBPM_KEY  = process.env.GETSONGBPM_API_KEY;
 
 const GENRE_TAGS = [
   { id: "dnb",        label: "Drum & Bass", emoji: "🥁", tag: "drum-and-bass",  accentColor: "#1e3a5f" },
@@ -33,61 +31,15 @@ const GENRE_TAGS = [
 
 const TRACKS_PER_GENRE = 5;
 
-// ── Spotify ──────────────────────────────────────────────────────────────────
+// ── GetSongBPM ────────────────────────────────────────────────────────────────
 
-async function getSpotifyToken() {
-  const res = await fetch("https://accounts.spotify.com/api/token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Basic " + Buffer.from(`${SPOTIFY_ID}:${SPOTIFY_SECRET}`).toString("base64"),
-    },
-    body: "grant_type=client_credentials",
-  });
+async function getBpm(artist, title) {
+  const lookup = encodeURIComponent(`${title} ${artist}`);
+  const url = `https://api.getsongbpm.com/search/?api_key=${SONGBPM_KEY}&type=both&lookup=${lookup}`;
+  const res = await fetch(url);
   const data = await res.json();
-  if (!data.access_token) throw new Error("Spotify token fetch failed: " + JSON.stringify(data));
-  return data.access_token;
-}
-
-async function spotifyEnrich(token, artist, title) {
-  const q = encodeURIComponent(`track:${title} artist:${artist}`);
-  const searchRes = await fetch(
-    `https://api.spotify.com/v1/search?q=${q}&type=track&limit=1`,
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-  const searchData = await searchRes.json();
-  const track = searchData.tracks?.items?.[0];
-  if (!track) return null;
-
-  const featRes = await fetch(
-    `https://api.spotify.com/v1/audio-features/${track.id}`,
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-  const feat = await featRes.json();
-
-  return {
-    bpm: feat.tempo ? Math.round(feat.tempo) : null,
-    spotifyUrl: track.external_urls.spotify,
-    releaseYear: track.album?.release_date?.slice(0, 4) ?? null,
-    vibe: buildVibe(feat),
-  };
-}
-
-function buildVibe(feat) {
-  const parts = [];
-
-  if (feat.energy > 0.8)      parts.push("high-energy");
-  else if (feat.energy > 0.5) parts.push("mid-tempo");
-  else                        parts.push("laid-back");
-
-  if (feat.valence > 0.7)      parts.push("euphoric");
-  else if (feat.valence > 0.4) parts.push("melodic");
-  else                         parts.push("dark");
-
-  if (feat.danceability > 0.75) parts.push("dancefloor-ready");
-  else if (feat.acousticness > 0.5) parts.push("organic");
-
-  return parts.join(", ");
+  const song = data.search?.[0];
+  return song?.tempo ? Math.round(Number(song.tempo)) : null;
 }
 
 // ── Last.fm ───────────────────────────────────────────────────────────────────
@@ -102,18 +54,25 @@ async function getLastFmTopTracks(tag, limit) {
   return data.tracks?.track ?? [];
 }
 
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function searchUrl(service, artist, title) {
+  const q = encodeURIComponent(`${artist} ${title}`);
+  if (service === "spotify")    return `https://open.spotify.com/search/${q}`;
+  if (service === "apple")      return `https://music.apple.com/us/search?term=${q}`;
+  if (service === "beatport")   return `https://www.beatport.com/search?q=${q}`;
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-  if (!LASTFM_KEY || !SPOTIFY_ID || !SPOTIFY_SECRET) {
+  if (!LASTFM_KEY || !SONGBPM_KEY) {
     console.error(
-      "❌  Missing env vars. Copy .env.example → .env and fill in your keys."
+      "❌  Missing env vars. Copy .env.example → .env and fill in your keys.\n" +
+      "    Required: LASTFM_API_KEY, GETSONGBPM_API_KEY"
     );
     process.exit(1);
   }
-
-  console.log("🔑  Getting Spotify token…");
-  const spotifyToken = await getSpotifyToken();
 
   const genres = [];
 
@@ -124,27 +83,26 @@ async function main() {
     const tracks = [];
     for (const t of lastfmTracks) {
       const artist = t.artist.name;
-      const title = t.name;
+      const title  = t.name;
       process.stdout.write(`   ↳ ${artist} — ${title} … `);
 
-      const spotify = await spotifyEnrich(spotifyToken, artist, title);
-
-      console.log(spotify ? `${spotify.bpm} BPM` : "not found on Spotify");
+      const bpm = await getBpm(artist, title);
+      console.log(bpm ? `${bpm} BPM` : "BPM not found");
 
       tracks.push({
-        id: `ct-${genre.id}-${tracks.length + 1}`,
+        id:           `ct-${genre.id}-${tracks.length + 1}`,
         title,
         artist,
-        bpm: spotify?.bpm ?? null,
-        released: spotify?.releaseYear ?? "—",
-        vibe: spotify?.vibe ?? "",
-        beatportUrl: `https://www.beatport.com/search?q=${encodeURIComponent(`${artist} ${title}`)}`,
-        appleMusicUrl: `https://music.apple.com/us/search?term=${encodeURIComponent(`${artist} ${title}`)}`,
-        spotifyUrl: spotify?.spotifyUrl ?? null,
+        bpm:          bpm ?? null,
+        released:     new Date().getFullYear().toString(),
+        vibe:         "",
+        beatportUrl:  searchUrl("beatport", artist, title),
+        appleMusicUrl: searchUrl("apple",   artist, title),
+        spotifyUrl:   searchUrl("spotify",  artist, title),
       });
 
-      // Respect Spotify rate limits
-      await new Promise((r) => setTimeout(r, 250));
+      // Stay within GetSongBPM rate limits
+      await new Promise((r) => setTimeout(r, 300));
     }
 
     genres.push({ ...genre, tracks });
