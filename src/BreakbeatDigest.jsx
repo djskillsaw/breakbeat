@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { tracks } from "./data/tracks";
+import { tracks, tracksMonth } from "./data/tracks";
 import { mixes } from "./data/mixes";
 import { shows, eventLinks } from "./data/shows";
 import { localDJs } from "./data/localDJs";
@@ -32,22 +32,30 @@ function TrackCard({ track, saved, onToggleSave }) {
     <div style={styles.card}>
       <div style={styles.cardHeader}>
         <div>
-          <div style={styles.trackTitle}>{track.artist}</div>
-          <div style={styles.trackArtist}>{track.genre}</div>
+          <div style={styles.trackTitle}>{track.title || track.artist}</div>
+          <div style={styles.trackArtist}>{track.title ? track.artist : track.genre}</div>
         </div>
         <button onClick={() => onToggleSave(track.id)} style={styles.starBtn} aria-label="Save track">
           <StarIcon filled={saved} />
         </button>
       </div>
-      <div style={styles.tags}>
-        <span style={{ ...styles.tag, background: "#1e3a5f" }}>{track.bpm} BPM</span>
-        <span style={{ ...styles.tag, background: "#1a2e1a" }}>{track.released}</span>
-      </div>
-      <div style={styles.vibe}>{track.vibe}</div>
+      {(track.bpm || track.released || track.genre) && (
+        <div style={styles.tags}>
+          {track.bpm && <span style={{ ...styles.tag, background: "#1e3a5f" }}>{track.bpm} BPM</span>}
+          {track.released && <span style={{ ...styles.tag, background: "#1a2e1a" }}>{track.released}</span>}
+          {!track.bpm && track.genre && <span style={{ ...styles.tag, background: "#1a2e1a" }}>{track.genre}</span>}
+        </div>
+      )}
+      {track.vibe && <div style={styles.vibe}>{track.vibe}</div>}
       <div style={styles.btnRow}>
         <a href={track.beatportUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#f97316" }}>
           Beatport <ExternalLinkIcon />
         </a>
+        {track.spotifyUrl && (
+          <a href={track.spotifyUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#1db954" }}>
+            Spotify <ExternalLinkIcon />
+          </a>
+        )}
         <a href={track.appleMusicUrl} target="_blank" rel="noreferrer" style={{ ...styles.btn, background: "#fb2d55" }}>
           Apple Music <ExternalLinkIcon />
         </a>
@@ -258,7 +266,7 @@ export default function BreakbeatDigest() {
       <div style={styles.content}>
         {activeTab === 0 && (
           <>
-            <div style={styles.sectionLabel}>🎤 March 2026 — Hottest Artists</div>
+            <div style={styles.sectionLabel}>🎤 {tracksMonth} — Hottest Tracks</div>
             {tracks.map((track) => (
               <TrackCard key={track.id} track={track} saved={saved.includes(track.id)} onToggleSave={toggleSave} />
             ))}

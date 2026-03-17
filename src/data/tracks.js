@@ -1,3 +1,5 @@
+export const tracksMonth = "March 2026";
+
 export const tracks = [
   {
     id: 1,
