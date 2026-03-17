@@ -1,0 +1,52 @@
+export const shows = [
+  {
+    id: 1,
+    promoter: "Sanctuary ATX",
+    venue: "Mohawk Austin",
+    address: "912 Red River St, Austin, TX 78701",
+    date: "Monthly — check Instagram",
+    details: "Austin's most consistent curated d&b/breaks event. Books fresh foreign & domestic talent monthly.",
+    instagram: "https://www.instagram.com/sanctuary_atx/",
+    tickets: "https://do512.com/search?q=sanctuary+atx",
+    venueUrl: "https://mohawkaustin.com",
+  },
+  {
+    id: 2,
+    promoter: "Catalyst DNB",
+    venue: "Empire Control Room",
+    address: "606 E 7th St, Austin, TX 78701",
+    date: "Monthly — check Instagram",
+    details: "Local crew obsessed with substance, intensity, and pressure. Hard d&b and jungle focus.",
+    instagram: "https://www.instagram.com/catalystdnb/",
+    tickets: "https://do512.com/search?q=catalyst+dnb",
+    venueUrl: "https://www.empireaustin.com",
+  },
+  {
+    id: 3,
+    promoter: "Lucid Drum & Bass",
+    venue: "Elysium",
+    address: "705 Red River St, Austin, TX 78701",
+    date: "Monthly — check Instagram",
+    details: "Liquid, funky, and minimal vibes. Best spot for intelligent breakbeat in Austin.",
+    instagram: "https://www.instagram.com/search/top/?q=lucid%20drum%20bass%20austin",
+    tickets: "https://do512.com/search?q=lucid+drum+bass",
+    venueUrl: "https://www.elysiumonline.net",
+  },
+  {
+    id: 4,
+    promoter: "Austin DNB Family",
+    venue: "Various — Red River Cultural District",
+    address: "Red River St, Austin, TX 78701",
+    date: "Ongoing — monthly meetups",
+    details: "Community meetups, pre-parties, and production discussions. Great for linking with the local scene.",
+    instagram: "https://www.instagram.com/search/top/?q=austin%20dnb%20family",
+    tickets: "https://do512.com/search?q=drum+bass+austin",
+    venueUrl: "https://do512.com/search?q=drum+bass+austin",
+  },
+];
+
+export const eventLinks = [
+  { label: "Do512 — D&B Austin", url: "https://do512.com/search?q=drum+and+bass" },
+  { label: "Resident Advisor — Austin", url: "https://ra.co/events/us/austin" },
+  { label: "Songkick — Austin", url: "https://www.songkick.com/festivals/us/texas/austin" },
+];
