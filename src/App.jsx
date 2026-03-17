@@ -1,0 +1,226 @@
+import { useState, useCallback } from 'react';
+import { S } from './styles';
+import { genreCategories } from './data/static-tracks';
+import { dnbMixes, houseMixes } from './data/static-mixes';
+import { shows, eventCalendars, localDjs } from './data/static-events';
+import { useLocalStorage } from './hooks/useLocalStorage';
+import { useChartData } from './hooks/useChartData';
+import StatusBar from './components/StatusBar';
+import { CuratedTrackCard, LiveTrackCard } from './components/TrackCard';
+import MixCard from './components/MixCard';
+import EventCard from './components/EventCard';
+import DjCard from './components/DjCard';
+import { StarIcon, ExternalLinkIcon } from './components/Icons';
+
+const TAB_NAMES = ['Hottest Tracks', 'Breakbeat, Jungle & DnB Mixes', 'House & Chillout', 'Austin Shows', 'Local DJs', 'Saved'];
+
+export default function App() {
+  const [tab, setTab] = useState(0);
+  const [savedTracks, setSavedTracks] = useLocalStorage('bb-savedTracks', []);
+  const [savedMixes, setSavedMixes] = useLocalStorage('bb-savedMixes', []);
+
+  const {
+    liveCharts, lastUpdated, previousRanks, isLoading, error,
+    autoRefresh, refreshInterval, refresh, setAutoRefresh, hasKey,
+  } = useChartData();
+
+  const toggleTrack = useCallback((id) => {
+    setSavedTracks(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+  }, [setSavedTracks]);
+
+  const toggleMix = useCallback((id) => {
+    setSavedMixes(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+  }, [setSavedMixes]);
+
+  // Gather all tracks for saved tab
+  const allStaticTracks = genreCategories.flatMap(c => c.tracks);
+  const savedTrackObjects = allStaticTracks.filter(t => savedTracks.includes(t.id));
+  const allMixes = [...dnbMixes, ...houseMixes];
+  const savedMixObjects = allMixes.filter(m => savedMixes.includes(m.id));
+  const savedCount = savedTracks.length + savedMixes.length;
+
+  return (
+    <div style={S.container}>
+      {/* Header */}
+      <div style={S.header}>
+        <div style={S.logo}>{'\u26a1'} BREAKBEAT DIGEST</div>
+        <div style={S.subtitle}>Realtime {'\u00b7'} Curated {'\u00b7'} Uncompromising</div>
+      </div>
+
+      {/* Tabs */}
+      <div style={S.tabBar}>
+        {TAB_NAMES.map((name, i) => (
+          <button key={name} onClick={() => setTab(i)} style={{ ...S.tab, ...(tab === i ? S.tabActive : {}) }}>
+            {name}
+            {i === 5 && savedCount > 0 && <span style={S.badge}>{savedCount}</span>}
+          </button>
+        ))}
+      </div>
+
+      {/* Status Bar */}
+      <StatusBar
+        lastUpdated={lastUpdated}
+        isLoading={isLoading}
+        error={error}
+        autoRefresh={autoRefresh}
+        refreshInterval={refreshInterval}
+        onRefresh={refresh}
+        onToggleAutoRefresh={setAutoRefresh}
+        hasKey={hasKey}
+      />
+
+      {/* Content */}
+      <div style={S.content}>
+
+        {/* Tab 0: Hottest Tracks (DnB + Breakbeat) */}
+        {tab === 0 && (
+          <>
+            {genreCategories.filter(c => c.id === 'dnb' || c.id === 'breakbeat').map(category => (
+              <div key={category.id}>
+                <div style={S.sectionLabel}>{category.emoji} Top Charts {'\u2014'} {category.label}</div>
+
+                {/* Live Last.fm tracks */}
+                {liveCharts[category.id]?.length > 0 && (
+                  <>
+                    <div style={sectionSubLabel}>Live from Last.fm</div>
+                    {liveCharts[category.id].map(track => (
+                      <LiveTrackCard
+                        key={track.id}
+                        track={track}
+                        rank={track.rank}
+                        previousRank={previousRanks[track.id]}
+                        lastUpdated={lastUpdated}
+                      />
+                    ))}
+                  </>
+                )}
+
+                {/* Curated tracks */}
+                <div style={sectionSubLabel}>Curated Picks</div>
+                {category.tracks.map(track => (
+                  <CuratedTrackCard key={track.id} track={track} saved={savedTracks.includes(track.id)} onToggleSave={toggleTrack} />
+                ))}
+              </div>
+            ))}
+          </>
+        )}
+
+        {/* Tab 1: Mixes */}
+        {tab === 1 && (
+          <>
+            <div style={S.sectionLabel}>{'\ud83c\udfa7'} Top-Rated Mixes {'\u2014'} Sourced from RA, Bandcamp & Rate Your Music</div>
+            {dnbMixes.map(mix => (
+              <MixCard key={mix.id} mix={mix} saved={savedMixes.includes(mix.id)} onToggleSave={toggleMix} />
+            ))}
+          </>
+        )}
+
+        {/* Tab 2: House & Chillout */}
+        {tab === 2 && (
+          <>
+            {genreCategories.filter(c => c.id === 'house' || c.id === 'chill' || c.id === 'electronic').map(category => (
+              <div key={category.id}>
+                <div style={S.sectionLabel}>{category.emoji} Top Charts {'\u2014'} {category.label}</div>
+
+                {liveCharts[category.id]?.length > 0 && (
+                  <>
+                    <div style={sectionSubLabel}>Live from Last.fm</div>
+                    {liveCharts[category.id].map(track => (
+                      <LiveTrackCard
+                        key={track.id}
+                        track={track}
+                        rank={track.rank}
+                        previousRank={previousRanks[track.id]}
+                        lastUpdated={lastUpdated}
+                      />
+                    ))}
+                  </>
+                )}
+
+                <div style={sectionSubLabel}>Curated Picks</div>
+                {category.tracks.map(track => (
+                  <CuratedTrackCard key={track.id} track={track} saved={savedTracks.includes(track.id)} onToggleSave={toggleTrack} />
+                ))}
+              </div>
+            ))}
+            <div style={{ ...S.sectionLabel, marginTop: 28 }}>{'\ud83c\udfa7'} Top House & Chillout Mixes</div>
+            {houseMixes.map(mix => (
+              <MixCard key={mix.id} mix={mix} saved={savedMixes.includes(mix.id)} onToggleSave={toggleMix} />
+            ))}
+          </>
+        )}
+
+        {/* Tab 3: Austin Shows */}
+        {tab === 3 && (
+          <>
+            <div style={S.sectionLabel}>{'\ud83c\udfa4'} Austin Promoters & Upcoming Shows</div>
+            {shows.map(show => (
+              <EventCard key={show.id} show={show} />
+            ))}
+            <div style={{ ...S.sectionLabel, marginTop: 16 }}>{'\ud83d\udcc5'} Event Calendars</div>
+            <div style={S.btnRow}>
+              {eventCalendars.map(cal => (
+                <a key={cal.url} href={cal.url} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#374151' }}>
+                  {cal.label} <ExternalLinkIcon />
+                </a>
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Tab 4: Local DJs */}
+        {tab === 4 && (
+          <>
+            <div style={S.sectionLabel}>{'\ud83c\udfa7'} Austin Local DJs {'\u2014'} Sets & Upcoming Shows</div>
+            {localDjs.map(dj => (
+              <DjCard key={dj.id} dj={dj} />
+            ))}
+          </>
+        )}
+
+        {/* Tab 5: Saved */}
+        {tab === 5 && (
+          <>
+            {savedCount === 0 ? (
+              <div style={S.empty}>Nothing saved yet. Star any track or mix to save it here.</div>
+            ) : (
+              <>
+                {savedTrackObjects.length > 0 && (
+                  <>
+                    <div style={S.sectionLabel}>{'\u2b50'} Saved Tracks</div>
+                    {savedTrackObjects.map(track => (
+                      <CuratedTrackCard key={track.id} track={track} saved onToggleSave={toggleTrack} />
+                    ))}
+                  </>
+                )}
+                {savedMixObjects.length > 0 && (
+                  <>
+                    <div style={S.sectionLabel}>{'\u2b50'} Saved Mixes</div>
+                    {savedMixObjects.map(mix => (
+                      <MixCard key={mix.id} mix={mix} saved onToggleSave={toggleMix} />
+                    ))}
+                  </>
+                )}
+              </>
+            )}
+          </>
+        )}
+      </div>
+
+      {/* Footer */}
+      <div style={S.footer}>
+        Realtime charts via Last.fm {'\u00b7'} Curated from Beatport, Resident Advisor, Bandcamp & Rate Your Music
+      </div>
+    </div>
+  );
+}
+
+const sectionSubLabel = {
+  fontSize: 10,
+  fontWeight: 600,
+  color: '#4b5563',
+  letterSpacing: '0.06em',
+  textTransform: 'uppercase',
+  marginBottom: 8,
+  marginTop: 4,
+};
