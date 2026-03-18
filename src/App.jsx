@@ -2,17 +2,16 @@ import { useState, useCallback } from 'react';
 import { S } from './styles';
 import { genreCategories } from './data/static-tracks';
 import { dnbMixes, houseMixes } from './data/static-mixes';
-import { shows, eventCalendars, localDjs } from './data/static-events';
+import { shows, eventCalendars } from './data/static-events';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useChartData } from './hooks/useChartData';
 import StatusBar from './components/StatusBar';
 import { CuratedTrackCard, LiveTrackCard } from './components/TrackCard';
 import MixCard from './components/MixCard';
 import EventCard from './components/EventCard';
-import DjCard from './components/DjCard';
 import { StarIcon, ExternalLinkIcon } from './components/Icons';
 
-const TAB_NAMES = ['Hottest Tracks', 'Breakbeat, Jungle & DnB Mixes', 'House & Chillout', 'Austin Shows', 'Local DJs', 'Saved'];
+const TAB_NAMES = ['Hottest Tracks', 'Breakbeat, Jungle & DnB Mixes', 'House & Chillout', 'Austin Shows', 'Saved'];
 
 export default function App() {
   const [tab, setTab] = useState(0);
@@ -52,7 +51,7 @@ export default function App() {
         {TAB_NAMES.map((name, i) => (
           <button key={name} onClick={() => setTab(i)} style={{ ...S.tab, ...(tab === i ? S.tabActive : {}) }}>
             {name}
-            {i === 5 && savedCount > 0 && <span style={S.badge}>{savedCount}</span>}
+            {name === 'Saved' && savedCount > 0 && <span style={S.badge}>{savedCount}</span>}
           </button>
         ))}
       </div>
@@ -168,18 +167,8 @@ export default function App() {
           </>
         )}
 
-        {/* Tab 4: Local DJs */}
+        {/* Tab 4: Saved */}
         {tab === 4 && (
-          <>
-            <div style={S.sectionLabel}>{'\ud83c\udfa7'} Austin Local DJs {'\u2014'} Sets & Upcoming Shows</div>
-            {localDjs.map(dj => (
-              <DjCard key={dj.id} dj={dj} />
-            ))}
-          </>
-        )}
-
-        {/* Tab 5: Saved */}
-        {tab === 5 && (
           <>
             {savedCount === 0 ? (
               <div style={S.empty}>Nothing saved yet. Star any track or mix to save it here.</div>
