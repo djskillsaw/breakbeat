@@ -59,14 +59,15 @@ export async function fetchAllCharts(limit = 10) {
   const entries = Object.entries(GENRE_TAGS);
 
   // Fetch sequentially with small delay to respect rate limits
-  for (const [genreId, tag] of entries) {
+  for (let i = 0; i < entries.length; i++) {
+    const [genreId, tag] = entries[i];
     try {
       results[genreId] = await fetchGenreTopTracks(tag, limit);
     } catch {
       results[genreId] = [];
     }
     // Small delay between requests (Last.fm allows 5 req/sec)
-    if (entries.indexOf([genreId, tag]) < entries.length - 1) {
+    if (i < entries.length - 1) {
       await new Promise(r => setTimeout(r, 250));
     }
   }
