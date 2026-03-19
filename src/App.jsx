@@ -1,7 +1,7 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { S } from './styles';
 import { genreCategories } from './data/static-tracks';
-import { dnbMixes, houseMixes } from './data/static-mixes';
+import { allMixes, mixGenres } from './data/static-mixes';
 import { shows, eventCalendars } from './data/static-events';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useChartData } from './hooks/useChartData';
@@ -11,12 +11,13 @@ import MixCard from './components/MixCard';
 import EventCard from './components/EventCard';
 import { StarIcon, ExternalLinkIcon } from './components/Icons';
 
-const TAB_NAMES = ['Hottest Tracks', 'Breakbeat, Jungle & DnB Mixes', 'House & Chillout', 'Austin Shows', 'Saved'];
+const TAB_NAMES = ['Hottest Tracks', 'Mixes', 'House & Chillout', 'Austin Shows', 'Saved'];
 
 export default function App() {
   const [tab, setTab] = useState(0);
   const [savedTracks, setSavedTracks] = useLocalStorage('bb-savedTracks', []);
   const [savedMixes, setSavedMixes] = useLocalStorage('bb-savedMixes', []);
+  const [mixGenreFilter, setMixGenreFilter] = useState('all');
 
   const {
     liveCharts, lastUpdated, previousRanks, isLoading, error,
@@ -35,9 +36,14 @@ export default function App() {
   // Gather all tracks for saved tab
   const allStaticTracks = genreCategories.flatMap(c => c.tracks);
   const savedTrackObjects = allStaticTracks.filter(t => savedTracks.includes(t.id));
-  const allMixes = [...dnbMixes, ...houseMixes];
   const savedMixObjects = allMixes.filter(m => savedMixes.includes(m.id));
   const savedCount = savedTracks.length + savedMixes.length;
+
+  // Filtered mixes for the Mixes tab
+  const filteredMixes = useMemo(() => {
+    if (mixGenreFilter === 'all') return allMixes;
+    return allMixes.filter(m => m.genre === mixGenreFilter);
+  }, [mixGenreFilter]);
 
   return (
     <div style={S.container}>
@@ -106,13 +112,34 @@ export default function App() {
           </>
         )}
 
-        {/* Tab 1: Mixes */}
+        {/* Tab 1: Mixes — All Genres */}
         {tab === 1 && (
           <>
-            <div style={S.sectionLabel}>{'\ud83c\udfa7'} Top-Rated Mixes {'\u2014'} Sourced from RA, Bandcamp & Rate Your Music</div>
-            {dnbMixes.map(mix => (
-              <MixCard key={mix.id} mix={mix} saved={savedMixes.includes(mix.id)} onToggleSave={toggleMix} />
-            ))}
+            <div style={S.sectionLabel}>{'\ud83c\udfa7'} Mixes {'\u2014'} Sourced from RA, Bandcamp, Boiler Room & Rate Your Music</div>
+
+            {/* Genre filter chips */}
+            <div style={S.filterBar}>
+              {mixGenres.map(g => (
+                <button
+                  key={g.id}
+                  onClick={() => setMixGenreFilter(g.id)}
+                  style={{
+                    ...S.filterChip,
+                    ...(mixGenreFilter === g.id ? S.filterChipActive : {}),
+                  }}
+                >
+                  {g.label}
+                </button>
+              ))}
+            </div>
+
+            {filteredMixes.length === 0 ? (
+              <div style={S.empty}>No mixes in this genre yet. Check back soon.</div>
+            ) : (
+              filteredMixes.map(mix => (
+                <MixCard key={mix.id} mix={mix} saved={savedMixes.includes(mix.id)} onToggleSave={toggleMix} />
+              ))
+            )}
           </>
         )}
 
@@ -143,10 +170,6 @@ export default function App() {
                   <CuratedTrackCard key={track.id} track={track} saved={savedTracks.includes(track.id)} onToggleSave={toggleTrack} />
                 ))}
               </div>
-            ))}
-            <div style={{ ...S.sectionLabel, marginTop: 28 }}>{'\ud83c\udfa7'} Top House & Chillout Mixes</div>
-            {houseMixes.map(mix => (
-              <MixCard key={mix.id} mix={mix} saved={savedMixes.includes(mix.id)} onToggleSave={toggleMix} />
             ))}
           </>
         )}

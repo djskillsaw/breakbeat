@@ -22,4 +22,15 @@ export const S = {
   btn: { display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12, fontWeight: 600, color: '#fff', textDecoration: 'none', padding: '6px 12px', borderRadius: 6 },
   empty: { color: '#4b5563', fontSize: 14, textAlign: 'center', padding: '40px 0' },
   footer: { textAlign: 'center', fontSize: 11, color: '#374151', padding: '24px 16px 0', borderTop: '1px solid #111827' },
+  filterBar: { display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 16 },
+  filterChip: { fontSize: 12, fontWeight: 600, background: '#1f2937', color: '#6b7280', border: '1px solid #374151', borderRadius: 16, padding: '5px 14px', cursor: 'pointer', transition: 'all 0.15s' },
+  filterChipActive: { background: '#f97316', color: '#000', borderColor: '#f97316' },
+};
+
+export const genreAccent = {
+  dnb: '#1e3a5f',
+  breakbeat: '#4a1d6b',
+  house: '#1a3d1a',
+  electronic: '#3d2e1a',
+  chill: '#1a2e3d',
 };

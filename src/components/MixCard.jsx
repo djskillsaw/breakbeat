@@ -1,5 +1,6 @@
 import { StarIcon, ExternalLinkIcon } from './Icons';
-import { S } from '../styles';
+import { S, genreAccent } from '../styles';
+import { mixGenres } from '../data/static-mixes';
 
 export default function MixCard({ mix, saved, onToggleSave }) {
   return (
@@ -19,6 +20,11 @@ export default function MixCard({ mix, saved, onToggleSave }) {
         </div>
       </div>
       <div style={S.tags}>
+        {mix.genre && (
+          <span style={{ ...S.tag, background: genreAccent[mix.genre] || '#1f2937', color: '#d1d5db' }}>
+            {(mixGenres.find(g => g.id === mix.genre) || {}).label || mix.genre}
+          </span>
+        )}
         <span style={{ ...S.tag, background: '#2d1b4e' }}>{mix.source}</span>
         <span style={{ ...S.tag, background: '#1e3a5f' }}>{mix.rating}</span>
         <span style={{ ...S.tag, background: '#1a2e1a' }}>{mix.date}</span>
