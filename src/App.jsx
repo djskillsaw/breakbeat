@@ -20,7 +20,8 @@ export default function App() {
 
   const {
     liveCharts, lastUpdated, previousRanks, isLoading, error,
-    autoRefresh, refreshInterval, refresh, setAutoRefresh, hasKey,
+    autoRefresh, refreshInterval, refresh, setAutoRefresh,
+    availableSources, activeSources,
   } = useChartData();
 
   const toggleTrack = useCallback((id) => {
@@ -65,7 +66,8 @@ export default function App() {
         refreshInterval={refreshInterval}
         onRefresh={refresh}
         onToggleAutoRefresh={setAutoRefresh}
-        hasKey={hasKey}
+        availableSources={availableSources}
+        activeSources={activeSources}
       />
 
       {/* Content */}
@@ -81,7 +83,7 @@ export default function App() {
                 {/* Live Last.fm tracks */}
                 {liveCharts[category.id]?.length > 0 && (
                   <>
-                    <div style={sectionSubLabel}>Live from Last.fm</div>
+                    <div style={sectionSubLabel}>Live Charts</div>
                     {liveCharts[category.id].map(track => (
                       <LiveTrackCard
                         key={track.id}
@@ -123,7 +125,7 @@ export default function App() {
 
                 {liveCharts[category.id]?.length > 0 && (
                   <>
-                    <div style={sectionSubLabel}>Live from Last.fm</div>
+                    <div style={sectionSubLabel}>Live Charts</div>
                     {liveCharts[category.id].map(track => (
                       <LiveTrackCard
                         key={track.id}
@@ -198,7 +200,7 @@ export default function App() {
 
       {/* Footer */}
       <div style={S.footer}>
-        Realtime charts via Last.fm {'\u00b7'} Curated from Beatport, Resident Advisor, Bandcamp & Rate Your Music
+        Realtime charts via Last.fm, Apple Music & Spotify {'\u00b7'} Stream on Beatport, SoundCloud, YouTube Music {'\u00b7'} Curated from RA, Bandcamp & RYM
       </div>
     </div>
   );

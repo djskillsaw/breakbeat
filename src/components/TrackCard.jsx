@@ -1,6 +1,7 @@
 import { StarIcon, ExternalLinkIcon } from './Icons';
 import ChartPositionBadge from './ChartPositionBadge';
 import { formatNumber } from '../services/formatters';
+import { PLATFORMS, DEFAULT_TRACK_PLATFORMS } from '../services/links';
 import { S } from '../styles';
 
 export function CuratedTrackCard({ track, saved, onToggleSave }) {
@@ -24,43 +25,89 @@ export function CuratedTrackCard({ track, saved, onToggleSave }) {
   );
 }
 
-export function LiveTrackCard({ track, rank, previousRank, lastUpdated }) {
+export function LiveTrackCard({ track, rank, previousRank }) {
+  const links = track.links || {};
+  const sources = track.sources || [track.source || 'Last.fm'];
+
   return (
     <div style={{ ...S.card, display: 'flex', gap: 12, alignItems: 'flex-start' }}>
       <ChartPositionBadge rank={rank} previousRank={previousRank} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={S.cardHeader}>
-          <div>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <div style={S.trackTitle}>{track.title}</div>
             <div style={S.trackArtist}>{track.artist}</div>
           </div>
-          <span style={styles.sourceTag}>Last.fm</span>
+          <div style={styles.sourceTags}>
+            {sources.map(src => (
+              <span key={src} style={{ ...styles.sourceTag, ...sourceColor(src) }}>{src}</span>
+            ))}
+          </div>
         </div>
-        {(track.playcount > 0 || track.listeners > 0) && (
+
+        {/* Stats row */}
+        {(track.playcount > 0 || track.listeners > 0 || track.popularity > 0) && (
           <div style={styles.stats}>
             {track.playcount > 0 && <span>{formatNumber(track.playcount)} plays</span>}
             {track.listeners > 0 && <span>{formatNumber(track.listeners)} listeners</span>}
+            {track.popularity > 0 && <span>Popularity: {track.popularity}</span>}
           </div>
         )}
-        {track.lastfmUrl && (
-          <div style={S.btnRow}>
-            <a href={track.lastfmUrl} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#d51007' }}>Last.fm <ExternalLinkIcon /></a>
-          </div>
-        )}
+
+        {/* Platform links — all of them */}
+        <div style={S.btnRow}>
+          {DEFAULT_TRACK_PLATFORMS.map(platformId => {
+            const url = links[platformId];
+            if (!url) return null;
+            const platform = PLATFORMS[platformId];
+            return (
+              <a
+                key={platformId}
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                style={{ ...S.btn, background: platform.color }}
+              >
+                {platform.label} <ExternalLinkIcon />
+              </a>
+            );
+          })}
+          {/* Last.fm link if available */}
+          {links.lastfm && (
+            <a href={links.lastfm} target="_blank" rel="noreferrer" style={{ ...S.btn, background: PLATFORMS.lastfm.color }}>
+              Last.fm <ExternalLinkIcon />
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
+function sourceColor(source) {
+  switch (source) {
+    case 'Last.fm': return { color: '#d51007', borderColor: '#d51007' };
+    case 'Apple Music': return { color: '#fb2d55', borderColor: '#fb2d55' };
+    case 'Spotify': return { color: '#1db954', borderColor: '#1db954' };
+    default: return { color: '#6b7280', borderColor: '#6b7280' };
+  }
+}
+
 const styles = {
+  sourceTags: {
+    display: 'flex',
+    gap: 4,
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
+  },
   sourceTag: {
-    fontSize: 10,
+    fontSize: 9,
     fontWeight: 700,
-    color: '#d51007',
     background: '#1f2937',
     borderRadius: 4,
     padding: '2px 6px',
     whiteSpace: 'nowrap',
+    border: '1px solid transparent',
   },
   stats: {
     display: 'flex',

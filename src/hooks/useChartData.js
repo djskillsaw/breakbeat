@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { fetchAllCharts, hasApiKey } from '../services/lastfm';
+import { fetchAggregatedCharts, getAvailableSources } from '../services/charts';
 import { useLocalStorage } from './useLocalStorage';
 
 const DEFAULT_INTERVAL = 300000; // 5 minutes
@@ -12,21 +12,20 @@ export function useChartData() {
   const [error, setError] = useState(null);
   const [autoRefresh, setAutoRefresh] = useLocalStorage('bb-autoRefresh', true);
   const [interval, setInterval_] = useLocalStorage('bb-refreshInterval', DEFAULT_INTERVAL);
+  const [activeSources, setActiveSources] = useState([]);
   const timerRef = useRef(null);
 
+  const availableSources = getAvailableSources();
+
   const refresh = useCallback(async () => {
-    if (!hasApiKey()) {
-      setError('No Last.fm API key configured');
-      return;
-    }
     setIsLoading(true);
     setError(null);
     try {
-      const charts = await fetchAllCharts(10);
+      const { charts, sources } = await fetchAggregatedCharts(10);
 
       // Snapshot current ranks before updating
       const currentRanks = {};
-      for (const [genre, tracks] of Object.entries(liveCharts)) {
+      for (const [, tracks] of Object.entries(liveCharts)) {
         for (const track of tracks) {
           currentRanks[track.id] = track.rank;
         }
@@ -36,6 +35,7 @@ export function useChartData() {
       }
 
       setLiveCharts(charts);
+      setActiveSources(sources);
       setLastUpdated(new Date().toISOString());
     } catch (err) {
       setError(err.message);
@@ -46,15 +46,13 @@ export function useChartData() {
 
   // Initial fetch
   useEffect(() => {
-    if (hasApiKey()) {
-      refresh();
-    }
+    refresh();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-polling
   useEffect(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-    if (autoRefresh && hasApiKey()) {
+    if (autoRefresh) {
       timerRef.current = setInterval(refresh, interval);
     }
     return () => {
@@ -73,6 +71,7 @@ export function useChartData() {
     refresh,
     setAutoRefresh,
     setRefreshInterval: setInterval_,
-    hasKey: hasApiKey(),
+    availableSources,
+    activeSources,
   };
 }

@@ -5,7 +5,7 @@ import FreshnessBadge from './FreshnessBadge';
 
 export default function StatusBar({
   lastUpdated, isLoading, error, autoRefresh, refreshInterval,
-  onRefresh, onToggleAutoRefresh, hasKey,
+  onRefresh, onToggleAutoRefresh, availableSources, activeSources,
 }) {
   const [, forceUpdate] = useState(0);
 
@@ -15,21 +15,27 @@ export default function StatusBar({
     return () => clearInterval(id);
   }, []);
 
-  if (!hasKey) {
-    return (
-      <div style={styles.bar}>
-        <span style={styles.noKey}>No Last.fm API key — showing curated data only</span>
-      </div>
-    );
-  }
+  const sourceList = (activeSources && activeSources.length > 0)
+    ? activeSources
+    : (availableSources || []);
 
   return (
     <div style={styles.bar}>
       <div style={styles.left}>
         {lastUpdated && <FreshnessBadge date={lastUpdated} />}
         <span style={styles.text}>
-          {lastUpdated ? `Updated ${relativeTime(lastUpdated)}` : 'Not yet fetched'}
+          {lastUpdated ? `Updated ${relativeTime(lastUpdated)}` : 'Fetching charts...'}
         </span>
+        {sourceList.length > 0 && (
+          <span style={styles.sources}>
+            {sourceList.map((src, i) => (
+              <span key={src}>
+                <span style={{ ...styles.sourceDot, background: sourceColor(src) }} />
+                {src}{i < sourceList.length - 1 ? '' : ''}
+              </span>
+            ))}
+          </span>
+        )}
         {error && <span style={styles.error}>{error}</span>}
       </div>
       <div style={styles.right}>
@@ -50,6 +56,15 @@ export default function StatusBar({
   );
 }
 
+function sourceColor(source) {
+  switch (source) {
+    case 'Last.fm': return '#d51007';
+    case 'Apple Music': return '#fb2d55';
+    case 'Spotify': return '#1db954';
+    default: return '#6b7280';
+  }
+}
+
 const styles = {
   bar: {
     display: 'flex',
@@ -65,6 +80,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: 8,
+    flexWrap: 'wrap',
   },
   right: {
     display: 'flex',
@@ -79,10 +95,21 @@ const styles = {
     fontSize: 11,
     color: '#ef4444',
   },
-  noKey: {
-    fontSize: 11,
-    color: '#6b7280',
-    fontStyle: 'italic',
+  sources: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 8,
+    fontSize: 10,
+    color: '#9ca3af',
+    fontWeight: 600,
+  },
+  sourceDot: {
+    display: 'inline-block',
+    width: 6,
+    height: 6,
+    borderRadius: '50%',
+    marginRight: 3,
+    verticalAlign: 'middle',
   },
   toggle: {
     display: 'flex',
