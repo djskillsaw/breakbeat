@@ -421,6 +421,14 @@ async function main() {
   console.log(`Total shows scraped: ${totalShows}`);
   console.log(`Venues with errors: ${failedVenues}/${results.length}`);
 
+  // If we got zero shows from all venues, preserve existing data
+  if (totalShows === 0) {
+    console.log('');
+    console.log('WARNING: No shows scraped from any venue. Preserving existing data.');
+    console.log('This likely means all venue sites blocked the request.');
+    return;
+  }
+
   mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
   writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2) + '\n');
   console.log(`Written to: ${OUTPUT_PATH}`);
