@@ -3,6 +3,7 @@
  * No API key required. CORS-enabled.
  *
  * Apple Music genre IDs:
+ *   2  = Blues
  *   7  = Electronic
  *   17 = Dance
  *   18 = Hip-Hop/Rap (for reference)
@@ -18,6 +19,7 @@ const GENRE_MAP = {
   house: 17,         // Dance
   chill: null,       // Electronic + filter
   electronic: 7,     // Electronic
+  blues: 2,          // Blues
 };
 
 // Keywords for sub-genre filtering

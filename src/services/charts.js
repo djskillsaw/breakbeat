@@ -8,7 +8,7 @@ import { fetchAllAppleCharts } from './apple-music';
 import { fetchAllSpotifyCharts, hasSpotifyToken } from './spotify';
 import { mergeLinks } from './links';
 
-const GENRE_IDS = ['dnb', 'breakbeat', 'house', 'chill', 'electronic'];
+const GENRE_IDS = ['dnb', 'breakbeat', 'house', 'chill', 'electronic', 'blues'];
 
 /**
  * Normalize a string for deduplication matching.

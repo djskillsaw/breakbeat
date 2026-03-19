@@ -33,4 +33,5 @@ export const genreAccent = {
   house: '#1a3d1a',
   electronic: '#3d2e1a',
   chill: '#1a2e3d',
+  blues: '#1a1a3d',
 };

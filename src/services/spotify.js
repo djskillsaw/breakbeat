@@ -26,6 +26,7 @@ const GENRE_PLAYLISTS = {
   house: ['37i9dQZF1DX2TRYkJECvfC'],
   chill: ['37i9dQZF1DX4WYpdgoIcn6'],
   electronic: ['37i9dQZF1DX4pb3YBgKkoP'],
+  blues: ['37i9dQZF1DXd9rSDyQguIc'],
 };
 
 function getAccessToken() {

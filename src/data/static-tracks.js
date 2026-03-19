@@ -40,6 +40,16 @@ export const genreCategories = [
     ],
   },
   {
+    id: 'blues', label: 'Blues', emoji: '\ud83c\udfb5', tag: 'blues', accentColor: '#1a1a3d',
+    tracks: [
+      { id: 'ct-blues-1', title: 'The Thrill Is Gone', artist: 'B.B. King', appleMusicUrl: 'https://music.apple.com/us/search?term=B.B.%20King%20The%20Thrill%20Is%20Gone', spotifyUrl: 'https://open.spotify.com/search/B.B.%20King%20The%20Thrill%20Is%20Gone' },
+      { id: 'ct-blues-2', title: 'Born Under a Bad Sign', artist: 'Albert King', appleMusicUrl: 'https://music.apple.com/us/search?term=Albert%20King%20Born%20Under%20a%20Bad%20Sign', spotifyUrl: 'https://open.spotify.com/search/Albert%20King%20Born%20Under%20a%20Bad%20Sign' },
+      { id: 'ct-blues-3', title: 'Texas Flood', artist: 'Stevie Ray Vaughan', appleMusicUrl: 'https://music.apple.com/us/search?term=Stevie%20Ray%20Vaughan%20Texas%20Flood', spotifyUrl: 'https://open.spotify.com/search/Stevie%20Ray%20Vaughan%20Texas%20Flood' },
+      { id: 'ct-blues-4', title: 'Black and Blue', artist: 'Gary Clark Jr.', appleMusicUrl: 'https://music.apple.com/us/search?term=Gary%20Clark%20Jr.%20Black%20and%20Blue', spotifyUrl: 'https://open.spotify.com/search/Gary%20Clark%20Jr.%20Black%20and%20Blue' },
+      { id: 'ct-blues-5', title: 'Can\'t Be Satisfied', artist: 'Muddy Waters', appleMusicUrl: 'https://music.apple.com/us/search?term=Muddy%20Waters%20Can%27t%20Be%20Satisfied', spotifyUrl: 'https://open.spotify.com/search/Muddy%20Waters%20Can%27t%20Be%20Satisfied' },
+    ],
+  },
+  {
     id: 'electronic', label: 'Electronic', emoji: '\ud83c\udfdb\ufe0f', tag: 'electronic', accentColor: '#2d1b00',
     tracks: [
       { id: 'ct-electronic-1', title: 'On Melancholy Hill', artist: 'Gorillaz', beatportUrl: 'https://www.beatport.com/search?q=Gorillaz%20On%20Melancholy%20Hill', appleMusicUrl: 'https://music.apple.com/us/search?term=Gorillaz%20On%20Melancholy%20Hill', spotifyUrl: 'https://open.spotify.com/search/Gorillaz%20On%20Melancholy%20Hill' },

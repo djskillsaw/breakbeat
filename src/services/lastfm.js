@@ -52,6 +52,7 @@ const GENRE_TAGS = {
   house: 'house',
   chill: 'downtempo',
   electronic: 'electronic',
+  blues: 'blues',
 };
 
 export async function fetchAllCharts(limit = 10) {

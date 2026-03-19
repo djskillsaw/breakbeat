@@ -11,3 +11,18 @@ export const eventCalendars = [
   { label: 'Do512 — D&B Austin', url: 'https://do512.com/search?q=drum+and+bass' },
   { label: 'Resident Advisor — Austin', url: 'https://ra.co/events/us/austin' },
 ];
+
+export const bluesVenues = [
+  { id: 'blues-1', promoter: 'Antone\'s Nightclub', venue: 'Antone\'s', address: '305 E 5th St, Austin, TX 78701', date: 'Nightly — check calendar', details: 'Austin\'s legendary home of the blues since 1975. Hosted Stevie Ray Vaughan, Buddy Guy, B.B. King, and countless greats. Still the heartbeat of Austin blues.', instagram: 'https://www.instagram.com/antonesnightclub/', tickets: 'https://www.antonesnightclub.com/calendar', venueUrl: 'https://www.antonesnightclub.com/' },
+  { id: 'blues-2', promoter: 'C-Boy\'s Heart & Soul', venue: 'C-Boy\'s Heart & Soul', address: '2008 S Congress Ave, Austin, TX 78704', date: 'Nightly — live blues & soul', details: 'South Congress staple. Blues, soul, and R&B every night. Home of the Monday night residency and Tuesday Soul Night. No cover most nights.', instagram: 'https://www.instagram.com/cboyshtandsoul/', tickets: 'https://www.cboysheartandsoul.com/calendar', venueUrl: 'https://www.cboysheartandsoul.com/' },
+  { id: 'blues-3', promoter: 'The Continental Club', venue: 'The Continental Club', address: '1315 S Congress Ave, Austin, TX 78704', date: 'Nightly — check calendar', details: 'Austin institution since 1955. Blues, rockabilly, country, and roots music. Two stages, seven nights a week. The Gallery upstairs hosts intimate sets.', instagram: 'https://www.instagram.com/continentalclub/', tickets: 'https://www.continentalclub.com/austin', venueUrl: 'https://www.continentalclub.com/austin' },
+  { id: 'blues-4', promoter: 'Elephant Room', venue: 'Elephant Room', address: '315 Congress Ave, Austin, TX 78701', date: 'Nightly — jazz & blues', details: 'Underground jazz and blues club on Congress Ave. Intimate basement setting. Live music every night, two sets. The closest thing Austin has to a speakeasy.', instagram: 'https://www.instagram.com/elephantroom/', tickets: 'https://www.elephantroom.com/', venueUrl: 'https://www.elephantroom.com/' },
+  { id: 'blues-5', promoter: 'Skylark Lounge', venue: 'Skylark Lounge', address: '2039 Airport Blvd, Austin, TX 78722', date: 'Nightly — check calendar', details: 'East Austin dive bar with serious blues cred. Free live music most nights. Blues jams, soul revues, and the occasional surprise sit-in from touring artists.', instagram: 'https://www.instagram.com/skylarkaustin/', tickets: 'https://skylarkaustin.com/', venueUrl: 'https://skylarkaustin.com/' },
+  { id: 'blues-6', promoter: 'Parker Jazz Club', venue: 'Parker Jazz Club', address: '117 W 4th St #107, Austin, TX 78701', date: 'Thu–Sat — ticketed shows', details: 'Upscale downtown jazz and blues room. Seated shows with cocktail service. Hosts national touring acts alongside top Austin talent.', instagram: 'https://www.instagram.com/parkerjazzclub/', tickets: 'https://www.parkerjazzclub.com/events', venueUrl: 'https://www.parkerjazzclub.com/' },
+];
+
+export const bluesCalendars = [
+  { label: 'Antone\'s — Calendar', url: 'https://www.antonesnightclub.com/calendar' },
+  { label: 'Do512 — Blues Austin', url: 'https://do512.com/search?q=blues' },
+  { label: 'Austin Chronicle — Music', url: 'https://www.austinchronicle.com/events/music/' },
+];

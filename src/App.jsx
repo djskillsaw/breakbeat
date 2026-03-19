@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo } from 'react';
 import { S } from './styles';
 import { genreCategories } from './data/static-tracks';
 import { allMixes, mixGenres } from './data/static-mixes';
-import { shows, eventCalendars } from './data/static-events';
+import { shows, eventCalendars, bluesVenues, bluesCalendars } from './data/static-events';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useChartData } from './hooks/useChartData';
 import StatusBar from './components/StatusBar';
@@ -11,7 +11,7 @@ import MixCard from './components/MixCard';
 import EventCard from './components/EventCard';
 import { StarIcon, ExternalLinkIcon } from './components/Icons';
 
-const TAB_NAMES = ['Hottest Tracks', 'Mixes', 'House & Chillout', 'Austin Shows', 'Saved'];
+const TAB_NAMES = ['Hottest Tracks', 'Mixes', 'House & Chillout', 'Austin Shows', 'Austin Blues', 'Saved'];
 
 export default function App() {
   const [tab, setTab] = useState(0);
@@ -192,8 +192,54 @@ export default function App() {
           </>
         )}
 
-        {/* Tab 4: Saved */}
+        {/* Tab 4: Austin Blues */}
         {tab === 4 && (
+          <>
+            {/* Live Blues Charts */}
+            {genreCategories.filter(c => c.id === 'blues').map(category => (
+              <div key={category.id}>
+                <div style={S.sectionLabel}>{category.emoji} Live Charts {'\u2014'} {category.label}</div>
+
+                {liveCharts[category.id]?.length > 0 && (
+                  <>
+                    <div style={sectionSubLabel}>Live Charts</div>
+                    {liveCharts[category.id].map(track => (
+                      <LiveTrackCard
+                        key={track.id}
+                        track={track}
+                        rank={track.rank}
+                        previousRank={previousRanks[track.id]}
+                        lastUpdated={lastUpdated}
+                      />
+                    ))}
+                  </>
+                )}
+
+                <div style={sectionSubLabel}>Curated Picks</div>
+                {category.tracks.map(track => (
+                  <CuratedTrackCard key={track.id} track={track} saved={savedTracks.includes(track.id)} onToggleSave={toggleTrack} />
+                ))}
+              </div>
+            ))}
+
+            {/* Austin Blues Venues */}
+            <div style={{ ...S.sectionLabel, marginTop: 24 }}>{'\ud83c\udfb6'} Austin Blues Venues & Live Music</div>
+            {bluesVenues.map(show => (
+              <EventCard key={show.id} show={show} />
+            ))}
+            <div style={{ ...S.sectionLabel, marginTop: 16 }}>{'\ud83d\udcc5'} Blues Event Calendars</div>
+            <div style={S.btnRow}>
+              {bluesCalendars.map(cal => (
+                <a key={cal.url} href={cal.url} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#374151' }}>
+                  {cal.label} <ExternalLinkIcon />
+                </a>
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Tab 5: Saved */}
+        {tab === 5 && (
           <>
             {savedCount === 0 ? (
               <div style={S.empty}>Nothing saved yet. Star any track or mix to save it here.</div>
