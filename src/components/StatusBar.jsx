@@ -18,7 +18,7 @@ export default function StatusBar({
   if (!hasKey) {
     return (
       <div style={styles.bar}>
-        <span style={styles.noKey}>No Last.fm API key \u2014 showing curated data only</span>
+        <span style={styles.noKey}>No Last.fm API key — showing curated data only</span>
       </div>
     );
   }
