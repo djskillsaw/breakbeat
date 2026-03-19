@@ -5,6 +5,7 @@ import { bluesOpenMics } from '../data/static-events';
 
 const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const DAY_FULL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const AREA_ORDER = ['North Austin', 'Central Austin', 'South Austin'];
 
 function OpenMicCard({ mic }) {
   return (
@@ -67,14 +68,23 @@ export default function OpenMicSchedule() {
         })}
       </div>
 
-      {/* Open mics for selected day */}
+      {/* Open mics for selected day, grouped by area */}
       {dayMics.length === 0 ? (
         <div style={styles.noData}>
           <div style={styles.noDataTitle}>No open mics on {DAY_FULL[selectedDay]}s</div>
           <div style={styles.noDataSub}>Try another day — most jams are early in the week.</div>
         </div>
       ) : (
-        dayMics.map(mic => <OpenMicCard key={mic.id} mic={mic} />)
+        AREA_ORDER.map(area => {
+          const areaMics = dayMics.filter(m => m.area === area);
+          if (areaMics.length === 0) return null;
+          return (
+            <div key={area}>
+              <div style={styles.areaLabel}>{area}</div>
+              {areaMics.map(mic => <OpenMicCard key={mic.id} mic={mic} />)}
+            </div>
+          );
+        })
       )}
     </div>
   );
@@ -122,6 +132,17 @@ const styles = {
     padding: '1px 5px',
     marginTop: 4,
     display: 'inline-block',
+  },
+  areaLabel: {
+    fontSize: 10,
+    fontWeight: 700,
+    color: '#6b7280',
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+    marginBottom: 8,
+    marginTop: 12,
+    paddingBottom: 4,
+    borderBottom: '1px solid #1a1610',
   },
   card: {
     background: '#111210',
