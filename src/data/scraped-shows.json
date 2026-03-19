@@ -1,7 +1,77 @@
 {
-  "scrapedAt": null,
-  "weekStart": null,
-  "weekEnd": null,
-  "weekDates": [],
-  "venues": []
+  "scrapedAt": "2026-03-19T10:00:00.000Z",
+  "weekStart": "2026-03-19",
+  "weekEnd": "2026-03-25",
+  "weekDates": [
+    { "iso": "2026-03-19", "display": "Thu Mar 19" },
+    { "iso": "2026-03-20", "display": "Fri Mar 20" },
+    { "iso": "2026-03-21", "display": "Sat Mar 21" },
+    { "iso": "2026-03-22", "display": "Sun Mar 22" },
+    { "iso": "2026-03-23", "display": "Mon Mar 23" },
+    { "iso": "2026-03-24", "display": "Tue Mar 24" },
+    { "iso": "2026-03-25", "display": "Wed Mar 25" }
+  ],
+  "venues": [
+    {
+      "venueId": "blues-1",
+      "venueName": "Antone's Nightclub",
+      "shows": [
+        { "date": "2026-03-21", "headliner": "Booker T. Jones", "opener": null, "cover": "$56+", "doors": "9 PM", "ticketUrl": "https://www.antonesnightclub.com/calendar", "spotifyUrl": "https://open.spotify.com/search/Booker%20T.%20Jones", "youtubeUrl": "https://music.youtube.com/search?q=Booker%20T.%20Jones" },
+        { "date": "2026-03-25", "headliner": "Fia", "opener": null, "cover": "$71+", "doors": "8 PM", "ticketUrl": "https://www.antonesnightclub.com/calendar", "spotifyUrl": "https://open.spotify.com/search/Fia%20music", "youtubeUrl": "https://music.youtube.com/search?q=Fia%20music" }
+      ],
+      "error": null
+    },
+    {
+      "venueId": "blues-2",
+      "venueName": "C-Boy's Heart & Soul",
+      "shows": [
+        { "date": "2026-03-19", "headliner": "SoCo Stomp Day 2: Tomar & the FCs, C.J. Chenier & the Red Hot Louisiana Band", "opener": "Tina Schlieske & Friends, Uncle Roy & Spice, Nether Hour", "cover": "Free", "doors": "1 PM", "ticketUrl": "https://www.cboysheartandsoul.com/calendar", "spotifyUrl": "https://open.spotify.com/search/Tomar%20and%20the%20FCs", "youtubeUrl": "https://music.youtube.com/search?q=C.J.%20Chenier%20Red%20Hot%20Louisiana%20Band" },
+        { "date": "2026-03-20", "headliner": "SoCo Stomp Day 3: Chuck Prophet & His Cumbia Shoes, Tommy Stinson & Freedom Rockets", "opener": "Next of Kin, the Weary Boys, Sally Baby's Silver Dollars", "cover": "Free", "doors": "1 PM", "ticketUrl": "https://www.cboysheartandsoul.com/calendar", "spotifyUrl": "https://open.spotify.com/search/Chuck%20Prophet", "youtubeUrl": "https://music.youtube.com/search?q=Tommy%20Stinson%20Freedom%20Rockets" },
+        { "date": "2026-03-21", "headliner": "SoCo Stomp Day 4", "opener": null, "cover": "Free", "doors": "1 PM", "ticketUrl": "https://www.cboysheartandsoul.com/calendar", "spotifyUrl": null, "youtubeUrl": null },
+        { "date": "2026-03-22", "headliner": "SoCo Stomp Day 5 (Final Day)", "opener": null, "cover": "Free", "doors": "1 PM", "ticketUrl": "https://www.cboysheartandsoul.com/calendar", "spotifyUrl": null, "youtubeUrl": null }
+      ],
+      "error": null
+    },
+    {
+      "venueId": "blues-3",
+      "venueName": "The Continental Club",
+      "shows": [
+        { "date": "2026-03-19", "headliner": "Barfield / The Tyrant", "opener": null, "cover": null, "doors": null, "ticketUrl": "https://www.continentalclub.com/austin", "spotifyUrl": "https://open.spotify.com/search/Barfield%20austin", "youtubeUrl": "https://music.youtube.com/search?q=Barfield%20austin%20band" },
+        { "date": "2026-03-20", "headliner": "The Last Jimenez", "opener": "Josh Perdue", "cover": null, "doors": "8:30 PM", "ticketUrl": "https://www.continentalclub.com/austin", "spotifyUrl": "https://open.spotify.com/search/The%20Last%20Jimenez", "youtubeUrl": "https://music.youtube.com/search?q=The%20Last%20Jimenez" },
+        { "date": "2026-03-21", "headliner": "Josh Perdue", "opener": null, "cover": null, "doors": "10:30 PM", "ticketUrl": "https://www.continentalclub.com/austin", "spotifyUrl": "https://open.spotify.com/search/Josh%20Perdue", "youtubeUrl": "https://music.youtube.com/search?q=Josh%20Perdue" },
+        { "date": "2026-03-22", "headliner": "Heybale!", "opener": null, "cover": null, "doors": null, "ticketUrl": "https://www.continentalclub.com/austin", "spotifyUrl": "https://open.spotify.com/search/Heybale%20austin", "youtubeUrl": "https://music.youtube.com/search?q=Heybale%20austin" },
+        { "date": "2026-03-23", "headliner": "Michael Hale Organ Trio", "opener": null, "cover": null, "doors": null, "ticketUrl": "https://www.continentalclub.com/austin", "spotifyUrl": "https://open.spotify.com/search/Michael%20Hale%20Organ%20Trio", "youtubeUrl": "https://music.youtube.com/search?q=Michael%20Hale%20Organ%20Trio" },
+        { "date": "2026-03-25", "headliner": "James McMurtry", "opener": "Red Young", "cover": null, "doors": "8:30 PM", "ticketUrl": "https://www.continentalclub.com/austin", "spotifyUrl": "https://open.spotify.com/search/James%20McMurtry", "youtubeUrl": "https://music.youtube.com/search?q=James%20McMurtry%20live" }
+      ],
+      "error": null
+    },
+    {
+      "venueId": "blues-4",
+      "venueName": "Elephant Room",
+      "shows": [
+        { "date": "2026-03-19", "headliner": "Sarah Sharp Quintet", "opener": "B Side Quartet", "cover": "$10", "doors": "6 PM / 9 PM", "ticketUrl": "https://elephantroom.com/calendar", "spotifyUrl": "https://open.spotify.com/search/Sarah%20Sharp%20jazz%20austin", "youtubeUrl": "https://music.youtube.com/search?q=Sarah%20Sharp%20jazz%20austin" },
+        { "date": "2026-03-20", "headliner": "Red Young TENOR MADNESS", "opener": "Stephen Summer Trio", "cover": "$10", "doors": "6 PM / 9 PM", "ticketUrl": "https://elephantroom.com/calendar", "spotifyUrl": "https://open.spotify.com/search/Red%20Young%20piano", "youtubeUrl": "https://music.youtube.com/search?q=Red%20Young%20tenor%20madness" },
+        { "date": "2026-03-21", "headliner": "Michael Malone NUJAZZSWING", "opener": null, "cover": "$10", "doors": "9 PM", "ticketUrl": "https://elephantroom.com/calendar", "spotifyUrl": "https://open.spotify.com/search/Michael%20Malone%20jazz", "youtubeUrl": "https://music.youtube.com/search?q=Michael%20Malone%20nujazzswing" },
+        { "date": "2026-03-23", "headliner": "Michael Mordecai's Monday Night Jazz Jam", "opener": null, "cover": "$5", "doors": "9 PM", "ticketUrl": "https://elephantroom.com/calendar", "spotifyUrl": "https://open.spotify.com/search/Michael%20Mordecai%20jazz", "youtubeUrl": "https://music.youtube.com/search?q=Michael%20Mordecai%20jazz%20jam" }
+      ],
+      "error": null
+    },
+    {
+      "venueId": "blues-5",
+      "venueName": "The Saxon Pub",
+      "shows": [],
+      "error": "no_events_found"
+    },
+    {
+      "venueId": "blues-6",
+      "venueName": "Parker Jazz Club",
+      "shows": [
+        { "date": "2026-03-19", "headliner": "Monte Warden & the Dangerous Few", "opener": null, "cover": "$20+", "doors": "7:30 PM", "ticketUrl": "https://parker-jazz.turntabletickets.com/", "spotifyUrl": "https://open.spotify.com/search/Monte%20Warden", "youtubeUrl": "https://music.youtube.com/search?q=Monte%20Warden%20dangerous%20few" },
+        { "date": "2026-03-20", "headliner": "Aubrey Logan & Her Slightly Bigger Than Average Band", "opener": null, "cover": "$25+", "doors": "7 PM & 9:30 PM", "ticketUrl": "https://parker-jazz.turntabletickets.com/", "spotifyUrl": "https://open.spotify.com/search/Aubrey%20Logan", "youtubeUrl": "https://music.youtube.com/search?q=Aubrey%20Logan%20live" },
+        { "date": "2026-03-23", "headliner": "Tony DeSare", "opener": null, "cover": "$25+", "doors": "6 PM & 8:30 PM", "ticketUrl": "https://parker-jazz.turntabletickets.com/", "spotifyUrl": "https://open.spotify.com/search/Tony%20DeSare", "youtubeUrl": "https://music.youtube.com/search?q=Tony%20DeSare%20live" },
+        { "date": "2026-03-25", "headliner": "Pamela Hart Sings 'The Divine Sarah Vaughan'", "opener": null, "cover": "$20+", "doors": "7:30 PM", "ticketUrl": "https://parker-jazz.turntabletickets.com/", "spotifyUrl": "https://open.spotify.com/search/Pamela%20Hart%20jazz", "youtubeUrl": "https://music.youtube.com/search?q=Pamela%20Hart%20jazz%20austin" }
+      ],
+      "error": null
+    }
+  ]
 }

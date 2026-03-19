@@ -51,12 +51,12 @@ export const bluesVenues = [
   },
   {
     id: 'blues-5',
-    venue: 'Skylark Lounge',
-    address: '2039 Airport Blvd, Austin, TX 78722',
-    details: 'East Austin dive bar with serious blues cred. Free live music most nights. Blues jams, soul revues, and surprise sit-ins.',
-    instagram: 'https://www.instagram.com/skylarkaustin/',
-    venueUrl: 'https://skylarkaustin.com/',
-    calendarUrl: 'https://skylarkaustin.com/',
+    venue: 'The Saxon Pub',
+    address: '1320 S Lamar Blvd, Austin, TX 78704',
+    details: 'South Lamar songwriter\'s haven since 1990. Over 30,000 performances and counting. Blues, Americana, and roots music nightly.',
+    instagram: 'https://www.instagram.com/thesaxonpub/',
+    venueUrl: 'https://thesaxonpub.com/',
+    calendarUrl: 'https://thesaxonpub.com/calendar/',
   },
   {
     id: 'blues-6',

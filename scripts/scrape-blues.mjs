@@ -283,14 +283,14 @@ async function scrapeElephantRoom() {
 }
 
 /**
- * Skylark Lounge
+ * The Saxon Pub - thesaxonpub.com
  */
-async function scrapeSkylark() {
+async function scrapeSaxonPub() {
   const venueId = 'blues-5';
-  const venueName = 'Skylark Lounge';
+  const venueName = 'The Saxon Pub';
   const shows = [];
 
-  const html = await fetchPage('https://skylarkaustin.com/');
+  const html = await fetchPage('https://thesaxonpub.com/calendar/');
   if (!html) return { venueId, venueName, shows, error: 'fetch_failed' };
 
   try {
@@ -316,7 +316,7 @@ async function scrapeSkylark() {
           opener: null,
           cover: priceMatch ? priceMatch[0] : null,
           doors: timeMatch ? timeMatch[0] : null,
-          ticketUrl: 'https://skylarkaustin.com/',
+          ticketUrl: 'https://thesaxonpub.com/calendar/',
           spotifyUrl: spotifySearch(headliner),
           youtubeUrl: youtubeSearch(headliner),
         });
@@ -391,7 +391,7 @@ async function main() {
     { name: "C-Boy's", fn: scrapeCboys },
     { name: 'Continental Club', fn: scrapeContinentalClub },
     { name: 'Elephant Room', fn: scrapeElephantRoom },
-    { name: 'Skylark Lounge', fn: scrapeSkylark },
+    { name: 'The Saxon Pub', fn: scrapeSaxonPub },
     { name: 'Parker Jazz Club', fn: scrapeParkerJazz },
   ];
 
