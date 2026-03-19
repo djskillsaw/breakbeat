@@ -195,6 +195,48 @@ export default function App() {
         {/* Tab 4: Austin Blues */}
         {tab === 4 && (
           <>
+            {/* Austin Hero Banner */}
+            <div style={bluesHero}>
+              <div style={bluesHeroSkyline}>
+                {/* SVG Austin skyline silhouette with guitar */}
+                <svg viewBox="0 0 680 120" style={{ width: '100%', height: 120, opacity: 0.15 }}>
+                  {/* Congress Bridge */}
+                  <rect x="0" y="90" width="680" height="30" fill="#c2956b" />
+                  {/* Buildings */}
+                  <rect x="40" y="50" width="30" height="70" fill="#c2956b" />
+                  <rect x="80" y="35" width="25" height="85" fill="#c2956b" />
+                  <rect x="115" y="55" width="20" height="65" fill="#c2956b" />
+                  {/* Frost Tower */}
+                  <rect x="160" y="10" width="28" height="110" fill="#c2956b" />
+                  <polygon points="160,10 174,0 188,10" fill="#c2956b" />
+                  {/* The Austonian */}
+                  <rect x="200" y="15" width="22" height="105" fill="#c2956b" />
+                  {/* Capitol dome */}
+                  <rect x="260" y="45" width="50" height="75" fill="#c2956b" />
+                  <ellipse cx="285" cy="45" rx="20" ry="12" fill="#c2956b" />
+                  <rect x="282" y="28" width="6" height="17" fill="#c2956b" />
+                  {/* More buildings */}
+                  <rect x="330" y="40" width="20" height="80" fill="#c2956b" />
+                  <rect x="360" y="55" width="30" height="65" fill="#c2956b" />
+                  <rect x="400" y="30" width="24" height="90" fill="#c2956b" />
+                  <rect x="440" y="50" width="18" height="70" fill="#c2956b" />
+                  {/* Guitar silhouette */}
+                  <ellipse cx="540" cy="72" rx="18" ry="24" fill="#c2956b" />
+                  <ellipse cx="540" cy="50" rx="14" ry="18" fill="#c2956b" />
+                  <rect x="537" y="28" width="6" height="45" fill="#c2956b" />
+                  <rect x="535" y="18" width="10" height="14" fill="#c2956b" />
+                  {/* Boot */}
+                  <path d="M600,90 L600,65 L610,60 L620,65 L620,80 L640,85 L640,90 Z" fill="#c2956b" />
+                  {/* Bat silhouettes */}
+                  <path d="M150,85 Q155,78 160,85 Q165,78 170,85" fill="#c2956b" />
+                  <path d="M480,75 Q484,70 488,75 Q492,70 496,75" fill="#c2956b" />
+                  <path d="M510,68 Q513,63 516,68 Q519,63 522,68" fill="#c2956b" />
+                </svg>
+              </div>
+              <div style={bluesHeroText}>AUSTIN BLUES</div>
+              <div style={bluesHeroSub}>Live Music Capital of the World</div>
+            </div>
+
             {/* Live Blues Charts */}
             {genreCategories.filter(c => c.id === 'blues').map(category => (
               <div key={category.id}>
@@ -282,5 +324,38 @@ const sectionSubLabel = {
   letterSpacing: '0.06em',
   textTransform: 'uppercase',
   marginBottom: 8,
+  marginTop: 4,
+};
+
+const bluesHero = {
+  background: 'linear-gradient(180deg, #1a0e05 0%, #2d1810 40%, #0a0a0a 100%)',
+  borderRadius: 12,
+  padding: '0 0 20px',
+  marginBottom: 20,
+  overflow: 'hidden',
+  border: '1px solid #3d2214',
+  textAlign: 'center',
+  position: 'relative',
+};
+
+const bluesHeroSkyline = {
+  width: '100%',
+  position: 'relative',
+};
+
+const bluesHeroText = {
+  fontSize: 28,
+  fontWeight: 900,
+  color: '#c2956b',
+  letterSpacing: '0.12em',
+  marginTop: -8,
+  fontFamily: "'Georgia', 'Times New Roman', serif",
+};
+
+const bluesHeroSub = {
+  fontSize: 11,
+  color: '#8b6914',
+  letterSpacing: '0.2em',
+  textTransform: 'uppercase',
   marginTop: 4,
 };
