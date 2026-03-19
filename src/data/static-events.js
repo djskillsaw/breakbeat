@@ -279,6 +279,32 @@ export const bluesOpenMics = [
     cover: 'Free',
     venueUrl: 'https://www.buzzmillcoffee.com/',
   },
+  {
+    id: 'om-17',
+    venueId: null,
+    venue: 'The Water Tank Bar & Grill',
+    day: 'Tuesday',
+    dayIndex: 2,
+    time: '8 PM',
+    name: 'Tuesday Open Mic Night',
+    host: 'Ernie',
+    details: 'NW Austin staple since 1992. PA and mics provided, plug & play. $2 tacos from the truck out front.',
+    cover: 'Free',
+    venueUrl: 'https://www.austinwatertank.com/',
+  },
+  {
+    id: 'om-18',
+    venueId: null,
+    venue: 'Anderson Mill Pub',
+    day: 'Wednesday',
+    dayIndex: 3,
+    time: '8 PM',
+    name: 'Wednesday Night Jam',
+    host: null,
+    details: 'NW Austin neighborhood pub since 1983. Open jam night — bring your axe and sit in. Pool, darts, and cold beer.',
+    cover: 'Free',
+    venueUrl: 'https://andersonmillpub.net/',
+  },
 ];
 
 export const bluesCalendars = [
