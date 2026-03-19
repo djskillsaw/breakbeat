@@ -6,7 +6,7 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import { useChartData } from './hooks/useChartData';
 import StatusBar from './components/StatusBar';
 import { CuratedTrackCard, LiveTrackCard } from './components/TrackCard';
-import EventCard from './components/EventCard';
+import BluesVenueCard from './components/BluesVenueCard';
 import { ExternalLinkIcon } from './components/Icons';
 
 const TAB_NAMES = ['Charts', 'Venues', 'Saved'];
@@ -133,12 +133,12 @@ export default function BluesApp() {
           </>
         )}
 
-        {/* Tab 1: Venues */}
+        {/* Tab 1: Venues & Shows */}
         {tab === 1 && (
           <>
-            <div style={BS.sectionLabel}>{'\ud83c\udfb6'} Austin Blues Venues & Live Music</div>
-            {bluesVenues.map(show => (
-              <EventCard key={show.id} show={show} />
+            <div style={BS.sectionLabel}>{'\ud83c\udfb6'} Austin Blues Venues & Upcoming Shows</div>
+            {bluesVenues.map(venue => (
+              <BluesVenueCard key={venue.id} venue={venue} />
             ))}
             <div style={{ ...BS.sectionLabel, marginTop: 16 }}>{'\ud83d\udcc5'} Blues Event Calendars</div>
             <div style={S.btnRow}>
