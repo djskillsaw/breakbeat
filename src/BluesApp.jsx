@@ -6,7 +6,7 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import { useChartData } from './hooks/useChartData';
 import StatusBar from './components/StatusBar';
 import { CuratedTrackCard, LiveTrackCard } from './components/TrackCard';
-import BluesVenueCard from './components/BluesVenueCard';
+import WeeklyCalendar from './components/WeeklyCalendar';
 import { ExternalLinkIcon } from './components/Icons';
 
 const TAB_NAMES = ['Charts', 'Venues', 'Saved'];
@@ -136,10 +136,25 @@ export default function BluesApp() {
         {/* Tab 1: Venues & Shows */}
         {tab === 1 && (
           <>
-            <div style={BS.sectionLabel}>{'\ud83c\udfb6'} Austin Blues Venues & Upcoming Shows</div>
+            <div style={BS.sectionLabel}>{'\ud83c\udfb6'} This Week in Austin Blues</div>
+            <WeeklyCalendar />
+
+            {/* Venue directory */}
+            <div style={{ ...BS.sectionLabel, marginTop: 24 }}>{'\ud83d\udccd'} Venue Directory</div>
             {bluesVenues.map(venue => (
-              <BluesVenueCard key={venue.id} venue={venue} />
+              <div key={venue.id} style={venueInfoCard}>
+                <a href={venue.venueUrl} target="_blank" rel="noreferrer" style={{ fontSize: 15, fontWeight: 700, color: '#c2956b', textDecoration: 'none' }}>
+                  {venue.venue} <ExternalLinkIcon />
+                </a>
+                <div style={{ fontSize: 12, color: '#6b7280', marginTop: 2 }}>{venue.address}</div>
+                <div style={{ fontSize: 12, color: '#6b7280', fontStyle: 'italic', marginTop: 4, marginBottom: 8 }}>{venue.details}</div>
+                <div style={S.btnRow}>
+                  <a href={venue.instagram} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#7c3aed', fontSize: 11 }}>Instagram <ExternalLinkIcon /></a>
+                  <a href={venue.calendarUrl} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#374151', fontSize: 11 }}>Full Calendar <ExternalLinkIcon /></a>
+                </div>
+              </div>
             ))}
+
             <div style={{ ...BS.sectionLabel, marginTop: 16 }}>{'\ud83d\udcc5'} Blues Event Calendars</div>
             <div style={S.btnRow}>
               {bluesCalendars.map(cal => (
@@ -175,6 +190,14 @@ export default function BluesApp() {
     </div>
   );
 }
+
+const venueInfoCard = {
+  background: '#111210',
+  border: '1px solid #2d1810',
+  borderRadius: 10,
+  padding: 14,
+  marginBottom: 10,
+};
 
 // Blues-specific styles (warm copper/leather palette)
 const BS = {

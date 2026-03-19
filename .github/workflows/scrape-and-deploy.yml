@@ -1,0 +1,51 @@
+name: Daily Blues Scrape & Deploy
+
+on:
+  schedule:
+    # Run daily at 10:00 AM UTC (5:00 AM Central)
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # Scrape venue calendars and write scraped-shows.json
+      - name: Scrape Austin blues venue calendars
+        run: npm run scrape
+
+      # Build the site with fresh scraped data baked in
+      - name: Build site
+        run: npm run build
+        env:
+          VITE_LASTFM_API_KEY: ${{ secrets.VITE_LASTFM_API_KEY }}
+          VITE_SPOTIFY_ACCESS_TOKEN: ${{ secrets.VITE_SPOTIFY_ACCESS_TOKEN }}
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
+
+      # Also commit the scraped data back to the repo for transparency
+      - name: Commit scraped data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/scraped-shows.json
+          git diff --staged --quiet || git commit -m "chore: daily blues venue scrape $(date -u +%Y-%m-%d)"
+          git push || true
