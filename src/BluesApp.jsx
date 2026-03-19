@@ -7,6 +7,7 @@ import { useChartData } from './hooks/useChartData';
 import StatusBar from './components/StatusBar';
 import { CuratedTrackCard, LiveTrackCard } from './components/TrackCard';
 import WeeklyCalendar from './components/WeeklyCalendar';
+import OpenMicSchedule from './components/OpenMicSchedule';
 import { ExternalLinkIcon } from './components/Icons';
 
 const TAB_NAMES = ['Charts', 'Venues', 'Saved'];
@@ -15,6 +16,7 @@ const bluesCategory = genreCategories.find(c => c.id === 'blues');
 
 export default function BluesApp() {
   const [tab, setTab] = useState(0);
+  const [venueMode, setVenueMode] = useState('shows'); // 'shows' | 'open-mics'
   const [savedTracks, setSavedTracks] = useLocalStorage('blues-savedTracks', []);
 
   const {
@@ -136,8 +138,34 @@ export default function BluesApp() {
         {/* Tab 1: Venues & Shows */}
         {tab === 1 && (
           <>
-            <div style={BS.sectionLabel}>{'\ud83c\udfb6'} This Week in Austin Blues</div>
-            <WeeklyCalendar />
+            {/* Shows / Open Mics toggle */}
+            <div style={BS.venueToggle}>
+              <button
+                onClick={() => setVenueMode('shows')}
+                style={{ ...BS.toggleBtn, ...(venueMode === 'shows' ? BS.toggleActive : {}) }}
+              >
+                {'\ud83c\udfb6'} Shows
+              </button>
+              <button
+                onClick={() => setVenueMode('open-mics')}
+                style={{ ...BS.toggleBtn, ...(venueMode === 'open-mics' ? BS.toggleActive : {}) }}
+              >
+                {'\ud83c\udf99\ufe0f'} Open Mics
+              </button>
+            </div>
+
+            {venueMode === 'shows' && (
+              <>
+                <div style={BS.sectionLabel}>{'\ud83c\udfb6'} This Week in Austin Blues</div>
+                <WeeklyCalendar />
+              </>
+            )}
+            {venueMode === 'open-mics' && (
+              <>
+                <div style={BS.sectionLabel}>{'\ud83c\udf99\ufe0f'} Open Mic & Jam Nights</div>
+                <OpenMicSchedule />
+              </>
+            )}
 
             {/* Venue directory */}
             <div style={{ ...BS.sectionLabel, marginTop: 24 }}>{'\ud83d\udccd'} Venue Directory</div>
@@ -213,4 +241,7 @@ const BS = {
   badge: { marginLeft: 6, background: '#c2956b', color: '#000', borderRadius: 10, padding: '1px 6px', fontSize: 11, fontWeight: 700 },
   sectionLabel: { fontSize: 11, fontWeight: 700, color: '#8b7355', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16, marginTop: 8 },
   footer: { textAlign: 'center', fontSize: 11, color: '#374151', padding: '24px 16px 0', borderTop: '1px solid #1a1008' },
+  venueToggle: { display: 'flex', gap: 6, marginBottom: 16 },
+  toggleBtn: { flex: 1, padding: '10px 0', background: '#1a1610', border: '1px solid #2a2018', borderRadius: 8, color: '#6b7280', fontSize: 13, fontWeight: 600, cursor: 'pointer', transition: 'all 0.15s' },
+  toggleActive: { background: '#2d1810', border: '1px solid #c2956b', color: '#c2956b' },
 };
