@@ -121,7 +121,7 @@ export default function BluesApp() {
                 <rect x="514" y="40" width="16" height="55" fill="#c2956b" />
 
                 {/* ── UT Tower — scaled down to match skyline, 4 tapering sections ── */}
-                <g transform="translate(19, 36) scale(0.62)">
+                <g transform="translate(16.5, 31.5) scale(0.67)">
                   {/* Main Building base — wide classical building */}
                   <rect x="10" y="76" width="80" height="19" fill="#c2956b" />
                   {/* Ground floor arched openings */}
@@ -156,12 +156,12 @@ export default function BluesApp() {
                   <rect x="54.5" y="42" width="0.7" height="25" fill="#0c0a08" opacity="0.1" />
                   <rect x="40" y="41" width="20" height="1.5" fill="#c2956b" />
 
-                  {/* Section 2: Upper shaft (16px) — burnt orange lit */}
-                  <rect x="42" y="22" width="16" height="20" fill="#bf5700" />
-                  <rect x="45.5" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
+                  {/* Section 2: Upper shaft (18px) — same width, burnt orange */}
+                  <rect x="41" y="22" width="18" height="20" fill="#bf5700" />
+                  <rect x="45" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
                   <rect x="50" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
-                  <rect x="53.8" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
-                  <rect x="41" y="21" width="18" height="1.5" fill="#c2956b" />
+                  <rect x="54.5" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
+                  <rect x="40" y="21" width="20" height="1.5" fill="#c2956b" />
 
                   {/* Section 3: Clock level (14px) — taller */}
                   <rect x="43" y="8" width="14" height="14" fill="#c2956b" />
