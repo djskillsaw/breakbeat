@@ -472,7 +472,7 @@ const venueInfoCard = {
 const BS = {
   container: { minHeight: '100vh', background: '#0a0908', color: '#e5e7eb', fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif", maxWidth: 680, margin: '0 auto', padding: '0 0 60px' },
   header: { borderBottom: '1px solid #2d1810' },
-  hero: { background: 'linear-gradient(180deg, #1a0e05 0%, #0a0908 100%)', padding: '0 0 24px', textAlign: 'center', overflow: 'hidden' },
+  hero: { background: 'linear-gradient(180deg, #1a0e05 0%, #0a0908 100%)', padding: '16px 0 24px', textAlign: 'center', overflow: 'hidden' },
   heroSkyline: { width: '100%', marginBottom: -4 },
   heroTitle: { fontSize: 28, fontWeight: 900, color: '#c2956b', letterSpacing: '0.18em', marginTop: -2, fontFamily: "'Playfair Display', 'Georgia', serif", textShadow: '0 1px 8px rgba(194,149,107,.12)' },
   heroSub: { fontSize: 11, color: '#8b6914', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: 6, fontWeight: 500 },
