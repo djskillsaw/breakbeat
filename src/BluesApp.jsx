@@ -38,237 +38,289 @@ export default function BluesApp() {
         {/* Austin Hero Banner */}
         <div style={BS.hero}>
           <div style={BS.heroSkyline}>
-            <svg viewBox="0 0 680 120" style={{ width: '100%', height: 120, opacity: 0.18 }}>
-              {/* Lady Bird Lake / ground */}
-              <rect x="0" y="100" width="680" height="20" fill="#c2956b" />
-              {/* Congress Ave Bridge arches */}
-              <rect x="0" y="95" width="680" height="6" fill="#c2956b" />
-              <ellipse cx="85" cy="95" rx="30" ry="6" fill="#0c0a08" />
-              <ellipse cx="170" cy="95" rx="30" ry="6" fill="#0c0a08" />
-              <ellipse cx="255" cy="95" rx="30" ry="6" fill="#0c0a08" />
-              <ellipse cx="340" cy="95" rx="30" ry="6" fill="#0c0a08" />
-              <ellipse cx="425" cy="95" rx="30" ry="6" fill="#0c0a08" />
-              <ellipse cx="510" cy="95" rx="30" ry="6" fill="#0c0a08" />
-              <ellipse cx="595" cy="95" rx="30" ry="6" fill="#0c0a08" />
+            <svg viewBox="0 -5 680 140" style={{ width: '100%', height: 135 }}>
+              <defs>
+                {/* Vertical fade mask — buildings emerge from nothing at top, full strength at skyline edge */}
+                <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="white" stopOpacity="0" />
+                  <stop offset="35%" stopColor="white" stopOpacity="0.12" />
+                  <stop offset="70%" stopColor="white" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="white" stopOpacity="0.32" />
+                </linearGradient>
+                <mask id="skyMask">
+                  <rect x="0" y="-5" width="680" height="140" fill="url(#skyFade)" />
+                </mask>
+                {/* Warm horizon glow behind skyline */}
+                <radialGradient id="horizonGlow" cx="50%" cy="78%" rx="55%" ry="18%">
+                  <stop offset="0%" stopColor="#c2956b" stopOpacity="0.08" />
+                  <stop offset="100%" stopColor="#c2956b" stopOpacity="0" />
+                </radialGradient>
+                {/* Reflection fade — strong at waterline, vanishes below */}
+                <linearGradient id="reflFade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="white" stopOpacity="0.06" />
+                  <stop offset="100%" stopColor="white" stopOpacity="0" />
+                </linearGradient>
+                <mask id="reflMask">
+                  <rect x="0" y="100" width="680" height="35" fill="url(#reflFade)" />
+                </mask>
+              </defs>
 
-              {/* UT Tower — rebuilt with proper mass and architectural detail */}
-              {/* Section 1: Main Building base — wide rusticated limestone, 3 stories */}
-              <rect x="12" y="74" width="76" height="21" fill="#c2956b" />
-              {/* String course / cornice at top of Main Building */}
-              <rect x="12" y="73" width="76" height="1.5" fill="#c2956b" opacity="0.9" />
-              {/* Base entrance — recessed central portico */}
-              <rect x="34" y="70" width="32" height="5" fill="#c2956b" />
-              <rect x="36" y="70" width="28" height="1" fill="#0c0a08" opacity="0.18" />
-              {/* Window grid on Main Building — 8 bays */}
-              <rect x="17" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
-              <rect x="24" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
-              <rect x="31" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
-              <rect x="38" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
-              <rect x="58" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
-              <rect x="65" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
-              <rect x="72" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
-              <rect x="79" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
-              {/* Second floor windows */}
-              <rect x="17" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
-              <rect x="24" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
-              <rect x="31" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
-              <rect x="38" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
-              <rect x="58" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
-              <rect x="65" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
-              <rect x="72" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
-              <rect x="79" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
-              {/* Attic story / President's office — hipped transition */}
-              <polygon points="18,74 22,68 78,68 82,74" fill="#c2956b" />
-              <rect x="25" y="68" width="50" height="7" fill="#c2956b" />
-              {/* Attic story cornice */}
-              <rect x="24" y="67" width="52" height="1.5" fill="#c2956b" opacity="0.85" />
+              {/* Horizon glow layer */}
+              <rect x="0" y="-5" width="680" height="140" fill="url(#horizonGlow)" />
 
-              {/* Section 2: Tower shaft — 17 stories with window grid */}
-              <rect x="36" y="28" width="28" height="40" fill="#c2956b" />
-              {/* Setback ledge at shaft base */}
-              <rect x="34" y="66" width="32" height="2" fill="#c2956b" />
-              {/* Window columns — 4 bays across, 6 floors visible */}
-              <rect x="39" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
-              <rect x="45" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
-              <rect x="52" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
-              <rect x="58" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
-              <rect x="39" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
-              <rect x="45" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
-              <rect x="52" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
-              <rect x="58" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
-              <rect x="39" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
-              <rect x="45" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
-              <rect x="52" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
-              <rect x="58" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
-              <rect x="39" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
-              <rect x="45" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
-              <rect x="52" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
-              <rect x="58" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
-              <rect x="39" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
-              <rect x="45" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
-              <rect x="52" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
-              <rect x="58" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
-              <rect x="39" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
-              <rect x="45" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
-              <rect x="52" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
-              <rect x="58" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
+              {/* === SKYLINE GROUP — masked for atmospheric fade === */}
+              <g mask="url(#skyMask)">
 
-              {/* Section 3: Clock level — wider setback with recessed clock faces */}
-              <rect x="33" y="21" width="34" height="8" fill="#c2956b" />
-              {/* Clock level cornice */}
-              <rect x="32" y="20" width="36" height="1.5" fill="#c2956b" />
-              {/* Clock faces — deep recessed circles */}
-              <circle cx="42" cy="25" r="2.8" fill="#0c0a08" opacity="0.3" />
-              <circle cx="42" cy="25" r="2" fill="#0c0a08" opacity="0.12" />
-              <circle cx="58" cy="25" r="2.8" fill="#0c0a08" opacity="0.3" />
-              <circle cx="58" cy="25" r="2" fill="#0c0a08" opacity="0.12" />
-              {/* Broken pediments above clocks */}
-              <polygon points="35,21 42,16 44,21" fill="#c2956b" />
-              <polygon points="56,21 58,16 65,21" fill="#c2956b" />
+                {/* ═══ BACKGROUND LAYER — far buildings, receded tone ═══ */}
+                {/* Right-side office towers — atmospheric perspective (farthest = lightest) */}
+                <rect x="538" y="55" width="20" height="40" fill="#8b6540" />
+                <rect x="590" y="60" width="18" height="35" fill="#8b6540" />
+                <rect x="618" y="65" width="14" height="30" fill="#8b6540" />
+                <rect x="642" y="70" width="18" height="25" fill="#8b6540" />
+                {/* Mid-rise filler buildings — background depth */}
+                <rect x="380" y="58" width="20" height="37" fill="#8b6540" />
 
-              {/* Section 4: Bell level — arched openings with Doric columns */}
-              <rect x="35" y="13" width="30" height="7" fill="#c2956b" />
-              {/* Arched openings between columns */}
-              <rect x="39" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
-              <rect x="44" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
-              <rect x="49" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
-              <rect x="54" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
-              <rect x="59" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+                {/* ═══ MIDGROUND LAYER — mid-distance tone ═══ */}
+                {/* Small building cluster left of center */}
+                <rect x="82" y="62" width="18" height="33" fill="#a07850" />
+                <rect x="106" y="55" width="14" height="40" fill="#a07850" />
+                {/* Mid-rise filler buildings — midground */}
+                <rect x="336" y="52" width="16" height="43" fill="#a07850" />
+                <rect x="358" y="45" width="14" height="50" fill="#a07850" />
+                {/* 360 Condos — tall glass slab */}
+                <rect x="178" y="22" width="20" height="73" fill="#a07850" />
+                {/* One Congress Plaza — stepped profile */}
+                <rect x="210" y="50" width="28" height="45" fill="#a07850" />
+                <rect x="214" y="42" width="20" height="10" fill="#a07850" />
+                <rect x="218" y="36" width="12" height="8" fill="#a07850" />
+                {/* Right-side mid-distance towers */}
+                <rect x="488" y="48" width="18" height="47" fill="#a07850" />
+                <rect x="566" y="50" width="14" height="45" fill="#a07850" />
 
-              {/* Observation deck — balustrade with railing posts */}
-              <rect x="32" y="11" width="36" height="3" fill="#c2956b" />
-              {/* Railing posts */}
-              <rect x="33" y="9.5" width="1" height="2" fill="#c2956b" />
-              <rect x="37" y="9.5" width="1" height="2" fill="#c2956b" />
-              <rect x="41" y="9.5" width="1" height="2" fill="#c2956b" />
-              <rect x="57" y="9.5" width="1" height="2" fill="#c2956b" />
-              <rect x="61" y="9.5" width="1" height="2" fill="#c2956b" />
-              <rect x="65" y="9.5" width="1" height="2" fill="#c2956b" />
-              {/* Top rail */}
-              <rect x="32" y="9" width="36" height="1" fill="#c2956b" />
+                {/* ═══ FOREGROUND LAYER — hero landmarks, full copper ═══ */}
 
-              {/* Corner turrets — all four corners */}
-              <rect x="31" y="6" width="3.5" height="5" fill="#c2956b" />
-              <rect x="65" y="6" width="3.5" height="5" fill="#c2956b" />
-              {/* Turret caps */}
-              <polygon points="31,6 32.75,3.5 34.5,6" fill="#c2956b" />
-              <polygon points="65,6 66.75,3.5 68.5,6" fill="#c2956b" />
+                {/* The Austonian — tall elliptical tower on Congress */}
+                <ellipse cx="270" cy="55" rx="11" ry="42" fill="#c2956b" />
+                <rect x="259" y="70" width="22" height="25" fill="#c2956b" />
 
-              {/* Gold leaf garland band */}
-              <rect x="34" y="11" width="32" height="0.8" fill="#c2956b" opacity="0.7" />
+                {/* The Independent (Jenga tower) — tallest, offset stacking with rotation */}
+                <rect x="138" y="12" width="22" height="83" fill="#c2956b" />
+                <rect x="135" y="12" width="28" height="6" fill="#c2956b" transform="rotate(1.5, 149, 15)" />
+                <rect x="140" y="22" width="24" height="6" fill="#c2956b" transform="rotate(-1.5, 152, 25)" />
+                <rect x="136" y="34" width="26" height="6" fill="#c2956b" transform="rotate(2, 149, 37)" />
+                <rect x="141" y="46" width="22" height="6" fill="#c2956b" transform="rotate(-1, 152, 49)" />
+                <rect x="137" y="58" width="25" height="6" fill="#c2956b" transform="rotate(1.5, 149, 61)" />
 
-              {/* Central spire — tapered with finial */}
-              <rect x="48.5" y="3" width="3" height="8" fill="#c2956b" />
-              <polygon points="47.5,3 50,0 52.5,3" fill="#c2956b" />
+                {/* Frost Bank Tower — iconic owl-face crown */}
+                <rect x="300" y="28" width="24" height="67" fill="#c2956b" />
+                <polygon points="300,28 312,10 324,28" fill="#c2956b" />
+                <polygon points="300,28 306,18 312,28" fill="#c2956b" />
+                <polygon points="312,28 318,18 324,28" fill="#c2956b" />
+                {/* Central spine — owl-face geometry */}
+                <line x1="312" y1="10" x2="312" y2="28" stroke="#0c0a08" strokeWidth="0.8" opacity="0.25" />
+                {/* Window grid suggestion */}
+                <rect x="304" y="35" width="2" height="3" fill="#0c0a08" opacity="0.15" />
+                <rect x="310" y="35" width="2" height="3" fill="#0c0a08" opacity="0.15" />
+                <rect x="316" y="35" width="2" height="3" fill="#0c0a08" opacity="0.15" />
+                <rect x="304" y="42" width="2" height="3" fill="#0c0a08" opacity="0.12" />
+                <rect x="310" y="42" width="2" height="3" fill="#0c0a08" opacity="0.12" />
+                <rect x="316" y="42" width="2" height="3" fill="#0c0a08" opacity="0.12" />
 
-              {/* Small building cluster left of center */}
-              <rect x="82" y="62" width="18" height="33" fill="#c2956b" />
-              <rect x="106" y="55" width="14" height="40" fill="#c2956b" />
+                {/* 514 Congress — foreground slab */}
+                <rect x="514" y="40" width="16" height="55" fill="#c2956b" />
 
-              {/* The Independent (Jenga tower) — tallest, offset stacking */}
-              <rect x="138" y="12" width="22" height="83" fill="#c2956b" />
-              <rect x="135" y="12" width="28" height="6" fill="#c2956b" />
-              <rect x="140" y="22" width="24" height="6" fill="#c2956b" />
-              <rect x="136" y="34" width="26" height="6" fill="#c2956b" />
-              <rect x="141" y="46" width="22" height="6" fill="#c2956b" />
+                {/* ── UT Tower — architecturally accurate with full detail ── */}
+                {/* Section 1: Main Building base — wide rusticated limestone, 3 stories */}
+                <rect x="12" y="74" width="76" height="21" fill="#c2956b" />
+                {/* String course / cornice at top of Main Building */}
+                <rect x="12" y="73" width="76" height="1.5" fill="#c2956b" opacity="0.9" />
+                {/* Base entrance — recessed central portico */}
+                <rect x="34" y="70" width="32" height="5" fill="#c2956b" />
+                <rect x="36" y="70" width="28" height="1" fill="#0c0a08" opacity="0.18" />
+                {/* Window grid on Main Building — 8 bays */}
+                <rect x="17" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+                <rect x="24" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+                <rect x="31" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+                <rect x="38" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+                <rect x="58" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+                <rect x="65" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+                <rect x="72" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+                <rect x="79" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+                {/* Second floor windows */}
+                <rect x="17" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+                <rect x="24" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+                <rect x="31" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+                <rect x="38" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+                <rect x="58" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+                <rect x="65" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+                <rect x="72" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+                <rect x="79" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+                {/* Attic story / President's office — hipped transition */}
+                <polygon points="18,74 22,68 78,68 82,74" fill="#c2956b" />
+                <rect x="25" y="68" width="50" height="7" fill="#c2956b" />
+                {/* Attic story cornice */}
+                <rect x="24" y="67" width="52" height="1.5" fill="#c2956b" opacity="0.85" />
+                {/* Section 2: Tower shaft — 17 stories with window grid */}
+                <rect x="36" y="28" width="28" height="40" fill="#c2956b" />
+                {/* Setback ledge at shaft base */}
+                <rect x="34" y="66" width="32" height="2" fill="#c2956b" />
+                {/* Window columns — 4 bays across, 6 floors visible */}
+                <rect x="39" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
+                <rect x="45" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
+                <rect x="52" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
+                <rect x="58" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
+                <rect x="39" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
+                <rect x="45" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
+                <rect x="52" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
+                <rect x="58" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
+                <rect x="39" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
+                <rect x="45" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
+                <rect x="52" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
+                <rect x="58" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
+                <rect x="39" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
+                <rect x="45" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
+                <rect x="52" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
+                <rect x="58" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
+                <rect x="39" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
+                <rect x="45" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
+                <rect x="52" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
+                <rect x="58" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
+                <rect x="39" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
+                <rect x="45" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
+                <rect x="52" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
+                <rect x="58" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
+                {/* Section 3: Clock level — wider setback with recessed clock faces */}
+                <rect x="33" y="21" width="34" height="8" fill="#c2956b" />
+                <rect x="32" y="20" width="36" height="1.5" fill="#c2956b" />
+                <circle cx="42" cy="25" r="2.8" fill="#0c0a08" opacity="0.3" />
+                <circle cx="42" cy="25" r="2" fill="#0c0a08" opacity="0.12" />
+                <circle cx="58" cy="25" r="2.8" fill="#0c0a08" opacity="0.3" />
+                <circle cx="58" cy="25" r="2" fill="#0c0a08" opacity="0.12" />
+                <polygon points="35,21 42,16 44,21" fill="#c2956b" />
+                <polygon points="56,21 58,16 65,21" fill="#c2956b" />
+                {/* Section 4: Bell level — arched openings */}
+                <rect x="35" y="13" width="30" height="7" fill="#c2956b" />
+                <rect x="39" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+                <rect x="44" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+                <rect x="49" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+                <rect x="54" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+                <rect x="59" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+                {/* Observation deck — balustrade */}
+                <rect x="32" y="11" width="36" height="3" fill="#c2956b" />
+                <rect x="33" y="9.5" width="1" height="2" fill="#c2956b" />
+                <rect x="37" y="9.5" width="1" height="2" fill="#c2956b" />
+                <rect x="41" y="9.5" width="1" height="2" fill="#c2956b" />
+                <rect x="57" y="9.5" width="1" height="2" fill="#c2956b" />
+                <rect x="61" y="9.5" width="1" height="2" fill="#c2956b" />
+                <rect x="65" y="9.5" width="1" height="2" fill="#c2956b" />
+                <rect x="32" y="9" width="36" height="1" fill="#c2956b" />
+                {/* Corner turrets with caps */}
+                <rect x="31" y="6" width="3.5" height="5" fill="#c2956b" />
+                <rect x="65" y="6" width="3.5" height="5" fill="#c2956b" />
+                <polygon points="31,6 32.75,3.5 34.5,6" fill="#c2956b" />
+                <polygon points="65,6 66.75,3.5 68.5,6" fill="#c2956b" />
+                {/* Gold leaf garland band */}
+                <rect x="34" y="11" width="32" height="0.8" fill="#c2956b" opacity="0.7" />
+                {/* Central spire */}
+                <rect x="48.5" y="3" width="3" height="8" fill="#c2956b" />
+                <polygon points="47.5,3 50,0 52.5,3" fill="#c2956b" />
 
-              {/* 360 Condos — tall glass slab */}
-              <rect x="178" y="22" width="20" height="73" fill="#c2956b" />
+                {/* ── Texas State Capitol — Italian Renaissance Revival ── */}
+                {/* East wing */}
+                <rect x="405" y="72" width="28" height="23" fill="#c2956b" />
+                {/* West wing */}
+                <rect x="467" y="72" width="28" height="23" fill="#c2956b" />
+                {/* Central block */}
+                <rect x="425" y="62" width="50" height="33" fill="#c2956b" />
+                {/* Portico pediment */}
+                <polygon points="430,62 450,56 470,62" fill="#c2956b" />
+                {/* Portico columns */}
+                <rect x="434" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+                <rect x="440" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+                <rect x="446" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+                <rect x="452" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+                <rect x="458" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+                <rect x="464" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+                {/* Entablature */}
+                <rect x="423" y="60" width="54" height="2.5" fill="#c2956b" />
+                {/* Rotunda drum */}
+                <rect x="435" y="48" width="30" height="13" fill="#c2956b" />
+                <rect x="438" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+                <rect x="442" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+                <rect x="446" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+                <rect x="450" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+                <rect x="454" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+                <rect x="458" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+                <rect x="462" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+                <rect x="434" y="47" width="32" height="2" fill="#c2956b" />
+                {/* Dome */}
+                <path d="M436,48 Q436,34 450,30 Q464,34 464,48 Z" fill="#c2956b" />
+                <line x1="450" y1="30" x2="450" y2="48" stroke="#0c0a08" strokeWidth="0.5" opacity="0.12" />
+                <line x1="443" y1="36" x2="440" y2="48" stroke="#0c0a08" strokeWidth="0.5" opacity="0.12" />
+                <line x1="457" y1="36" x2="460" y2="48" stroke="#0c0a08" strokeWidth="0.5" opacity="0.12" />
+                {/* Lantern */}
+                <rect x="446" y="24" width="8" height="7" fill="#c2956b" />
+                <rect x="448" y="25" width="0.6" height="5" fill="#0c0a08" opacity="0.25" />
+                <rect x="451" y="25" width="0.6" height="5" fill="#0c0a08" opacity="0.25" />
+                <path d="M445,24 Q445,21 450,19 Q455,21 455,24 Z" fill="#c2956b" />
+                {/* Goddess of Liberty */}
+                <rect x="449" y="13" width="2" height="6" fill="#c2956b" />
+                <circle cx="450" cy="12" r="1.5" fill="#c2956b" />
+                <line x1="450" y1="14" x2="452" y2="11" stroke="#c2956b" strokeWidth="1" />
+                <polygon points="452,9 452.8,10.5 451.2,10.5" fill="#c2956b" />
+                {/* Wing window details */}
+                <rect x="410" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+                <rect x="417" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+                <rect x="424" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+                <rect x="475" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+                <rect x="482" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+                <rect x="489" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
 
-              {/* One Congress Plaza — stepped profile */}
-              <rect x="210" y="50" width="28" height="45" fill="#c2956b" />
-              <rect x="214" y="42" width="20" height="10" fill="#c2956b" />
-              <rect x="218" y="36" width="12" height="8" fill="#c2956b" />
+                {/* ── Congress Ave Bridge — constrained to realistic span ── */}
+                <rect x="200" y="95" width="280" height="5" fill="#c2956b" />
+                {/* Bridge arches */}
+                <ellipse cx="230" cy="95" rx="18" ry="5" fill="#0c0a08" />
+                <ellipse cx="270" cy="95" rx="18" ry="5" fill="#0c0a08" />
+                <ellipse cx="310" cy="95" rx="18" ry="5" fill="#0c0a08" />
+                <ellipse cx="350" cy="95" rx="18" ry="5" fill="#0c0a08" />
+                <ellipse cx="390" cy="95" rx="18" ry="5" fill="#0c0a08" />
+                <ellipse cx="430" cy="95" rx="18" ry="5" fill="#0c0a08" />
+                <ellipse cx="460" cy="95" rx="18" ry="5" fill="#0c0a08" />
 
-              {/* The Austonian — tall elliptical tower on Congress */}
-              <ellipse cx="270" cy="55" rx="11" ry="42" fill="#c2956b" />
-              <rect x="259" y="70" width="22" height="25" fill="#c2956b" />
+              </g>{/* end skyline mask group */}
 
-              {/* Frost Bank Tower — iconic jagged crown */}
-              <rect x="300" y="28" width="24" height="67" fill="#c2956b" />
-              <polygon points="300,28 312,10 324,28" fill="#c2956b" />
-              <polygon points="300,28 306,18 312,28" fill="#c2956b" />
-              <polygon points="312,28 318,18 324,28" fill="#c2956b" />
+              {/* ═══ LADY BIRD LAKE — water surface ═══ */}
+              <rect x="0" y="100" width="680" height="35" fill="#0c0a08" opacity="0.6" />
 
-              {/* Mid-rise filler buildings */}
-              <rect x="336" y="52" width="16" height="43" fill="#c2956b" />
-              <rect x="358" y="45" width="14" height="50" fill="#c2956b" />
-              <rect x="380" y="58" width="20" height="37" fill="#c2956b" />
+              {/* ═══ LAKE REFLECTION — mirrored skyline silhouette ═══ */}
+              <g mask="url(#reflMask)" transform="translate(0, 200) scale(1, -1)">
+                {/* Simplified silhouette of major landmarks — flipped */}
+                <rect x="12" y="74" width="76" height="21" fill="#c2956b" />
+                <rect x="36" y="28" width="28" height="47" fill="#c2956b" />
+                <rect x="138" y="12" width="22" height="83" fill="#c2956b" />
+                <rect x="178" y="22" width="20" height="73" fill="#c2956b" />
+                <rect x="210" y="50" width="28" height="45" fill="#c2956b" />
+                <ellipse cx="270" cy="60" rx="11" ry="35" fill="#c2956b" />
+                <rect x="300" y="28" width="24" height="67" fill="#c2956b" />
+                <rect x="336" y="52" width="16" height="43" fill="#c2956b" />
+                <rect x="358" y="45" width="14" height="50" fill="#c2956b" />
+                <rect x="405" y="62" width="90" height="33" fill="#c2956b" />
+                <rect x="488" y="48" width="18" height="47" fill="#c2956b" />
+                <rect x="514" y="40" width="16" height="55" fill="#c2956b" />
+                <rect x="538" y="55" width="20" height="40" fill="#c2956b" />
+                <rect x="566" y="50" width="14" height="45" fill="#c2956b" />
+              </g>
 
-              {/* Texas State Capitol — architecturally accurate Italian Renaissance Revival */}
-              {/* East wing (3 stories) */}
-              <rect x="405" y="72" width="28" height="23" fill="#c2956b" />
-              {/* West wing (3 stories) */}
-              <rect x="467" y="72" width="28" height="23" fill="#c2956b" />
-              {/* Central block (4 stories, taller than wings) */}
-              <rect x="425" y="62" width="50" height="33" fill="#c2956b" />
-              {/* Portico / front porch with pediment */}
-              <polygon points="430,62 450,56 470,62" fill="#c2956b" />
-              {/* Portico columns */}
-              <rect x="434" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
-              <rect x="440" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
-              <rect x="446" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
-              <rect x="452" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
-              <rect x="458" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
-              <rect x="464" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
-              {/* Entablature / cornice above central block */}
-              <rect x="423" y="60" width="54" height="2.5" fill="#c2956b" />
-              {/* Rotunda drum — cylindrical base with Corinthian columns */}
-              <rect x="435" y="48" width="30" height="13" fill="#c2956b" />
-              {/* Drum column gaps */}
-              <rect x="438" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
-              <rect x="442" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
-              <rect x="446" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
-              <rect x="450" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
-              <rect x="454" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
-              <rect x="458" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
-              <rect x="462" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
-              {/* Drum balcony/cornice */}
-              <rect x="434" y="47" width="32" height="2" fill="#c2956b" />
-              {/* Dome — smooth hemispherical curve using path */}
-              <path d="M436,48 Q436,34 450,30 Q464,34 464,48 Z" fill="#c2956b" />
-              {/* Dome ribs suggestion */}
-              <line x1="450" y1="30" x2="450" y2="48" stroke="#0c0a08" strokeWidth="0.5" opacity="0.12" />
-              <line x1="443" y1="36" x2="440" y2="48" stroke="#0c0a08" strokeWidth="0.5" opacity="0.12" />
-              <line x1="457" y1="36" x2="460" y2="48" stroke="#0c0a08" strokeWidth="0.5" opacity="0.12" />
-              {/* Lantern / cupola — slender columned structure */}
-              <rect x="446" y="24" width="8" height="7" fill="#c2956b" />
-              {/* Lantern column gaps */}
-              <rect x="448" y="25" width="0.6" height="5" fill="#0c0a08" opacity="0.25" />
-              <rect x="451" y="25" width="0.6" height="5" fill="#0c0a08" opacity="0.25" />
-              {/* Lantern cap */}
-              <path d="M445,24 Q445,21 450,19 Q455,21 455,24 Z" fill="#c2956b" />
-              {/* Goddess of Liberty statue */}
-              {/* Body */}
-              <rect x="449" y="13" width="2" height="6" fill="#c2956b" />
-              {/* Head */}
-              <circle cx="450" cy="12" r="1.5" fill="#c2956b" />
-              {/* Upraised arm with star */}
-              <line x1="450" y1="14" x2="452" y2="11" stroke="#c2956b" strokeWidth="1" />
-              <polygon points="452,9 452.8,10.5 451.2,10.5" fill="#c2956b" />
-              {/* Wing details on east/west wings */}
-              <rect x="410" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
-              <rect x="417" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
-              <rect x="424" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
-              <rect x="475" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
-              <rect x="482" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
-              <rect x="489" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
-
-              {/* Right-side office towers */}
-              <rect x="488" y="48" width="18" height="47" fill="#c2956b" />
-              <rect x="514" y="40" width="16" height="55" fill="#c2956b" />
-              <rect x="538" y="55" width="20" height="40" fill="#c2956b" />
-              <rect x="566" y="50" width="14" height="45" fill="#c2956b" />
-              <rect x="590" y="60" width="18" height="35" fill="#c2956b" />
-              <rect x="618" y="65" width="14" height="30" fill="#c2956b" />
-              <rect x="642" y="70" width="18" height="25" fill="#c2956b" />
-
-              {/* Congress Ave Bridge bats */}
-              <path d="M180,18 Q185,11 190,18 Q195,11 200,18" fill="#c2956b" />
-              <path d="M350,12 Q354,6 358,12 Q362,6 366,12" fill="#c2956b" />
-              <path d="M520,15 Q523,9 526,15 Q529,9 532,15" fill="#c2956b" />
-              <path d="M440,8 Q443,3 446,8 Q449,3 452,8" fill="#c2956b" />
-              <path d="M270,6 Q272,2 274,6 Q276,2 278,6" fill="#c2956b" />
+              {/* ═══ BATS — clustered near bridge flight path, upper sky ═══ */}
+              <g opacity="0.22">
+                <path d="M240,8 Q244,2 248,8 Q252,2 256,8" fill="#c2956b" />
+                <path d="M290,5 Q293,0 296,5 Q299,0 302,5" fill="#c2956b" />
+                <path d="M350,10 Q354,4 358,10 Q362,4 366,10" fill="#c2956b" />
+                <path d="M310,15 Q313,10 316,15 Q319,10 322,15" fill="#c2956b" />
+                <path d="M400,7 Q403,2 406,7 Q409,2 412,7" fill="#c2956b" />
+                <path d="M270,18 Q272,14 274,18 Q276,14 278,18" fill="#c2956b" />
+                <path d="M330,3 Q332,0 334,3 Q336,0 338,3" fill="#c2956b" />
+              </g>
             </svg>
           </div>
           <div style={BS.heroTitle}>AUSTIN BLUES DIGEST</div>
@@ -420,10 +472,10 @@ const venueInfoCard = {
 const BS = {
   container: { minHeight: '100vh', background: '#0a0908', color: '#e5e7eb', fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif", maxWidth: 680, margin: '0 auto', padding: '0 0 60px' },
   header: { borderBottom: '1px solid #2d1810' },
-  hero: { background: 'linear-gradient(180deg, #1a0e05 0%, #2d1810 40%, #0a0908 100%)', padding: '0 0 24px', textAlign: 'center', overflow: 'hidden' },
-  heroSkyline: { width: '100%' },
-  heroTitle: { fontSize: 28, fontWeight: 900, color: '#c2956b', letterSpacing: '0.12em', marginTop: -8, fontFamily: "'Georgia', 'Times New Roman', serif" },
-  heroSub: { fontSize: 11, color: '#8b6914', letterSpacing: '0.2em', textTransform: 'uppercase', marginTop: 4 },
+  hero: { background: 'linear-gradient(180deg, #1a0e05 0%, #0a0908 100%)', padding: '0 0 24px', textAlign: 'center', overflow: 'hidden' },
+  heroSkyline: { width: '100%', marginBottom: -4 },
+  heroTitle: { fontSize: 28, fontWeight: 900, color: '#c2956b', letterSpacing: '0.18em', marginTop: -2, fontFamily: "'Playfair Display', 'Georgia', serif", textShadow: '0 1px 8px rgba(194,149,107,.12)' },
+  heroSub: { fontSize: 11, color: '#8b6914', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: 6, fontWeight: 500 },
   tabBar: { display: 'flex', borderBottom: '1px solid #2d1810', overflowX: 'auto' },
   tab: { padding: '12px 18px', background: 'none', border: 'none', color: '#6b7280', fontSize: 13, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap', borderBottom: '2px solid transparent', position: 'relative' },
   tabActive: { color: '#c2956b', borderBottom: '2px solid #c2956b' },
