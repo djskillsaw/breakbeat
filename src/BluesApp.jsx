@@ -59,6 +59,37 @@ export default function BluesApp() {
               {/* Horizon glow layer */}
               <rect x="0" y="-10" width="680" height="145" fill="url(#horizonGlow)" />
 
+              {/* Ghost electric guitar silhouette — barely visible behind skyline */}
+              <g opacity="0.04" transform="translate(180, -8) scale(0.85)">
+                {/* Body — Les Paul / SG style double cutaway */}
+                <ellipse cx="340" cy="88" rx="50" ry="30" fill="#c2956b" />
+                <ellipse cx="340" cy="78" rx="45" ry="26" fill="#c2956b" />
+                {/* Waist cutaway */}
+                <ellipse cx="310" cy="80" rx="12" ry="18" fill="#0c0a08" />
+                <ellipse cx="370" cy="80" rx="12" ry="18" fill="#0c0a08" />
+                {/* Neck */}
+                <rect x="332" y="10" width="16" height="60" fill="#c2956b" />
+                {/* Headstock */}
+                <rect x="330" y="-5" width="20" height="18" rx="3" fill="#c2956b" />
+                {/* Tuning pegs */}
+                <circle cx="334" cy="-2" r="2" fill="#c2956b" />
+                <circle cx="334" cy="5" r="2" fill="#c2956b" />
+                <circle cx="334" cy="12" r="2" fill="#c2956b" />
+                <circle cx="346" cy="-2" r="2" fill="#c2956b" />
+                <circle cx="346" cy="5" r="2" fill="#c2956b" />
+                <circle cx="346" cy="12" r="2" fill="#c2956b" />
+                {/* Pickups */}
+                <rect x="325" y="72" width="30" height="5" rx="2" fill="#0c0a08" opacity="0.3" />
+                <rect x="325" y="84" width="30" height="5" rx="2" fill="#0c0a08" opacity="0.3" />
+                {/* Bridge */}
+                <rect x="330" y="94" width="20" height="3" fill="#0c0a08" opacity="0.2" />
+                {/* Strings suggestion */}
+                <line x1="335" y1="10" x2="335" y2="97" stroke="#c2956b" strokeWidth="0.3" opacity="0.5" />
+                <line x1="338" y1="10" x2="338" y2="97" stroke="#c2956b" strokeWidth="0.3" opacity="0.5" />
+                <line x1="341" y1="10" x2="341" y2="97" stroke="#c2956b" strokeWidth="0.3" opacity="0.5" />
+                <line x1="344" y1="10" x2="344" y2="97" stroke="#c2956b" strokeWidth="0.3" opacity="0.5" />
+              </g>
+
               {/* === SKYLINE GROUP — masked for atmospheric fade === */}
               <g mask="url(#skyMask)">
 
@@ -310,14 +341,14 @@ export default function BluesApp() {
                   <div style={BS.areaLabel}>{area}</div>
                   {areaVenues.map(venue => (
                     <div key={venue.id} style={venueInfoCard}>
-                      <a href={venue.venueUrl} target="_blank" rel="noreferrer" style={{ fontSize: 15, fontWeight: 700, color: '#c2956b', textDecoration: 'none' }}>
+                      <a href={venue.venueUrl} target="_blank" rel="noreferrer" style={{ fontSize: 15, fontWeight: 700, color: '#c2956b', textDecoration: 'none', fontFamily: "'Playfair Display', 'Georgia', serif" }}>
                         {venue.venue} <ExternalLinkIcon />
                       </a>
-                      <div style={{ fontSize: 12, color: '#6b7280', marginTop: 2 }}>{venue.address}</div>
-                      <div style={{ fontSize: 12, color: '#6b7280', fontStyle: 'italic', marginTop: 4, marginBottom: 8 }}>{venue.details}</div>
+                      <div style={{ fontSize: 12, color: '#8a7a65', marginTop: 2 }}>{venue.address}</div>
+                      <div style={{ fontSize: 12, color: '#8a7a65', fontStyle: 'italic', marginTop: 4, marginBottom: 8 }}>{venue.details}</div>
                       <div style={S.btnRow}>
-                        <a href={venue.instagram} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#7c3aed', fontSize: 11 }}>Instagram <ExternalLinkIcon /></a>
-                        <a href={venue.calendarUrl} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#374151', fontSize: 11 }}>Full Calendar <ExternalLinkIcon /></a>
+                        <a href={venue.instagram} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#6b3a2a', fontSize: 11, borderRadius: 6 }}>Instagram <ExternalLinkIcon /></a>
+                        <a href={venue.calendarUrl} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#2d1810', border: '1px solid #4a3828', fontSize: 11, borderRadius: 6 }}>Full Calendar <ExternalLinkIcon /></a>
                       </div>
                     </div>
                   ))}
@@ -328,7 +359,7 @@ export default function BluesApp() {
             <div style={{ ...BS.sectionLabel, marginTop: 16 }}>{'\ud83d\udcc5'} Blues Event Calendars</div>
             <div style={S.btnRow}>
               {bluesCalendars.map(cal => (
-                <a key={cal.url} href={cal.url} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#374151' }}>
+                <a key={cal.url} href={cal.url} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#2d1810', border: '1px solid #4a3828', borderRadius: 6 }}>
                   {cal.label} <ExternalLinkIcon />
                 </a>
               ))}
@@ -370,26 +401,26 @@ export default function BluesApp() {
 }
 
 const venueInfoCard = {
-  background: '#111210',
+  background: '#16120e',
   border: '1px solid #2d1810',
   borderRadius: 10,
-  padding: 14,
-  marginBottom: 10,
+  padding: 16,
+  marginBottom: 12,
 };
 
-// Blues-specific styles (warm copper/leather palette)
+// Blues-specific styles — warm Austin live music palette
 const BS = {
-  container: { minHeight: '100vh', background: '#0a0908', color: '#e5e7eb', fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif", maxWidth: 680, margin: '0 auto', padding: '0 0 60px' },
+  container: { minHeight: '100vh', background: '#0a0908', color: '#e8ddd0', fontFamily: "'Lora', 'Georgia', serif", maxWidth: 680, margin: '0 auto', padding: '0 0 60px' },
   header: { borderBottom: '1px solid #2d1810' },
   hero: { background: 'linear-gradient(180deg, #1a0e05 0%, #0a0908 100%)', padding: '16px 0 24px', textAlign: 'center', overflow: 'hidden' },
   heroSkyline: { width: '100%', marginBottom: -4 },
   heroTitle: { fontSize: 28, fontWeight: 900, color: '#c2956b', letterSpacing: '0.18em', marginTop: -2, fontFamily: "'Playfair Display', 'Georgia', serif", textShadow: '0 1px 8px rgba(194,149,107,.12)' },
-  heroSub: { fontSize: 11, color: '#8b6914', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: 6, fontWeight: 500 },
-  tabBar: { display: 'flex', borderBottom: '1px solid #2d1810', overflowX: 'auto' },
-  tab: { padding: '12px 18px', background: 'none', border: 'none', color: '#6b7280', fontSize: 13, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap', borderBottom: '2px solid transparent', position: 'relative' },
+  heroSub: { fontSize: 11, color: '#8b6914', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: 6, fontWeight: 500, fontFamily: "'Stint Ultra Expanded', serif" },
+  tabBar: { display: 'flex', borderBottom: '1px solid #2d1810', overflowX: 'auto', background: '#0e0b08' },
+  tab: { padding: '12px 18px', background: 'none', border: 'none', color: '#7a6a55', fontSize: 13, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap', borderBottom: '2px solid transparent', position: 'relative', fontFamily: "'Lora', 'Georgia', serif" },
   tabActive: { color: '#c2956b', borderBottom: '2px solid #c2956b' },
-  badge: { marginLeft: 6, background: '#c2956b', color: '#000', borderRadius: 10, padding: '1px 6px', fontSize: 11, fontWeight: 700 },
-  sectionLabel: { fontSize: 11, fontWeight: 700, color: '#8b7355', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16, marginTop: 8 },
-  areaLabel: { fontSize: 10, fontWeight: 700, color: '#6b7280', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8, marginTop: 12, paddingBottom: 4, borderBottom: '1px solid #1a1610' },
-  footer: { textAlign: 'center', fontSize: 11, color: '#374151', padding: '24px 16px 0', borderTop: '1px solid #1a1008' },
+  badge: { marginLeft: 6, background: '#c2956b', color: '#0a0908', borderRadius: 10, padding: '1px 6px', fontSize: 11, fontWeight: 700 },
+  sectionLabel: { fontSize: 12, fontWeight: 700, color: '#a08060', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16, marginTop: 8, fontFamily: "'Playfair Display', 'Georgia', serif" },
+  areaLabel: { fontSize: 10, fontWeight: 700, color: '#7a6a55', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8, marginTop: 12, paddingBottom: 4, borderBottom: '1px solid #2d1810' },
+  footer: { textAlign: 'center', fontSize: 11, color: '#4a3828', padding: '24px 16px 0', borderTop: '1px solid #2d1810', fontFamily: "'Lora', 'Georgia', serif" },
 };

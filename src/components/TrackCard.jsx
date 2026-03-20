@@ -103,7 +103,7 @@ const styles = {
   sourceTag: {
     fontSize: 9,
     fontWeight: 700,
-    background: '#1f2937',
+    background: '#1a1610',
     borderRadius: 4,
     padding: '2px 6px',
     whiteSpace: 'nowrap',
@@ -113,7 +113,7 @@ const styles = {
     display: 'flex',
     gap: 12,
     fontSize: 11,
-    color: '#6b7280',
+    color: '#8a7a65',
     marginBottom: 8,
   },
 };

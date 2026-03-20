@@ -71,8 +71,8 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '8px 16px',
-    borderBottom: '1px solid #1f2937',
-    background: '#0d1117',
+    borderBottom: '1px solid #2d1810',
+    background: '#0e0b08',
     gap: 8,
     flexWrap: 'wrap',
   },
@@ -89,7 +89,7 @@ const styles = {
   },
   text: {
     fontSize: 11,
-    color: '#6b7280',
+    color: '#7a6a55',
   },
   error: {
     fontSize: 11,
@@ -100,7 +100,7 @@ const styles = {
     alignItems: 'center',
     gap: 8,
     fontSize: 10,
-    color: '#9ca3af',
+    color: '#8a7a65',
     fontWeight: 600,
   },
   sourceDot: {
@@ -118,11 +118,11 @@ const styles = {
     cursor: 'pointer',
   },
   checkbox: {
-    accentColor: '#f97316',
+    accentColor: '#c2956b',
   },
   toggleLabel: {
     fontSize: 11,
-    color: '#9ca3af',
+    color: '#8a7a65',
     fontWeight: 600,
   },
 };
