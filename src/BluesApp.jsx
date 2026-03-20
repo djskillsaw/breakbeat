@@ -157,25 +157,25 @@ export default function BluesApp() {
                 <rect x="50" y="12" width="0.8" height="55" fill="#0c0a08" opacity="0.12" />
                 <rect x="53.5" y="12" width="0.8" height="55" fill="#0c0a08" opacity="0.12" />
 
-                {/* Clock level — narrower than shaft (14px) */}
-                <rect x="43" y="7" width="14" height="5.5" fill="#c2956b" />
-                <rect x="42.5" y="6.5" width="15" height="1" fill="#c2956b" />
+                {/* Clock level — same width as shaft */}
+                <rect x="42" y="7" width="16" height="5.5" fill="#c2956b" />
+                <rect x="41.5" y="6.5" width="17" height="1" fill="#c2956b" />
                 {/* Clock face */}
                 <circle cx="50" cy="10" r="2" fill="#0c0a08" opacity="0.3" />
 
-                {/* Colonnade / observation gallery — narrower still (11px) */}
-                <rect x="44.5" y="1.5" width="11" height="5.5" fill="#c2956b" />
+                {/* Observation gallery — single step narrower (12px) */}
+                <rect x="44" y="0" width="12" height="7" fill="#c2956b" />
                 {/* Gallery openings */}
-                <rect x="45.5" y="2.5" width="1.8" height="3.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
-                <rect x="48" y="2.5" width="1.8" height="3.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
-                <rect x="50.5" y="2.5" width="1.8" height="3.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
-                <rect x="53" y="2.5" width="1.8" height="3.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
+                <rect x="45" y="1" width="1.8" height="4.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
+                <rect x="47.5" y="1" width="1.8" height="4.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
+                <rect x="50" y="1" width="1.8" height="4.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
+                <rect x="52.5" y="1" width="1.8" height="4.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
 
-                {/* Flat cap — narrower (9px) */}
-                <rect x="45.5" y="0" width="9" height="2" fill="#c2956b" />
+                {/* Flat cap */}
+                <rect x="43.5" y="-1" width="13" height="1.5" fill="#c2956b" />
 
-                {/* Small pedestal block on top (5px) */}
-                <rect x="47.5" y="-3" width="5" height="3.5" fill="#c2956b" />
+                {/* Small pedestal block on top */}
+                <rect x="47.5" y="-3.5" width="5" height="3" fill="#c2956b" />
 
                 {/* ── Texas State Capitol — scaled down (~70%) ── */}
                 {/* East wing */}
