@@ -14,7 +14,16 @@ export const houseMixes = [
   { id: 'hm4', title: 'Most Rated 2026 Mix', artist: 'Various — Defected Records', genre: 'house', duration: '3h+', date: 'Mar 2026', source: 'Defected Records', rating: 'Label Curated', vibe: 'Peak-time house, CamelPhat, Martinez Bros, Armand Van Helden', soundcloudUrl: 'https://soundcloud.com/defaborern', youtubeUrl: 'https://www.youtube.com/results?search_query=Defected+Most+Rated+2026', mixcloudUrl: 'https://defected.com/music/releases/various-artists-defected-most-rated-compilation-2026/' },
 ];
 
-export const allMixes = [...dnbMixes, ...houseMixes];
+export const chillBreaksMixes = [
+  { id: 'cb1', title: 'Breaks & Breakbeat 2026', artist: 'uBazz', genre: 'breakbeat', duration: '2h+', date: '2026', source: 'SoundCloud', rating: 'Updated Weekly', vibe: 'UK breaks, house breaks, garage & DnB breaks — fresh 2026 releases', soundcloudUrl: 'https://soundcloud.com/ubazz/sets/breaksbreakbeat2026', youtubeUrl: 'https://www.youtube.com/results?search_query=breakbeat+mix+2026' },
+  { id: 'cb2', title: 'Classic B-Boy Breaks Mix', artist: 'A-Trak', genre: 'breakbeat', duration: '45m', date: '2025', source: 'SoundCloud', rating: 'Essential Breaks', vibe: 'Classic b-boy breaks, turntablism, hip-hop foundation', soundcloudUrl: 'https://soundcloud.com/a-trak/classic-b-boy-breaks-mix', youtubeUrl: 'https://www.youtube.com/results?search_query=A-Trak+classic+b-boy+breaks+mix' },
+  { id: 'cb3', title: 'Psychill 2026 — Weekly Updated', artist: 'MindGum', genre: 'chill', duration: '3h+', date: '2026', source: 'SoundCloud', rating: 'Updated Weekly', vibe: 'Psybient, downtempo, chillgressive, slow trance — only 2026 releases', soundcloudUrl: 'https://soundcloud.com/mindgum/sets/psychill', youtubeUrl: 'https://www.youtube.com/results?search_query=psychill+2026+mix' },
+  { id: 'cb4', title: 'Bonobo DJ Sets', artist: 'Bonobo', genre: 'chill', duration: '2h+', date: '2025', source: 'SoundCloud — Ninja Tune', rating: 'Iconic', vibe: 'Downtempo, organic, cinematic — vinyl-heavy DJ sets', soundcloudUrl: 'https://soundcloud.com/bonobo/sets/dj-mixes', youtubeUrl: 'https://www.youtube.com/results?search_query=Bonobo+DJ+set+2025' },
+  { id: 'cb5', title: 'Downtempo Electronica 2026', artist: 'Sound Nomaden', genre: 'chill', duration: '3h+', date: '2026', source: 'Spotify', rating: 'Curated Playlist', vibe: 'Electronic, chillout, IDM — Bonobo, Four Tet, Parra for Cuva', soundcloudUrl: 'https://open.spotify.com/playlist/2TxPMEFHcXtZK0nBrGJoOS', youtubeUrl: 'https://www.youtube.com/results?search_query=downtempo+electronica+2026' },
+  { id: 'cb6', title: 'Microcosmos ChillOut Sessions', artist: 'Microcosmos', genre: 'chill', duration: '1h+', date: '2026', source: 'SoundCloud', rating: 'Community Curated', vibe: 'Ambient, psybient, dub, lounge — global chillout community', soundcloudUrl: 'https://soundcloud.com/microcosmos', youtubeUrl: 'https://www.youtube.com/results?search_query=Microcosmos+chillout+2026' },
+];
+
+export const allMixes = [...dnbMixes, ...houseMixes, ...chillBreaksMixes];
 
 export const mixGenres = [
   { id: 'all', label: 'All' },

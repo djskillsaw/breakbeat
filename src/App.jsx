@@ -2,6 +2,7 @@ import { useState, useCallback, useMemo } from 'react';
 import { S } from './styles';
 import { genreCategories } from './data/static-tracks';
 import { allMixes, mixGenres } from './data/static-mixes';
+import { austinDjMixes, austinMixGenres } from './data/static-austin-mixes';
 import { shows, eventCalendars } from './data/static-events';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useChartData } from './hooks/useChartData';
@@ -11,13 +12,14 @@ import MixCard from './components/MixCard';
 import EventCard from './components/EventCard';
 import { StarIcon, ExternalLinkIcon } from './components/Icons';
 
-const TAB_NAMES = ['Hottest Tracks', 'Mixes', 'House & Chillout', 'Austin Shows', 'Saved'];
+const TAB_NAMES = ['Hottest Tracks', 'Mixes', 'House & Chillout', 'Austin Shows', "Austin DJ's Mixes", 'Saved'];
 
 export default function App() {
   const [tab, setTab] = useState(0);
   const [savedTracks, setSavedTracks] = useLocalStorage('bb-savedTracks', []);
   const [savedMixes, setSavedMixes] = useLocalStorage('bb-savedMixes', []);
   const [mixGenreFilter, setMixGenreFilter] = useState('all');
+  const [atxMixGenreFilter, setAtxMixGenreFilter] = useState('all');
 
   const {
     liveCharts, lastUpdated, previousRanks, isLoading, error,
@@ -44,6 +46,12 @@ export default function App() {
     if (mixGenreFilter === 'all') return allMixes;
     return allMixes.filter(m => m.genre === mixGenreFilter);
   }, [mixGenreFilter]);
+
+  // Filtered Austin DJ mixes
+  const filteredAtxMixes = useMemo(() => {
+    if (atxMixGenreFilter === 'all') return austinDjMixes;
+    return austinDjMixes.filter(m => m.genre === atxMixGenreFilter);
+  }, [atxMixGenreFilter]);
 
   return (
     <div style={S.container}>
@@ -192,8 +200,39 @@ export default function App() {
           </>
         )}
 
-        {/* Tab 4: Saved */}
+        {/* Tab 4: Austin DJ's Mixes */}
         {tab === 4 && (
+          <>
+            <div style={S.sectionLabel}>{'\ud83e\udd20'} Austin DJ's Mixes {'\u2014'} Local Talent, Live Sets & Residencies</div>
+
+            {/* Genre filter chips */}
+            <div style={S.filterBar}>
+              {austinMixGenres.map(g => (
+                <button
+                  key={g.id}
+                  onClick={() => setAtxMixGenreFilter(g.id)}
+                  style={{
+                    ...S.filterChip,
+                    ...(atxMixGenreFilter === g.id ? S.filterChipActive : {}),
+                  }}
+                >
+                  {g.label}
+                </button>
+              ))}
+            </div>
+
+            {filteredAtxMixes.length === 0 ? (
+              <div style={S.empty}>No mixes in this genre yet. Check back soon.</div>
+            ) : (
+              filteredAtxMixes.map(mix => (
+                <MixCard key={mix.id} mix={mix} saved={savedMixes.includes(mix.id)} onToggleSave={toggleMix} />
+              ))
+            )}
+          </>
+        )}
+
+        {/* Tab 5: Saved */}
+        {tab === 5 && (
           <>
             {savedCount === 0 ? (
               <div style={S.empty}>Nothing saved yet. Star any track or mix to save it here.</div>
