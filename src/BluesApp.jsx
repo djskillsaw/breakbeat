@@ -51,54 +51,115 @@ export default function BluesApp() {
               <ellipse cx="510" cy="95" rx="30" ry="6" fill="#0c0a08" />
               <ellipse cx="595" cy="95" rx="30" ry="6" fill="#0c0a08" />
 
-              {/* UT Tower — architecturally accurate 4-section tiered tower */}
-              {/* Section 1: Main Building base — wide rusticated limestone */}
-              <rect x="15" y="75" width="70" height="20" fill="#c2956b" />
-              {/* Base entrance portico suggestion */}
-              <rect x="35" y="72" width="30" height="5" fill="#c2956b" />
-              {/* Attic story / President's office with hipped roof */}
-              <polygon points="22,75 25,70 75,70 78,75" fill="#c2956b" />
-              <rect x="28" y="70" width="44" height="6" fill="#c2956b" />
-              {/* Section 2: Tower shaft — 17 plain stories */}
-              <rect x="38" y="30" width="24" height="42" fill="#c2956b" />
-              {/* Subtle floor lines on shaft */}
-              <rect x="38" y="40" width="24" height="0.8" fill="#0c0a08" opacity="0.15" />
-              <rect x="38" y="48" width="24" height="0.8" fill="#0c0a08" opacity="0.15" />
-              <rect x="38" y="56" width="24" height="0.8" fill="#0c0a08" opacity="0.15" />
-              {/* Section 3: Clock level — wider with broken pediment frames */}
-              <rect x="35" y="24" width="30" height="8" fill="#c2956b" />
-              {/* Clock faces (circles on two visible sides) */}
-              <circle cx="42" cy="28" r="2.5" fill="#0c0a08" opacity="0.25" />
-              <circle cx="58" cy="28" r="2.5" fill="#0c0a08" opacity="0.25" />
+              {/* UT Tower — rebuilt with proper mass and architectural detail */}
+              {/* Section 1: Main Building base — wide rusticated limestone, 3 stories */}
+              <rect x="12" y="74" width="76" height="21" fill="#c2956b" />
+              {/* String course / cornice at top of Main Building */}
+              <rect x="12" y="73" width="76" height="1.5" fill="#c2956b" opacity="0.9" />
+              {/* Base entrance — recessed central portico */}
+              <rect x="34" y="70" width="32" height="5" fill="#c2956b" />
+              <rect x="36" y="70" width="28" height="1" fill="#0c0a08" opacity="0.18" />
+              {/* Window grid on Main Building — 8 bays */}
+              <rect x="17" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+              <rect x="24" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+              <rect x="31" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+              <rect x="38" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+              <rect x="58" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+              <rect x="65" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+              <rect x="72" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+              <rect x="79" y="78" width="3" height="4" fill="#0c0a08" opacity="0.18" />
+              {/* Second floor windows */}
+              <rect x="17" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+              <rect x="24" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+              <rect x="31" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+              <rect x="38" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+              <rect x="58" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+              <rect x="65" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+              <rect x="72" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+              <rect x="79" y="86" width="3" height="4" fill="#0c0a08" opacity="0.14" />
+              {/* Attic story / President's office — hipped transition */}
+              <polygon points="18,74 22,68 78,68 82,74" fill="#c2956b" />
+              <rect x="25" y="68" width="50" height="7" fill="#c2956b" />
+              {/* Attic story cornice */}
+              <rect x="24" y="67" width="52" height="1.5" fill="#c2956b" opacity="0.85" />
+
+              {/* Section 2: Tower shaft — 17 stories with window grid */}
+              <rect x="36" y="28" width="28" height="40" fill="#c2956b" />
+              {/* Setback ledge at shaft base */}
+              <rect x="34" y="66" width="32" height="2" fill="#c2956b" />
+              {/* Window columns — 4 bays across, 6 floors visible */}
+              <rect x="39" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
+              <rect x="45" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
+              <rect x="52" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
+              <rect x="58" y="32" width="2.5" height="3.5" fill="#0c0a08" opacity="0.2" />
+              <rect x="39" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
+              <rect x="45" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
+              <rect x="52" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
+              <rect x="58" y="38" width="2.5" height="3.5" fill="#0c0a08" opacity="0.18" />
+              <rect x="39" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
+              <rect x="45" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
+              <rect x="52" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
+              <rect x="58" y="44" width="2.5" height="3.5" fill="#0c0a08" opacity="0.16" />
+              <rect x="39" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
+              <rect x="45" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
+              <rect x="52" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
+              <rect x="58" y="50" width="2.5" height="3.5" fill="#0c0a08" opacity="0.14" />
+              <rect x="39" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
+              <rect x="45" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
+              <rect x="52" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
+              <rect x="58" y="56" width="2.5" height="3.5" fill="#0c0a08" opacity="0.12" />
+              <rect x="39" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
+              <rect x="45" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
+              <rect x="52" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
+              <rect x="58" y="62" width="2.5" height="3" fill="#0c0a08" opacity="0.1" />
+
+              {/* Section 3: Clock level — wider setback with recessed clock faces */}
+              <rect x="33" y="21" width="34" height="8" fill="#c2956b" />
+              {/* Clock level cornice */}
+              <rect x="32" y="20" width="36" height="1.5" fill="#c2956b" />
+              {/* Clock faces — deep recessed circles */}
+              <circle cx="42" cy="25" r="2.8" fill="#0c0a08" opacity="0.3" />
+              <circle cx="42" cy="25" r="2" fill="#0c0a08" opacity="0.12" />
+              <circle cx="58" cy="25" r="2.8" fill="#0c0a08" opacity="0.3" />
+              <circle cx="58" cy="25" r="2" fill="#0c0a08" opacity="0.12" />
               {/* Broken pediments above clocks */}
-              <polygon points="37,24 42,20 44,24" fill="#c2956b" />
-              <polygon points="56,24 58,20 63,24" fill="#c2956b" />
-              {/* Section 4: Bell level with Doric columns */}
-              <rect x="37" y="16" width="26" height="6" fill="#c2956b" />
-              {/* Column gaps in bell level */}
-              <rect x="40" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
-              <rect x="44" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
-              <rect x="48" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
-              <rect x="52" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
-              <rect x="56" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
-              <rect x="60" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
-              {/* Observation deck platform */}
-              <rect x="34" y="14" width="32" height="3" fill="#c2956b" />
-              {/* Corner turrets / finials */}
-              <rect x="34" y="10" width="3" height="5" fill="#c2956b" />
-              <rect x="63" y="10" width="3" height="5" fill="#c2956b" />
+              <polygon points="35,21 42,16 44,21" fill="#c2956b" />
+              <polygon points="56,21 58,16 65,21" fill="#c2956b" />
+
+              {/* Section 4: Bell level — arched openings with Doric columns */}
+              <rect x="35" y="13" width="30" height="7" fill="#c2956b" />
+              {/* Arched openings between columns */}
+              <rect x="39" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+              <rect x="44" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+              <rect x="49" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+              <rect x="54" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+              <rect x="59" y="14" width="3.5" height="5" rx="1.5" fill="#0c0a08" opacity="0.3" />
+
+              {/* Observation deck — balustrade with railing posts */}
+              <rect x="32" y="11" width="36" height="3" fill="#c2956b" />
+              {/* Railing posts */}
+              <rect x="33" y="9.5" width="1" height="2" fill="#c2956b" />
+              <rect x="37" y="9.5" width="1" height="2" fill="#c2956b" />
+              <rect x="41" y="9.5" width="1" height="2" fill="#c2956b" />
+              <rect x="57" y="9.5" width="1" height="2" fill="#c2956b" />
+              <rect x="61" y="9.5" width="1" height="2" fill="#c2956b" />
+              <rect x="65" y="9.5" width="1" height="2" fill="#c2956b" />
+              {/* Top rail */}
+              <rect x="32" y="9" width="36" height="1" fill="#c2956b" />
+
+              {/* Corner turrets — all four corners */}
+              <rect x="31" y="6" width="3.5" height="5" fill="#c2956b" />
+              <rect x="65" y="6" width="3.5" height="5" fill="#c2956b" />
+              {/* Turret caps */}
+              <polygon points="31,6 32.75,3.5 34.5,6" fill="#c2956b" />
+              <polygon points="65,6 66.75,3.5 68.5,6" fill="#c2956b" />
+
               {/* Gold leaf garland band */}
-              <rect x="36" y="14" width="28" height="1" fill="#c2956b" />
-              {/* Central finial spire */}
-              <rect x="49" y="6" width="2" height="9" fill="#c2956b" />
-              <polygon points="48,6 50,2 52,6" fill="#c2956b" />
-              {/* Column suggestions on Main Building base */}
-              <rect x="20" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
-              <rect x="28" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
-              <rect x="36" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
-              <rect x="63" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
-              <rect x="71" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
-              <rect x="79" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
+              <rect x="34" y="11" width="32" height="0.8" fill="#c2956b" opacity="0.7" />
+
+              {/* Central spire — tapered with finial */}
+              <rect x="48.5" y="3" width="3" height="8" fill="#c2956b" />
+              <polygon points="47.5,3 50,0 52.5,3" fill="#c2956b" />
 
               {/* Small building cluster left of center */}
               <rect x="82" y="62" width="18" height="33" fill="#c2956b" />
