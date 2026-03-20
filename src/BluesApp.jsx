@@ -42,9 +42,8 @@ export default function BluesApp() {
               <defs>
                 {/* Vertical fade mask — buildings emerge from nothing at top, full strength at skyline edge */}
                 <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="white" stopOpacity="0.18" />
-                  <stop offset="40%" stopColor="white" stopOpacity="0.25" />
-                  <stop offset="75%" stopColor="white" stopOpacity="0.32" />
+                  <stop offset="0%" stopColor="white" stopOpacity="0.28" />
+                  <stop offset="50%" stopColor="white" stopOpacity="0.32" />
                   <stop offset="100%" stopColor="white" stopOpacity="0.38" />
                 </linearGradient>
                 <mask id="skyMask">
