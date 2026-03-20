@@ -197,40 +197,28 @@ export default function BluesApp() {
                 <rect x="44.5" y="60" width="2" height="3" fill="#0c0a08" opacity="0.1" />
                 <rect x="53.5" y="60" width="2" height="3" fill="#0c0a08" opacity="0.1" />
 
-                {/* Section 3: Clock level — slightly wider than shaft */}
-                <rect x="40" y="9" width="20" height="6" fill="#c2956b" />
-                <rect x="39" y="8" width="22" height="1.5" fill="#c2956b" />
-                {/* Clock faces */}
-                <circle cx="45" cy="12" r="1.8" fill="#0c0a08" opacity="0.3" />
-                <circle cx="55" cy="12" r="1.8" fill="#0c0a08" opacity="0.3" />
+                {/* Section 3: Clock level — same width as shaft, clean rectangle */}
+                <rect x="42" y="8" width="16" height="6" fill="#c2956b" />
+                {/* Thin cornice line above clock */}
+                <rect x="41.5" y="7.5" width="17" height="1" fill="#c2956b" />
+                {/* Clock face — single centered circle */}
+                <circle cx="50" cy="11.5" r="2" fill="#0c0a08" opacity="0.3" />
+                <circle cx="50" cy="11.5" r="1.4" fill="#0c0a08" opacity="0.12" />
 
-                {/* Section 4: Bell level / observation crown */}
-                <rect x="41" y="4" width="18" height="5.5" fill="#c2956b" />
-                {/* Arched openings */}
-                <rect x="43" y="5" width="2.5" height="3.5" rx="1" fill="#0c0a08" opacity="0.28" />
-                <rect x="47" y="5" width="2.5" height="3.5" rx="1" fill="#0c0a08" opacity="0.28" />
-                <rect x="51" y="5" width="2.5" height="3.5" rx="1" fill="#0c0a08" opacity="0.28" />
-                <rect x="55" y="5" width="2.5" height="3.5" rx="1" fill="#0c0a08" opacity="0.28" />
+                {/* Section 4: Colonnade gallery — narrower than shaft */}
+                <rect x="43" y="2.5" width="14" height="5.5" fill="#c2956b" />
+                {/* Arched openings — tall narrow colonnade */}
+                <rect x="44.5" y="3.5" width="2" height="3.5" rx="0.8" fill="#0c0a08" opacity="0.3" />
+                <rect x="47.5" y="3.5" width="2" height="3.5" rx="0.8" fill="#0c0a08" opacity="0.3" />
+                <rect x="50.5" y="3.5" width="2" height="3.5" rx="0.8" fill="#0c0a08" opacity="0.3" />
+                <rect x="53.5" y="3.5" width="2" height="3.5" rx="0.8" fill="#0c0a08" opacity="0.3" />
 
-                {/* Observation deck platform */}
-                <rect x="39" y="2.5" width="22" height="2" fill="#c2956b" />
-                {/* Railing posts */}
-                <rect x="40" y="1" width="0.8" height="2" fill="#c2956b" />
-                <rect x="44" y="1" width="0.8" height="2" fill="#c2956b" />
-                <rect x="55" y="1" width="0.8" height="2" fill="#c2956b" />
-                <rect x="59" y="1" width="0.8" height="2" fill="#c2956b" />
-                {/* Top rail */}
-                <rect x="39" y="0.5" width="22" height="0.8" fill="#c2956b" />
+                {/* Flat cap / cornice — clean top edge */}
+                <rect x="42.5" y="1.5" width="15" height="1.5" fill="#c2956b" />
 
-                {/* Corner turrets */}
-                <rect x="38.5" y="-2" width="2.5" height="4" fill="#c2956b" />
-                <rect x="59" y="-2" width="2.5" height="4" fill="#c2956b" />
-                <polygon points="38.5,-2 39.75,-3.5 41,-2" fill="#c2956b" />
-                <polygon points="59,-2 60.25,-3.5 61.5,-2" fill="#c2956b" />
-
-                {/* Central spire — slender finial */}
-                <rect x="49" y="-5" width="2" height="6.5" fill="#c2956b" />
-                <polygon points="48.5,-5 50,-8 51.5,-5" fill="#c2956b" />
+                {/* Single small finial / spire — centered, no turrets */}
+                <rect x="49.2" y="-2" width="1.6" height="4" fill="#c2956b" />
+                <polygon points="49,-2 50,-4.5 51,-2" fill="#c2956b" />
 
                 {/* ── Texas State Capitol — Italian Renaissance Revival ── */}
                 {/* East wing */}
