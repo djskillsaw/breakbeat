@@ -145,9 +145,8 @@ export default function BluesApp() {
                   {/* Roofline cornice */}
                   <rect x="9" y="75" width="82" height="1.5" fill="#c2956b" />
 
-                  {/* Transition ledge */}
-                  <rect x="30" y="68" width="40" height="7.5" fill="#c2956b" />
-                  <rect x="29" y="67" width="42" height="1.5" fill="#c2956b" />
+                  {/* Transition ledge — burnt orange to match shaft */}
+                  <rect x="30" y="68" width="40" height="7.5" fill="#bf5700" />
 
                   {/* Shaft — one continuous burnt orange column (18px) */}
                   <rect x="41" y="22" width="18" height="46" fill="#bf5700" />
