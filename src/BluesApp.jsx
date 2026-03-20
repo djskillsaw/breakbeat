@@ -51,25 +51,54 @@ export default function BluesApp() {
               <ellipse cx="510" cy="95" rx="30" ry="6" fill="#0c0a08" />
               <ellipse cx="595" cy="95" rx="30" ry="6" fill="#0c0a08" />
 
-              {/* UT Tower — wide base building with iconic tiered tower */}
-              {/* Main Building base (wide) */}
-              <rect x="20" y="72" width="60" height="23" fill="#c2956b" />
-              {/* Tower shaft rising from center of base */}
-              <rect x="40" y="32" width="20" height="42" fill="#c2956b" />
-              {/* Observation deck / balcony ledge */}
-              <rect x="37" y="32" width="26" height="3" fill="#c2956b" />
-              {/* Upper tier narrows */}
-              <rect x="43" y="22" width="14" height="12" fill="#c2956b" />
-              <rect x="41" y="22" width="18" height="2" fill="#c2956b" />
-              {/* Clock / lantern top section */}
-              <rect x="46" y="14" width="8" height="10" fill="#c2956b" />
-              {/* Finial spire */}
-              <rect x="49" y="8" width="2" height="7" fill="#c2956b" />
-              {/* Columns suggestion on base */}
-              <rect x="25" y="72" width="2" height="20" fill="#0c0a08" opacity="0.3" />
-              <rect x="33" y="72" width="2" height="20" fill="#0c0a08" opacity="0.3" />
-              <rect x="65" y="72" width="2" height="20" fill="#0c0a08" opacity="0.3" />
-              <rect x="73" y="72" width="2" height="20" fill="#0c0a08" opacity="0.3" />
+              {/* UT Tower — architecturally accurate 4-section tiered tower */}
+              {/* Section 1: Main Building base — wide rusticated limestone */}
+              <rect x="15" y="75" width="70" height="20" fill="#c2956b" />
+              {/* Base entrance portico suggestion */}
+              <rect x="35" y="72" width="30" height="5" fill="#c2956b" />
+              {/* Attic story / President's office with hipped roof */}
+              <polygon points="22,75 25,70 75,70 78,75" fill="#c2956b" />
+              <rect x="28" y="70" width="44" height="6" fill="#c2956b" />
+              {/* Section 2: Tower shaft — 17 plain stories */}
+              <rect x="38" y="30" width="24" height="42" fill="#c2956b" />
+              {/* Subtle floor lines on shaft */}
+              <rect x="38" y="40" width="24" height="0.8" fill="#0c0a08" opacity="0.15" />
+              <rect x="38" y="48" width="24" height="0.8" fill="#0c0a08" opacity="0.15" />
+              <rect x="38" y="56" width="24" height="0.8" fill="#0c0a08" opacity="0.15" />
+              {/* Section 3: Clock level — wider with broken pediment frames */}
+              <rect x="35" y="24" width="30" height="8" fill="#c2956b" />
+              {/* Clock faces (circles on two visible sides) */}
+              <circle cx="42" cy="28" r="2.5" fill="#0c0a08" opacity="0.25" />
+              <circle cx="58" cy="28" r="2.5" fill="#0c0a08" opacity="0.25" />
+              {/* Broken pediments above clocks */}
+              <polygon points="37,24 42,20 44,24" fill="#c2956b" />
+              <polygon points="56,24 58,20 63,24" fill="#c2956b" />
+              {/* Section 4: Bell level with Doric columns */}
+              <rect x="37" y="16" width="26" height="6" fill="#c2956b" />
+              {/* Column gaps in bell level */}
+              <rect x="40" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
+              <rect x="44" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
+              <rect x="48" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
+              <rect x="52" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
+              <rect x="56" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
+              <rect x="60" y="16" width="1" height="5" fill="#0c0a08" opacity="0.3" />
+              {/* Observation deck platform */}
+              <rect x="34" y="14" width="32" height="3" fill="#c2956b" />
+              {/* Corner turrets / finials */}
+              <rect x="34" y="10" width="3" height="5" fill="#c2956b" />
+              <rect x="63" y="10" width="3" height="5" fill="#c2956b" />
+              {/* Gold leaf garland band */}
+              <rect x="36" y="14" width="28" height="1" fill="#c2956b" />
+              {/* Central finial spire */}
+              <rect x="49" y="6" width="2" height="9" fill="#c2956b" />
+              <polygon points="48,6 50,2 52,6" fill="#c2956b" />
+              {/* Column suggestions on Main Building base */}
+              <rect x="20" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
+              <rect x="28" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
+              <rect x="36" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
+              <rect x="63" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
+              <rect x="71" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
+              <rect x="79" y="75" width="1.2" height="18" fill="#0c0a08" opacity="0.2" />
 
               {/* Small building cluster left of center */}
               <rect x="82" y="62" width="18" height="33" fill="#c2956b" />
@@ -105,32 +134,64 @@ export default function BluesApp() {
               <rect x="358" y="45" width="14" height="50" fill="#c2956b" />
               <rect x="380" y="58" width="20" height="37" fill="#c2956b" />
 
-              {/* Texas State Capitol — wide wings, rotunda, dome, statue */}
-              {/* East and West wings */}
-              <rect x="408" y="68" width="84" height="27" fill="#c2956b" />
-              {/* Central section rises higher */}
-              <rect x="428" y="58" width="44" height="37" fill="#c2956b" />
-              {/* Entablature / cornice line */}
-              <rect x="426" y="56" width="48" height="3" fill="#c2956b" />
-              {/* Rotunda drum */}
-              <rect x="436" y="46" width="28" height="12" fill="#c2956b" />
-              {/* Lower dome curve */}
-              <ellipse cx="450" cy="46" rx="16" ry="8" fill="#c2956b" />
-              {/* Upper dome */}
-              <ellipse cx="450" cy="40" rx="11" ry="7" fill="#c2956b" />
-              {/* Dome lantern / cupola */}
-              <rect x="447" y="30" width="6" height="10" fill="#c2956b" />
+              {/* Texas State Capitol — architecturally accurate Italian Renaissance Revival */}
+              {/* East wing (3 stories) */}
+              <rect x="405" y="72" width="28" height="23" fill="#c2956b" />
+              {/* West wing (3 stories) */}
+              <rect x="467" y="72" width="28" height="23" fill="#c2956b" />
+              {/* Central block (4 stories, taller than wings) */}
+              <rect x="425" y="62" width="50" height="33" fill="#c2956b" />
+              {/* Portico / front porch with pediment */}
+              <polygon points="430,62 450,56 470,62" fill="#c2956b" />
+              {/* Portico columns */}
+              <rect x="434" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+              <rect x="440" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+              <rect x="446" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+              <rect x="452" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+              <rect x="458" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+              <rect x="464" y="62" width="1.2" height="15" fill="#0c0a08" opacity="0.25" />
+              {/* Entablature / cornice above central block */}
+              <rect x="423" y="60" width="54" height="2.5" fill="#c2956b" />
+              {/* Rotunda drum — cylindrical base with Corinthian columns */}
+              <rect x="435" y="48" width="30" height="13" fill="#c2956b" />
+              {/* Drum column gaps */}
+              <rect x="438" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+              <rect x="442" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+              <rect x="446" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+              <rect x="450" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+              <rect x="454" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+              <rect x="458" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+              <rect x="462" y="49" width="0.8" height="11" fill="#0c0a08" opacity="0.2" />
+              {/* Drum balcony/cornice */}
+              <rect x="434" y="47" width="32" height="2" fill="#c2956b" />
+              {/* Dome — smooth hemispherical curve using path */}
+              <path d="M436,48 Q436,34 450,30 Q464,34 464,48 Z" fill="#c2956b" />
+              {/* Dome ribs suggestion */}
+              <line x1="450" y1="30" x2="450" y2="48" stroke="#0c0a08" strokeWidth="0.5" opacity="0.12" />
+              <line x1="443" y1="36" x2="440" y2="48" stroke="#0c0a08" strokeWidth="0.5" opacity="0.12" />
+              <line x1="457" y1="36" x2="460" y2="48" stroke="#0c0a08" strokeWidth="0.5" opacity="0.12" />
+              {/* Lantern / cupola — slender columned structure */}
+              <rect x="446" y="24" width="8" height="7" fill="#c2956b" />
+              {/* Lantern column gaps */}
+              <rect x="448" y="25" width="0.6" height="5" fill="#0c0a08" opacity="0.25" />
+              <rect x="451" y="25" width="0.6" height="5" fill="#0c0a08" opacity="0.25" />
+              {/* Lantern cap */}
+              <path d="M445,24 Q445,21 450,19 Q455,21 455,24 Z" fill="#c2956b" />
               {/* Goddess of Liberty statue */}
-              <rect x="449" y="22" width="2" height="9" fill="#c2956b" />
-              <ellipse cx="450" cy="21" rx="2" ry="3" fill="#c2956b" />
-              {/* Star at very top */}
-              <polygon points="450,16 451,18 453,18 451.5,19.5 452,22 450,20.5 448,22 448.5,19.5 447,18 449,18" fill="#c2956b" />
-              {/* Column suggestions on facade */}
-              <rect x="432" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
-              <rect x="440" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
-              <rect x="448" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
-              <rect x="456" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
-              <rect x="464" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
+              {/* Body */}
+              <rect x="449" y="13" width="2" height="6" fill="#c2956b" />
+              {/* Head */}
+              <circle cx="450" cy="12" r="1.5" fill="#c2956b" />
+              {/* Upraised arm with star */}
+              <line x1="450" y1="14" x2="452" y2="11" stroke="#c2956b" strokeWidth="1" />
+              <polygon points="452,9 452.8,10.5 451.2,10.5" fill="#c2956b" />
+              {/* Wing details on east/west wings */}
+              <rect x="410" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+              <rect x="417" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+              <rect x="424" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+              <rect x="475" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+              <rect x="482" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
+              <rect x="489" y="72" width="1" height="20" fill="#0c0a08" opacity="0.15" />
 
               {/* Right-side office towers */}
               <rect x="488" y="48" width="18" height="47" fill="#c2956b" />
