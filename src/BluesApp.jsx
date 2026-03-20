@@ -150,32 +150,44 @@ export default function BluesApp() {
                 <rect x="30" y="68" width="40" height="7.5" fill="#c2956b" />
                 <rect x="29" y="67" width="42" height="1.5" fill="#c2956b" />
 
-                {/* Tower shaft — slender, 16px wide, with vertical pilasters */}
-                <rect x="42" y="12" width="16" height="56" fill="#c2956b" />
-                {/* 3 vertical pilaster lines running full height of shaft */}
-                <rect x="46" y="12" width="0.8" height="55" fill="#0c0a08" opacity="0.12" />
-                <rect x="50" y="12" width="0.8" height="55" fill="#0c0a08" opacity="0.12" />
-                <rect x="53.5" y="12" width="0.8" height="55" fill="#0c0a08" opacity="0.12" />
+                {/* Four sections that taper as they ascend */}
 
-                {/* Clock level — same width as shaft */}
-                <rect x="42" y="7" width="16" height="5.5" fill="#c2956b" />
-                <rect x="41.5" y="6.5" width="17" height="1" fill="#c2956b" />
+                {/* Section 1: Lower shaft — widest tower section (18px) */}
+                <rect x="41" y="42" width="18" height="26" fill="#c2956b" />
+                {/* Pilaster lines */}
+                <rect x="45" y="42" width="0.7" height="25" fill="#0c0a08" opacity="0.1" />
+                <rect x="50" y="42" width="0.7" height="25" fill="#0c0a08" opacity="0.1" />
+                <rect x="54.5" y="42" width="0.7" height="25" fill="#0c0a08" opacity="0.1" />
+                {/* Cornice / ledge at top of section 1 */}
+                <rect x="40" y="41" width="20" height="1.5" fill="#c2956b" />
+
+                {/* Section 2: Upper shaft — steps in (16px) */}
+                <rect x="42" y="22" width="16" height="20" fill="#c2956b" />
+                <rect x="45.5" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
+                <rect x="50" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
+                <rect x="53.8" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
+                {/* Cornice at top of section 2 */}
+                <rect x="41" y="21" width="18" height="1.5" fill="#c2956b" />
+
+                {/* Section 3: Clock level — steps in again (14px) */}
+                <rect x="43" y="12" width="14" height="10" fill="#c2956b" />
+                <rect x="42.5" y="11" width="15" height="1.5" fill="#c2956b" />
                 {/* Clock face */}
-                <circle cx="50" cy="10" r="2" fill="#0c0a08" opacity="0.3" />
+                <circle cx="50" cy="17" r="2.2" fill="#0c0a08" opacity="0.3" />
+                <circle cx="50" cy="17" r="1.5" fill="#0c0a08" opacity="0.12" />
 
-                {/* Observation gallery — single step narrower (12px) */}
-                <rect x="44" y="0" width="12" height="7" fill="#c2956b" />
+                {/* Section 4: Observation / bell level — narrowest (11px) */}
+                <rect x="44.5" y="4" width="11" height="8" fill="#c2956b" />
                 {/* Gallery openings */}
-                <rect x="45" y="1" width="1.8" height="4.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
-                <rect x="47.5" y="1" width="1.8" height="4.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
-                <rect x="50" y="1" width="1.8" height="4.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
-                <rect x="52.5" y="1" width="1.8" height="4.5" rx="0.7" fill="#0c0a08" opacity="0.28" />
+                <rect x="45.5" y="5" width="1.6" height="5.5" rx="0.6" fill="#0c0a08" opacity="0.28" />
+                <rect x="47.8" y="5" width="1.6" height="5.5" rx="0.6" fill="#0c0a08" opacity="0.28" />
+                <rect x="50.1" y="5" width="1.6" height="5.5" rx="0.6" fill="#0c0a08" opacity="0.28" />
+                <rect x="52.4" y="5" width="1.6" height="5.5" rx="0.6" fill="#0c0a08" opacity="0.28" />
+                {/* Cap */}
+                <rect x="44" y="3" width="12" height="1.5" fill="#c2956b" />
 
-                {/* Flat cap */}
-                <rect x="43.5" y="-1" width="13" height="1.5" fill="#c2956b" />
-
-                {/* Small pedestal block on top */}
-                <rect x="47.5" y="-3.5" width="5" height="3" fill="#c2956b" />
+                {/* Small pedestal / finial on top */}
+                <rect x="48" y="-1" width="4" height="4.5" fill="#c2956b" />
 
                 {/* ── Texas State Capitol — scaled down (~70%) ── */}
                 {/* East wing */}
