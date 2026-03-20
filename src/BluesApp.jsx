@@ -142,7 +142,7 @@ export default function BluesApp() {
 
             {/* Venue directory */}
             <div style={{ ...BS.sectionLabel, marginTop: 24 }}>{'\ud83d\udccd'} Venue Directory</div>
-            {['Central Austin', 'South Austin'].map(area => {
+            {['North Austin', 'Central Austin', 'South Austin'].map(area => {
               const areaVenues = bluesVenues.filter(v => v.area === area);
               if (areaVenues.length === 0) return null;
               return (
