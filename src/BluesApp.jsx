@@ -39,57 +39,83 @@ export default function BluesApp() {
         <div style={BS.hero}>
           <div style={BS.heroSkyline}>
             <svg viewBox="0 0 680 120" style={{ width: '100%', height: 120, opacity: 0.18 }}>
-              {/* Ground / Congress Bridge */}
-              <rect x="0" y="95" width="680" height="25" fill="#c2956b" />
+              {/* Lady Bird Lake / ground */}
+              <rect x="0" y="100" width="680" height="20" fill="#c2956b" />
+              {/* Congress Ave Bridge arches */}
+              <rect x="0" y="95" width="680" height="6" fill="#c2956b" />
+              <ellipse cx="85" cy="95" rx="30" ry="6" fill="#0c0a08" />
+              <ellipse cx="170" cy="95" rx="30" ry="6" fill="#0c0a08" />
+              <ellipse cx="255" cy="95" rx="30" ry="6" fill="#0c0a08" />
+              <ellipse cx="340" cy="95" rx="30" ry="6" fill="#0c0a08" />
+              <ellipse cx="425" cy="95" rx="30" ry="6" fill="#0c0a08" />
+              <ellipse cx="510" cy="95" rx="30" ry="6" fill="#0c0a08" />
+              <ellipse cx="595" cy="95" rx="30" ry="6" fill="#0c0a08" />
 
-              {/* — Left cluster — */}
-              <rect x="30" y="52" width="28" height="68" fill="#c2956b" />
-              <rect x="65" y="38" width="22" height="82" fill="#c2956b" />
-              <rect x="95" y="58" width="18" height="62" fill="#c2956b" />
+              {/* UT Tower — far left, shorter classical tower with tiered top */}
+              <rect x="42" y="42" width="16" height="53" fill="#c2956b" />
+              <rect x="38" y="52" width="24" height="6" fill="#c2956b" />
+              <rect x="46" y="34" width="8" height="10" fill="#c2956b" />
+              <rect x="48" y="28" width="4" height="8" fill="#c2956b" />
 
-              {/* Frost Tower */}
-              <rect x="135" y="12" width="26" height="108" fill="#c2956b" />
-              <polygon points="135,12 148,0 161,12" fill="#c2956b" />
+              {/* Small building cluster left of center */}
+              <rect x="82" y="62" width="18" height="33" fill="#c2956b" />
+              <rect x="106" y="55" width="14" height="40" fill="#c2956b" />
 
-              {/* The Austonian */}
-              <rect x="175" y="18" width="20" height="102" fill="#c2956b" />
+              {/* The Independent (Jenga tower) — tallest, offset stacking */}
+              <rect x="138" y="12" width="22" height="83" fill="#c2956b" />
+              <rect x="135" y="12" width="28" height="6" fill="#c2956b" />
+              <rect x="140" y="22" width="24" height="6" fill="#c2956b" />
+              <rect x="136" y="34" width="26" height="6" fill="#c2956b" />
+              <rect x="141" y="46" width="22" height="6" fill="#c2956b" />
 
-              {/* Guitar neck as a tall building, body fades into roofline */}
-              <rect x="210" y="8" width="8" height="62" fill="#c2956b" />
-              <rect x="206" y="4" width="16" height="10" rx="2" fill="#c2956b" />
-              <ellipse cx="214" cy="82" rx="16" ry="20" fill="#c2956b" />
-              <ellipse cx="214" cy="62" rx="12" ry="14" fill="#c2956b" />
-              {/* Sound hole */}
-              <ellipse cx="214" cy="82" rx="5" ry="5" fill="#0c0a08" />
+              {/* 360 Condos — tall glass slab */}
+              <rect x="178" y="22" width="20" height="73" fill="#c2956b" />
 
-              {/* Capitol dome */}
-              <rect x="260" y="48" width="48" height="72" fill="#c2956b" />
-              <ellipse cx="284" cy="48" rx="19" ry="11" fill="#c2956b" />
-              <rect x="281" y="32" width="6" height="16" fill="#c2956b" />
+              {/* One Congress Plaza — stepped profile */}
+              <rect x="210" y="50" width="28" height="45" fill="#c2956b" />
+              <rect x="214" y="42" width="20" height="10" fill="#c2956b" />
+              <rect x="218" y="36" width="12" height="8" fill="#c2956b" />
 
-              {/* Mid buildings */}
-              <rect x="325" y="42" width="20" height="78" fill="#c2956b" />
-              <rect x="355" y="56" width="28" height="64" fill="#c2956b" />
-              <rect x="395" y="34" width="22" height="86" fill="#c2956b" />
+              {/* The Austonian — tall elliptical tower on Congress */}
+              <ellipse cx="270" cy="55" rx="11" ry="42" fill="#c2956b" />
+              <rect x="259" y="70" width="22" height="25" fill="#c2956b" />
 
-              {/* Boot integrated as a building / water tower shape */}
-              <rect x="435" y="50" width="14" height="65" fill="#c2956b" />
-              <path d="M432,50 L432,44 Q442,36 452,44 L452,50" fill="#c2956b" />
-              <path d="M435,95 L435,88 Q442,84 449,88 L449,95 L462,95 L462,100 L432,100 L432,95 Z" fill="#c2956b" />
+              {/* Frost Bank Tower — iconic jagged crown */}
+              <rect x="300" y="28" width="24" height="67" fill="#c2956b" />
+              <polygon points="300,28 312,10 324,28" fill="#c2956b" />
+              <polygon points="300,28 306,18 312,28" fill="#c2956b" />
+              <polygon points="312,28 318,18 324,28" fill="#c2956b" />
 
-              {/* Right cluster */}
-              <rect x="480" y="45" width="18" height="75" fill="#c2956b" />
-              <rect x="508" y="55" width="24" height="65" fill="#c2956b" />
-              <rect x="545" y="40" width="20" height="80" fill="#c2956b" />
-              <rect x="575" y="60" width="16" height="60" fill="#c2956b" />
-              <rect x="605" y="50" width="22" height="70" fill="#c2956b" />
-              <rect x="640" y="62" width="18" height="58" fill="#c2956b" />
+              {/* Mid-rise filler buildings */}
+              <rect x="336" y="52" width="16" height="43" fill="#c2956b" />
+              <rect x="358" y="45" width="14" height="50" fill="#c2956b" />
+              <rect x="380" y="58" width="20" height="37" fill="#c2956b" />
 
-              {/* Bat silhouettes scattered above skyline */}
-              <path d="M150,30 Q155,23 160,30 Q165,23 170,30" fill="#c2956b" />
-              <path d="M380,20 Q384,14 388,20 Q392,14 396,20" fill="#c2956b" />
-              <path d="M520,25 Q523,19 526,25 Q529,19 532,25" fill="#c2956b" />
-              <path d="M280,18 Q283,13 286,18 Q289,13 292,18" fill="#c2956b" />
+              {/* Texas State Capitol — dome with colonnade base */}
+              <rect x="420" y="55" width="52" height="40" fill="#c2956b" />
+              <rect x="426" y="52" width="40" height="5" fill="#c2956b" />
+              {/* Dome */}
+              <ellipse cx="446" cy="52" rx="18" ry="10" fill="#c2956b" />
+              <ellipse cx="446" cy="46" rx="12" ry="8" fill="#c2956b" />
+              {/* Goddess of Liberty spire */}
+              <rect x="444" y="32" width="4" height="14" fill="#c2956b" />
+              <ellipse cx="446" cy="30" rx="3" ry="4" fill="#c2956b" />
+
+              {/* Right-side office towers */}
+              <rect x="488" y="48" width="18" height="47" fill="#c2956b" />
+              <rect x="514" y="40" width="16" height="55" fill="#c2956b" />
+              <rect x="538" y="55" width="20" height="40" fill="#c2956b" />
+              <rect x="566" y="50" width="14" height="45" fill="#c2956b" />
+              <rect x="590" y="60" width="18" height="35" fill="#c2956b" />
+              <rect x="618" y="65" width="14" height="30" fill="#c2956b" />
+              <rect x="642" y="70" width="18" height="25" fill="#c2956b" />
+
+              {/* Congress Ave Bridge bats */}
+              <path d="M180,18 Q185,11 190,18 Q195,11 200,18" fill="#c2956b" />
+              <path d="M350,12 Q354,6 358,12 Q362,6 366,12" fill="#c2956b" />
+              <path d="M520,15 Q523,9 526,15 Q529,9 532,15" fill="#c2956b" />
+              <path d="M440,8 Q443,3 446,8 Q449,3 452,8" fill="#c2956b" />
+              <path d="M270,6 Q272,2 274,6 Q276,2 278,6" fill="#c2956b" />
             </svg>
           </div>
           <div style={BS.heroTitle}>AUSTIN BLUES DIGEST</div>
