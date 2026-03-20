@@ -39,37 +39,57 @@ export default function BluesApp() {
         <div style={BS.hero}>
           <div style={BS.heroSkyline}>
             <svg viewBox="0 0 680 120" style={{ width: '100%', height: 120, opacity: 0.18 }}>
-              {/* Congress Bridge */}
-              <rect x="0" y="90" width="680" height="30" fill="#c2956b" />
-              {/* Buildings */}
-              <rect x="40" y="50" width="30" height="70" fill="#c2956b" />
-              <rect x="80" y="35" width="25" height="85" fill="#c2956b" />
-              <rect x="115" y="55" width="20" height="65" fill="#c2956b" />
+              {/* Ground / Congress Bridge */}
+              <rect x="0" y="95" width="680" height="25" fill="#c2956b" />
+
+              {/* — Left cluster — */}
+              <rect x="30" y="52" width="28" height="68" fill="#c2956b" />
+              <rect x="65" y="38" width="22" height="82" fill="#c2956b" />
+              <rect x="95" y="58" width="18" height="62" fill="#c2956b" />
+
               {/* Frost Tower */}
-              <rect x="160" y="10" width="28" height="110" fill="#c2956b" />
-              <polygon points="160,10 174,0 188,10" fill="#c2956b" />
+              <rect x="135" y="12" width="26" height="108" fill="#c2956b" />
+              <polygon points="135,12 148,0 161,12" fill="#c2956b" />
+
               {/* The Austonian */}
-              <rect x="200" y="15" width="22" height="105" fill="#c2956b" />
+              <rect x="175" y="18" width="20" height="102" fill="#c2956b" />
+
+              {/* Guitar neck as a tall building, body fades into roofline */}
+              <rect x="210" y="8" width="8" height="62" fill="#c2956b" />
+              <rect x="206" y="4" width="16" height="10" rx="2" fill="#c2956b" />
+              <ellipse cx="214" cy="82" rx="16" ry="20" fill="#c2956b" />
+              <ellipse cx="214" cy="62" rx="12" ry="14" fill="#c2956b" />
+              {/* Sound hole */}
+              <ellipse cx="214" cy="82" rx="5" ry="5" fill="#0c0a08" />
+
               {/* Capitol dome */}
-              <rect x="260" y="45" width="50" height="75" fill="#c2956b" />
-              <ellipse cx="285" cy="45" rx="20" ry="12" fill="#c2956b" />
-              <rect x="282" y="28" width="6" height="17" fill="#c2956b" />
-              {/* More buildings */}
-              <rect x="330" y="40" width="20" height="80" fill="#c2956b" />
-              <rect x="360" y="55" width="30" height="65" fill="#c2956b" />
-              <rect x="400" y="30" width="24" height="90" fill="#c2956b" />
-              <rect x="440" y="50" width="18" height="70" fill="#c2956b" />
-              {/* Guitar silhouette */}
-              <ellipse cx="540" cy="72" rx="18" ry="24" fill="#c2956b" />
-              <ellipse cx="540" cy="50" rx="14" ry="18" fill="#c2956b" />
-              <rect x="537" y="28" width="6" height="45" fill="#c2956b" />
-              <rect x="535" y="18" width="10" height="14" fill="#c2956b" />
-              {/* Boot */}
-              <path d="M600,90 L600,65 L610,60 L620,65 L620,80 L640,85 L640,90 Z" fill="#c2956b" />
-              {/* Bat silhouettes */}
-              <path d="M150,85 Q155,78 160,85 Q165,78 170,85" fill="#c2956b" />
-              <path d="M480,75 Q484,70 488,75 Q492,70 496,75" fill="#c2956b" />
-              <path d="M510,68 Q513,63 516,68 Q519,63 522,68" fill="#c2956b" />
+              <rect x="260" y="48" width="48" height="72" fill="#c2956b" />
+              <ellipse cx="284" cy="48" rx="19" ry="11" fill="#c2956b" />
+              <rect x="281" y="32" width="6" height="16" fill="#c2956b" />
+
+              {/* Mid buildings */}
+              <rect x="325" y="42" width="20" height="78" fill="#c2956b" />
+              <rect x="355" y="56" width="28" height="64" fill="#c2956b" />
+              <rect x="395" y="34" width="22" height="86" fill="#c2956b" />
+
+              {/* Boot integrated as a building / water tower shape */}
+              <rect x="435" y="50" width="14" height="65" fill="#c2956b" />
+              <path d="M432,50 L432,44 Q442,36 452,44 L452,50" fill="#c2956b" />
+              <path d="M435,95 L435,88 Q442,84 449,88 L449,95 L462,95 L462,100 L432,100 L432,95 Z" fill="#c2956b" />
+
+              {/* Right cluster */}
+              <rect x="480" y="45" width="18" height="75" fill="#c2956b" />
+              <rect x="508" y="55" width="24" height="65" fill="#c2956b" />
+              <rect x="545" y="40" width="20" height="80" fill="#c2956b" />
+              <rect x="575" y="60" width="16" height="60" fill="#c2956b" />
+              <rect x="605" y="50" width="22" height="70" fill="#c2956b" />
+              <rect x="640" y="62" width="18" height="58" fill="#c2956b" />
+
+              {/* Bat silhouettes scattered above skyline */}
+              <path d="M150,30 Q155,23 160,30 Q165,23 170,30" fill="#c2956b" />
+              <path d="M380,20 Q384,14 388,20 Q392,14 396,20" fill="#c2956b" />
+              <path d="M520,25 Q523,19 526,25 Q529,19 532,25" fill="#c2956b" />
+              <path d="M280,18 Q283,13 286,18 Q289,13 292,18" fill="#c2956b" />
             </svg>
           </div>
           <div style={BS.heroTitle}>AUSTIN BLUES DIGEST</div>
