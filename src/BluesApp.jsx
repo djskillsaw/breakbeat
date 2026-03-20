@@ -121,7 +121,7 @@ export default function BluesApp() {
                 <rect x="514" y="40" width="16" height="55" fill="#c2956b" />
 
                 {/* ── UT Tower — scaled down to match skyline, 4 tapering sections ── */}
-                <g transform="translate(22.5, 42.75) scale(0.55)">
+                <g transform="translate(19, 36) scale(0.62)">
                   {/* Main Building base — wide classical building */}
                   <rect x="10" y="76" width="80" height="19" fill="#c2956b" />
                   {/* Ground floor arched openings */}
