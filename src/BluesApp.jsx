@@ -149,18 +149,13 @@ export default function BluesApp() {
                   <rect x="30" y="68" width="40" height="7.5" fill="#c2956b" />
                   <rect x="29" y="67" width="42" height="1.5" fill="#c2956b" />
 
-                  {/* Section 1: Lower shaft (18px) — burnt orange lit */}
-                  <rect x="41" y="42" width="18" height="26" fill="#bf5700" />
-                  <rect x="45" y="42" width="0.7" height="25" fill="#0c0a08" opacity="0.1" />
-                  <rect x="50" y="42" width="0.7" height="25" fill="#0c0a08" opacity="0.1" />
-                  <rect x="54.5" y="42" width="0.7" height="25" fill="#0c0a08" opacity="0.1" />
-                  <rect x="40" y="41" width="20" height="1.5" fill="#c2956b" />
-
-                  {/* Section 2: Upper shaft (18px) — same width, burnt orange */}
-                  <rect x="41" y="22" width="18" height="20" fill="#bf5700" />
-                  <rect x="45" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
-                  <rect x="50" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
-                  <rect x="54.5" y="22" width="0.7" height="19" fill="#0c0a08" opacity="0.1" />
+                  {/* Shaft — one continuous burnt orange column (18px) */}
+                  <rect x="41" y="22" width="18" height="46" fill="#bf5700" />
+                  {/* Pilaster lines */}
+                  <rect x="45" y="22" width="0.7" height="45" fill="#0c0a08" opacity="0.1" />
+                  <rect x="50" y="22" width="0.7" height="45" fill="#0c0a08" opacity="0.1" />
+                  <rect x="54.5" y="22" width="0.7" height="45" fill="#0c0a08" opacity="0.1" />
+                  {/* Cornice at top of shaft */}
                   <rect x="40" y="21" width="20" height="1.5" fill="#c2956b" />
 
                   {/* Section 3: Clock level (14px) — taller */}
