@@ -51,11 +51,25 @@ export default function BluesApp() {
               <ellipse cx="510" cy="95" rx="30" ry="6" fill="#0c0a08" />
               <ellipse cx="595" cy="95" rx="30" ry="6" fill="#0c0a08" />
 
-              {/* UT Tower — far left, shorter classical tower with tiered top */}
-              <rect x="42" y="42" width="16" height="53" fill="#c2956b" />
-              <rect x="38" y="52" width="24" height="6" fill="#c2956b" />
-              <rect x="46" y="34" width="8" height="10" fill="#c2956b" />
-              <rect x="48" y="28" width="4" height="8" fill="#c2956b" />
+              {/* UT Tower — wide base building with iconic tiered tower */}
+              {/* Main Building base (wide) */}
+              <rect x="20" y="72" width="60" height="23" fill="#c2956b" />
+              {/* Tower shaft rising from center of base */}
+              <rect x="40" y="32" width="20" height="42" fill="#c2956b" />
+              {/* Observation deck / balcony ledge */}
+              <rect x="37" y="32" width="26" height="3" fill="#c2956b" />
+              {/* Upper tier narrows */}
+              <rect x="43" y="22" width="14" height="12" fill="#c2956b" />
+              <rect x="41" y="22" width="18" height="2" fill="#c2956b" />
+              {/* Clock / lantern top section */}
+              <rect x="46" y="14" width="8" height="10" fill="#c2956b" />
+              {/* Finial spire */}
+              <rect x="49" y="8" width="2" height="7" fill="#c2956b" />
+              {/* Columns suggestion on base */}
+              <rect x="25" y="72" width="2" height="20" fill="#0c0a08" opacity="0.3" />
+              <rect x="33" y="72" width="2" height="20" fill="#0c0a08" opacity="0.3" />
+              <rect x="65" y="72" width="2" height="20" fill="#0c0a08" opacity="0.3" />
+              <rect x="73" y="72" width="2" height="20" fill="#0c0a08" opacity="0.3" />
 
               {/* Small building cluster left of center */}
               <rect x="82" y="62" width="18" height="33" fill="#c2956b" />
@@ -91,15 +105,32 @@ export default function BluesApp() {
               <rect x="358" y="45" width="14" height="50" fill="#c2956b" />
               <rect x="380" y="58" width="20" height="37" fill="#c2956b" />
 
-              {/* Texas State Capitol — dome with colonnade base */}
-              <rect x="420" y="55" width="52" height="40" fill="#c2956b" />
-              <rect x="426" y="52" width="40" height="5" fill="#c2956b" />
-              {/* Dome */}
-              <ellipse cx="446" cy="52" rx="18" ry="10" fill="#c2956b" />
-              <ellipse cx="446" cy="46" rx="12" ry="8" fill="#c2956b" />
-              {/* Goddess of Liberty spire */}
-              <rect x="444" y="32" width="4" height="14" fill="#c2956b" />
-              <ellipse cx="446" cy="30" rx="3" ry="4" fill="#c2956b" />
+              {/* Texas State Capitol — wide wings, rotunda, dome, statue */}
+              {/* East and West wings */}
+              <rect x="408" y="68" width="84" height="27" fill="#c2956b" />
+              {/* Central section rises higher */}
+              <rect x="428" y="58" width="44" height="37" fill="#c2956b" />
+              {/* Entablature / cornice line */}
+              <rect x="426" y="56" width="48" height="3" fill="#c2956b" />
+              {/* Rotunda drum */}
+              <rect x="436" y="46" width="28" height="12" fill="#c2956b" />
+              {/* Lower dome curve */}
+              <ellipse cx="450" cy="46" rx="16" ry="8" fill="#c2956b" />
+              {/* Upper dome */}
+              <ellipse cx="450" cy="40" rx="11" ry="7" fill="#c2956b" />
+              {/* Dome lantern / cupola */}
+              <rect x="447" y="30" width="6" height="10" fill="#c2956b" />
+              {/* Goddess of Liberty statue */}
+              <rect x="449" y="22" width="2" height="9" fill="#c2956b" />
+              <ellipse cx="450" cy="21" rx="2" ry="3" fill="#c2956b" />
+              {/* Star at very top */}
+              <polygon points="450,16 451,18 453,18 451.5,19.5 452,22 450,20.5 448,22 448.5,19.5 447,18 449,18" fill="#c2956b" />
+              {/* Column suggestions on facade */}
+              <rect x="432" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
+              <rect x="440" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
+              <rect x="448" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
+              <rect x="456" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
+              <rect x="464" y="58" width="1.5" height="14" fill="#0c0a08" opacity="0.3" />
 
               {/* Right-side office towers */}
               <rect x="488" y="48" width="18" height="47" fill="#c2956b" />
