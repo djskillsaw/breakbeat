@@ -15,7 +15,8 @@ export default function FreshnessBadge({ date }) {
 
   return (
     <span style={styles.badge}>
-      <span style={{ ...styles.dot, background: color }} />
+      {level === 'live' && <style>{`@keyframes pulse-live{0%,100%{opacity:1}50%{opacity:.4}}`}</style>}
+      <span style={{ ...styles.dot, background: color, ...(level === 'live' ? { animation: 'pulse-live 2s ease-in-out infinite' } : {}) }} />
       {text}
     </span>
   );
