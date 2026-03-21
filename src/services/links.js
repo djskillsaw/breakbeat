@@ -11,13 +11,19 @@ function searchQuery(artist, title) {
   return `${artist} ${title}`;
 }
 
+// Apple Music search uses + for spaces in query params
+function appleEncode(str) {
+  return encodeURIComponent(str).replace(/%20/g, '+');
+}
+
 export function generatePlatformLinks(artist, title) {
   const q = searchQuery(artist, title);
   const eq = encode(q);
+  const aq = appleEncode(q);
 
   return {
     spotify: `https://open.spotify.com/search/${eq}`,
-    appleMusic: `https://music.apple.com/us/search?term=${eq}`,
+    appleMusic: `https://music.apple.com/us/search?term=${aq}`,
     beatport: `https://www.beatport.com/search?q=${eq}`,
     soundcloud: `https://soundcloud.com/search/sounds?q=${eq}`,
     youtube: `https://music.youtube.com/search?q=${eq}`,

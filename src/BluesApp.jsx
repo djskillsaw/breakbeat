@@ -17,6 +17,7 @@ const bluesCategory = genreCategories.find(c => c.id === 'blues');
 export default function BluesApp() {
   const [tab, setTab] = useState(0);
   const [savedTracks, setSavedTracks] = useLocalStorage('blues-savedTracks', []);
+  const [savedLiveTracks, setSavedLiveTracks] = useLocalStorage('blues-savedLiveTracks', []);
 
   const {
     liveCharts, lastUpdated, previousRanks, isLoading, error,
@@ -28,8 +29,20 @@ export default function BluesApp() {
     setSavedTracks(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
   }, [setSavedTracks]);
 
+  const isLiveTrackSaved = useCallback((track) => {
+    return savedLiveTracks.some(t => t.title === track.title && t.artist === track.artist);
+  }, [savedLiveTracks]);
+
+  const toggleLiveTrack = useCallback((track) => {
+    setSavedLiveTracks(prev => {
+      const exists = prev.some(t => t.title === track.title && t.artist === track.artist);
+      if (exists) return prev.filter(t => !(t.title === track.title && t.artist === track.artist));
+      return [...prev, { title: track.title, artist: track.artist, links: track.links, sources: track.sources, playcount: track.playcount, listeners: track.listeners, popularity: track.popularity }];
+    });
+  }, [setSavedLiveTracks]);
+
   const savedTrackObjects = bluesCategory ? bluesCategory.tracks.filter(t => savedTracks.includes(t.id)) : [];
-  const savedCount = savedTracks.length;
+  const savedCount = savedTracks.length + savedLiveTracks.length;
 
   return (
     <div style={BS.container}>
@@ -308,6 +321,8 @@ export default function BluesApp() {
                     rank={track.rank}
                     previousRank={previousRanks[track.id]}
                     lastUpdated={lastUpdated}
+                    saved={isLiveTrackSaved(track)}
+                    onToggleSave={toggleLiveTrack}
                   />
                 ))}
               </div>
@@ -382,10 +397,27 @@ export default function BluesApp() {
               <div style={S.empty}>Nothing saved yet. Star any track to save it here.</div>
             ) : (
               <>
-                <div style={BS.sectionLabel}>{'\u2b50'} Saved Tracks</div>
-                {savedTrackObjects.map(track => (
-                  <CuratedTrackCard key={track.id} track={track} saved onToggleSave={toggleTrack} />
-                ))}
+                {savedLiveTracks.length > 0 && (
+                  <>
+                    <div style={BS.sectionLabel}>{'\u2b50'} Saved Chart Tracks</div>
+                    {savedLiveTracks.map(track => (
+                      <LiveTrackCard
+                        key={`saved-${track.artist}-${track.title}`}
+                        track={track}
+                        saved
+                        onToggleSave={toggleLiveTrack}
+                      />
+                    ))}
+                  </>
+                )}
+                {savedTrackObjects.length > 0 && (
+                  <>
+                    <div style={BS.sectionLabel}>{'\u2b50'} Saved Curated Tracks</div>
+                    {savedTrackObjects.map(track => (
+                      <CuratedTrackCard key={track.id} track={track} saved onToggleSave={toggleTrack} />
+                    ))}
+                  </>
+                )}
               </>
             )}
           </>

@@ -42,11 +42,11 @@ export const genreCategories = [
   {
     id: 'blues', label: 'Blues', emoji: '\ud83c\udfb5', tag: 'blues', accentColor: '#1a1a3d',
     tracks: [
-      { id: 'ct-blues-1', title: 'The Thrill Is Gone', artist: 'B.B. King', appleMusicUrl: 'https://music.apple.com/us/search?term=B.B.%20King%20The%20Thrill%20Is%20Gone', spotifyUrl: 'https://open.spotify.com/search/B.B.%20King%20The%20Thrill%20Is%20Gone' },
-      { id: 'ct-blues-2', title: 'Born Under a Bad Sign', artist: 'Albert King', appleMusicUrl: 'https://music.apple.com/us/search?term=Albert%20King%20Born%20Under%20a%20Bad%20Sign', spotifyUrl: 'https://open.spotify.com/search/Albert%20King%20Born%20Under%20a%20Bad%20Sign' },
-      { id: 'ct-blues-3', title: 'Texas Flood', artist: 'Stevie Ray Vaughan', appleMusicUrl: 'https://music.apple.com/us/search?term=Stevie%20Ray%20Vaughan%20Texas%20Flood', spotifyUrl: 'https://open.spotify.com/search/Stevie%20Ray%20Vaughan%20Texas%20Flood' },
-      { id: 'ct-blues-4', title: 'Black and Blue', artist: 'Gary Clark Jr.', appleMusicUrl: 'https://music.apple.com/us/search?term=Gary%20Clark%20Jr.%20Black%20and%20Blue', spotifyUrl: 'https://open.spotify.com/search/Gary%20Clark%20Jr.%20Black%20and%20Blue' },
-      { id: 'ct-blues-5', title: 'Can\'t Be Satisfied', artist: 'Muddy Waters', appleMusicUrl: 'https://music.apple.com/us/search?term=Muddy%20Waters%20Can%27t%20Be%20Satisfied', spotifyUrl: 'https://open.spotify.com/search/Muddy%20Waters%20Can%27t%20Be%20Satisfied' },
+      { id: 'ct-blues-1', title: 'The Thrill Is Gone', artist: 'B.B. King', appleMusicUrl: 'https://music.apple.com/us/search?term=B.B.+King+The+Thrill+Is+Gone', spotifyUrl: 'https://open.spotify.com/search/B.B.%20King%20The%20Thrill%20Is%20Gone' },
+      { id: 'ct-blues-2', title: 'Born Under a Bad Sign', artist: 'Albert King', appleMusicUrl: 'https://music.apple.com/us/search?term=Albert+King+Born+Under+a+Bad+Sign', spotifyUrl: 'https://open.spotify.com/search/Albert%20King%20Born%20Under%20a%20Bad%20Sign' },
+      { id: 'ct-blues-3', title: 'Texas Flood', artist: 'Stevie Ray Vaughan', appleMusicUrl: 'https://music.apple.com/us/search?term=Stevie+Ray+Vaughan+Texas+Flood', spotifyUrl: 'https://open.spotify.com/search/Stevie%20Ray%20Vaughan%20Texas%20Flood' },
+      { id: 'ct-blues-4', title: 'Black and Blue', artist: 'Gary Clark Jr.', appleMusicUrl: 'https://music.apple.com/us/search?term=Gary+Clark+Jr.+Black+and+Blue', spotifyUrl: 'https://open.spotify.com/search/Gary%20Clark%20Jr.%20Black%20and%20Blue' },
+      { id: 'ct-blues-5', title: 'Can\'t Be Satisfied', artist: 'Muddy Waters', appleMusicUrl: 'https://music.apple.com/us/search?term=Muddy+Waters+Can%27t+Be+Satisfied', spotifyUrl: 'https://open.spotify.com/search/Muddy%20Waters%20Can%27t%20Be%20Satisfied' },
     ],
   },
   {

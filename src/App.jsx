@@ -18,6 +18,7 @@ export default function App() {
   const [tab, setTab] = useState(0);
   const [savedTracks, setSavedTracks] = useLocalStorage('bb-savedTracks', []);
   const [savedMixes, setSavedMixes] = useLocalStorage('bb-savedMixes', []);
+  const [savedLiveTracks, setSavedLiveTracks] = useLocalStorage('bb-savedLiveTracks', []);
   const [mixGenreFilter, setMixGenreFilter] = useState('all');
   const [atxMixGenreFilter, setAtxMixGenreFilter] = useState('all');
 
@@ -35,11 +36,23 @@ export default function App() {
     setSavedMixes(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
   }, [setSavedMixes]);
 
+  const isLiveTrackSaved = useCallback((track) => {
+    return savedLiveTracks.some(t => t.title === track.title && t.artist === track.artist);
+  }, [savedLiveTracks]);
+
+  const toggleLiveTrack = useCallback((track) => {
+    setSavedLiveTracks(prev => {
+      const exists = prev.some(t => t.title === track.title && t.artist === track.artist);
+      if (exists) return prev.filter(t => !(t.title === track.title && t.artist === track.artist));
+      return [...prev, { title: track.title, artist: track.artist, links: track.links, sources: track.sources, playcount: track.playcount, listeners: track.listeners, popularity: track.popularity }];
+    });
+  }, [setSavedLiveTracks]);
+
   // Gather all tracks for saved tab
   const allStaticTracks = genreCategories.flatMap(c => c.tracks);
   const savedTrackObjects = allStaticTracks.filter(t => savedTracks.includes(t.id));
   const savedMixObjects = allMixes.filter(m => savedMixes.includes(m.id));
-  const savedCount = savedTracks.length + savedMixes.length;
+  const savedCount = savedTracks.length + savedMixes.length + savedLiveTracks.length;
 
   // Filtered mixes for the Mixes tab
   const filteredMixes = useMemo(() => {
@@ -294,6 +307,8 @@ export default function App() {
                         rank={track.rank}
                         previousRank={previousRanks[track.id]}
                         lastUpdated={lastUpdated}
+                        saved={isLiveTrackSaved(track)}
+                        onToggleSave={toggleLiveTrack}
                       />
                     ))}
                   </>
@@ -357,6 +372,8 @@ export default function App() {
                         rank={track.rank}
                         previousRank={previousRanks[track.id]}
                         lastUpdated={lastUpdated}
+                        saved={isLiveTrackSaved(track)}
+                        onToggleSave={toggleLiveTrack}
                       />
                     ))}
                   </>
@@ -432,6 +449,19 @@ export default function App() {
                     <div style={S.sectionLabel}>{'\u2b50'} Saved Tracks</div>
                     {savedTrackObjects.map(track => (
                       <CuratedTrackCard key={track.id} track={track} saved onToggleSave={toggleTrack} />
+                    ))}
+                  </>
+                )}
+                {savedLiveTracks.length > 0 && (
+                  <>
+                    <div style={S.sectionLabel}>{'\u2b50'} Saved Chart Tracks</div>
+                    {savedLiveTracks.map(track => (
+                      <LiveTrackCard
+                        key={`saved-${track.artist}-${track.title}`}
+                        track={track}
+                        saved
+                        onToggleSave={toggleLiveTrack}
+                      />
                     ))}
                   </>
                 )}

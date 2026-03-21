@@ -25,7 +25,7 @@ export function CuratedTrackCard({ track, saved, onToggleSave }) {
   );
 }
 
-export function LiveTrackCard({ track, rank, previousRank }) {
+export function LiveTrackCard({ track, rank, previousRank, saved, onToggleSave }) {
   const links = track.links || {};
   const sources = track.sources || [track.source || 'Last.fm'];
 
@@ -38,10 +38,17 @@ export function LiveTrackCard({ track, rank, previousRank }) {
             <div style={S.trackTitle}>{track.title}</div>
             <div style={S.trackArtist}>{track.artist}</div>
           </div>
-          <div style={styles.sourceTags}>
-            {sources.map(src => (
-              <span key={src} style={{ ...styles.sourceTag, ...sourceColor(src) }}>{src}</span>
-            ))}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <div style={styles.sourceTags}>
+              {sources.map(src => (
+                <span key={src} style={{ ...styles.sourceTag, ...sourceColor(src) }}>{src}</span>
+              ))}
+            </div>
+            {onToggleSave && (
+              <button onClick={() => onToggleSave(track)} style={S.starBtn} aria-label="Save track">
+                <StarIcon filled={saved} />
+              </button>
+            )}
           </div>
         </div>
 
