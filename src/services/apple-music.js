@@ -9,7 +9,10 @@
  *   18 = Hip-Hop/Rap (for reference)
  */
 
-const RSS_BASE = 'https://rss.applemarketingtools.com/api/v2/us/music/most-played';
+const RSS_BASES = [
+  'https://rss.marketingtools.apple.com/api/v2/us/music/most-played',
+  'https://rss.applemarketingtools.com/api/v2/us/music/most-played',
+];
 const ITUNES_SEARCH = 'https://itunes.apple.com/search';
 
 // Map our genre IDs to Apple Music genre IDs
@@ -54,26 +57,30 @@ function mapAppleTrack(item, index, genreId) {
  */
 export async function fetchAppleMusicCharts(genreId, limit = 25) {
   const appleGenreId = GENRE_MAP[genreId] || 7; // Default to Electronic
+  const path = `/${limit}/songs/genre-${appleGenreId}.json`;
 
-  try {
-    const url = `${RSS_BASE}/${limit}/genre-${appleGenreId}.json`;
-    const res = await fetch(url);
-    if (!res.ok) return [];
+  for (const base of RSS_BASES) {
+    try {
+      const res = await fetch(base + path);
+      if (!res.ok) continue;
 
-    const data = await res.json();
-    const results = data?.feed?.results || [];
+      const data = await res.json();
+      const results = data?.feed?.results || [];
 
-    let tracks = results.map((item, i) => mapAppleTrack(item, i, genreId));
+      let tracks = results.map((item, i) => mapAppleTrack(item, i, genreId));
 
-    // Apply sub-genre keyword filter for genres without direct Apple mapping
-    if (!GENRE_MAP[genreId]) {
-      tracks = tracks.filter(t => matchesGenreKeywords(t.title, t.artist, genreId));
+      // Apply sub-genre keyword filter for genres without direct Apple mapping
+      if (!GENRE_MAP[genreId]) {
+        tracks = tracks.filter(t => matchesGenreKeywords(t.title, t.artist, genreId));
+      }
+
+      return tracks.slice(0, limit);
+    } catch {
+      continue;
     }
-
-    return tracks.slice(0, limit);
-  } catch {
-    return [];
   }
+
+  return [];
 }
 
 /**

@@ -17,9 +17,9 @@ export function CuratedTrackCard({ track, saved, onToggleSave }) {
         </button>
       </div>
       <div style={S.btnRow}>
-        <a href={track.beatportUrl} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#f97316' }}>Beatport <ExternalLinkIcon /></a>
+        {track.beatportUrl && <a href={track.beatportUrl} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#f97316' }}>Beatport <ExternalLinkIcon /></a>}
         {track.spotifyUrl && <a href={track.spotifyUrl} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#1db954' }}>Spotify <ExternalLinkIcon /></a>}
-        <a href={track.appleMusicUrl} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#fb2d55' }}>Apple Music <ExternalLinkIcon /></a>
+        {track.appleMusicUrl && <a href={track.appleMusicUrl} target="_blank" rel="noreferrer" style={{ ...S.btn, background: '#fb2d55' }}>Apple Music <ExternalLinkIcon /></a>}
       </div>
     </div>
   );
